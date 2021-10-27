@@ -1,8 +1,8 @@
-package Tools;
+package tools;
 
 /**
  * Anouar Bannamar
  * 27-10-21
  */
-public enum ToolType {
+public class ToolGroup {
 }
