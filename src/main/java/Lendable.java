@@ -2,5 +2,8 @@
  * Arne Cools
  * 27/10/2021
  */
-public class Lendable {
+public abstract class Lendable {
+	
+	public abstract double getPrice ();
+	
 }
