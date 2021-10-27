@@ -1,4 +1,4 @@
-package transactions;
+package model.transactions;
 
 /**
  * Anouar Bannamar
