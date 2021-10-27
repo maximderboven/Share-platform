@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'TestOefening'
+version '1.0'
+sourceCompatibility = 11
+targetCompatibility = 11
+
+
+def cucumberVersion = "6.11.0"
+def jUnitVersion = "5.8.1"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:${jUnitVersion}"
+    implementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+}
