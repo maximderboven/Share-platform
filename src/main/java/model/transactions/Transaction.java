@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  * 27-10-21
  */
 public class Transaction {
-    private final MultiClass<TransactionLine> transactionLines = new MultiClass<> ();
     
+    private final MultiClass<TransactionLine> transactionLines = new MultiClass<> ();
     
     public MultiClass<TransactionLine> getTransactionLines () {
         return transactionLines;
