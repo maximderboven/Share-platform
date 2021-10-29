@@ -5,6 +5,8 @@ import model.tools.Tool;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Jonas Leijzen
@@ -32,6 +34,10 @@ public class ReservationRepository extends Repository<Reservation> {
 	
 	private boolean hasOverlap (LocalDate start1, LocalDate end1, LocalDate start2, LocalDate end2) {
 		return start1.isBefore (end2) && start2.isBefore (end1);
+	}
+	
+	public List<Reservation> filterReservation (Predicate<Reservation> predicate) {
+		return getAll ().stream ().filter (predicate).collect (Collectors.toList ());
 	}
 	
 	@Override
