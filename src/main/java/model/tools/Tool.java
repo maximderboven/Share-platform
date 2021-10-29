@@ -1,5 +1,7 @@
 package model.tools;
 
+import java.util.*;
+
 /**
  * Anouar Bannamar
  * 27-10-21
@@ -55,5 +57,10 @@ public class Tool extends Lendable {
 	@Override
 	public double getPrice () {
 		return price;
+	}
+	
+	@Override
+	public List<Lendable> getAllTools () {
+		return Arrays.asList (new Lendable[] {this});
 	}
 }

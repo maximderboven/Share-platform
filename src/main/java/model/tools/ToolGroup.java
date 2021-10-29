@@ -42,5 +42,8 @@ public class ToolGroup extends Lendable {
 		return tools.stream ().map(Lendable::getPrice).mapToDouble (value -> value).sum ();
 	}
 	
-	
+	@Override
+	public List<Lendable> getAllTools () {
+		return new ArrayList<> (tools);
+	}
 }

@@ -19,4 +19,6 @@ public abstract class Lendable {
 	
 	public abstract double getPrice ();
 	
+	public abstract List<Lendable> getAllTools ();
+	
 }
