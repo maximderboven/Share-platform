@@ -17,4 +17,8 @@ public class Transaction {
     private void addLine(LocalDateTime time, Lendable lendable) {
         transactionLines.add (new TransactionLine (time, lendable));
     }
+    
+    public TransactionLines getTransactionLines () {
+        return transactionLines;
+    }
 }
