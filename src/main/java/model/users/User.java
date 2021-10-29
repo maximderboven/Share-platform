@@ -1,6 +1,6 @@
 package model.users;
 
-import static utils.ThrowHelper.ThrowIfNullOrEmpty;
+import static utils.ThrowHelper.throwIfNullOrEmpty;
 
 /**
  * Arne Cools
@@ -19,17 +19,17 @@ public class User extends Visitor {
 	}
 	
 	public void setFirstName (String firstName) {
-		ThrowIfNullOrEmpty ("firstName", firstName);
+		throwIfNullOrEmpty ("firstName", firstName);
 		this.firstName = firstName;
 	}
 	
 	public void setLastName (String lastName) {
-		ThrowIfNullOrEmpty ("lastName", lastName);
+		throwIfNullOrEmpty ("lastName", lastName);
 		this.lastName = lastName;
 	}
 	
 	public void setAddress (String address) {
-		ThrowIfNullOrEmpty ("address", address);
+		throwIfNullOrEmpty ("address", address);
 		this.address = address;
 	}
 	
