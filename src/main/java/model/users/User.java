@@ -1,12 +1,14 @@
 package model.users;
 
+import static utils.ThrowHelper.ThrowIfNullOrEmpty;
+
 /**
  * Arne Cools
  * 27/10/2021
  */
 public class User extends Visitor {
 	
-	private final Wallet wallet = new Wallet();
+	private final Wallet wallet = new Wallet ();
 	private String firstName, lastName;
 	private String address;
 	
@@ -41,10 +43,6 @@ public class User extends Visitor {
 	
 	public String getAddress () {
 		return address;
-	}
-	
-	private void ThrowIfNullOrEmpty (String argName, String toCheck) {
-		if (toCheck == null || toCheck.equals ("")) throw new IllegalArgumentException (String.format("%s cannot be null or empty.", argName));
 	}
 	
 	public void addSharepoints (double amount) {
