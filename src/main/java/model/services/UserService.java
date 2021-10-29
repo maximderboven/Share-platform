@@ -9,7 +9,7 @@ import model.users.User;
  */
 public class UserService {
 	
-	public void TransferSharepoints (User source, User receiver, double amount) {
+	public static void TransferSharepoints (User source, User receiver, double amount) {
 		if (amount < 0)
 			throw new IllegalArgumentException ("Amount cannot be negative");
 		if (source.getSharepoints () < amount)
