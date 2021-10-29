@@ -28,6 +28,10 @@ public class User extends Visitor {
 		this.lastName = lastName;
 	}
 	
+	public String getFullName () {
+		return String.format ("%s %s", firstName, lastName);
+	}
+	
 	public void setAddress (String address) {
 		throwIfNullOrEmpty ("address", address);
 		this.address = address;
