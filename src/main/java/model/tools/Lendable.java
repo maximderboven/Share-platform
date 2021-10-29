@@ -1,5 +1,6 @@
-package model;
+package model.tools;
 
+import model.Attachment;
 import repositories.MultiClass;
 
 import java.util.*;
@@ -10,7 +11,7 @@ import java.util.*;
  */
 public abstract class Lendable {
 	
-	private MultiClass<Attachment> attachments = new MultiClass<> ();
+	private final MultiClass<Attachment> attachments = new MultiClass<> ();
 	
 	public MultiClass<Attachment> getAttachments () {
 		return attachments;

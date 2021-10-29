@@ -1,6 +1,6 @@
 package repositories;
 
-import model.Lendable;
+import model.tools.Lendable;
 
 /**
  * Jonas Leijzen

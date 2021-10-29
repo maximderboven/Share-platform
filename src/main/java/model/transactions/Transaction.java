@@ -1,11 +1,9 @@
 package model.transactions;
 
-import model.Lendable;
+import model.tools.Lendable;
 import repositories.MultiClass;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Anouar Bannamar

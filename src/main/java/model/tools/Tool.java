@@ -1,7 +1,5 @@
 package model.tools;
 
-import model.Lendable;
-
 /**
  * Anouar Bannamar
  * 27-10-21

@@ -1,7 +1,5 @@
 package model.tools;
 
-import model.Lendable;
-
 import java.util.*;
 
 /**

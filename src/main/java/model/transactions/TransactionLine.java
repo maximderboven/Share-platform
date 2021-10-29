@@ -1,6 +1,6 @@
 package model.transactions;
 
-import model.Lendable;
+import model.tools.Lendable;
 
 import java.time.LocalDateTime;
 
