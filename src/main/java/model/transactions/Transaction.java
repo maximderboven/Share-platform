@@ -15,10 +15,6 @@ public class Transaction {
     private double amount;
     private final MultiClass<TransactionLine> transactionLines = new MultiClass<> ();
     
-    private void addLine(LocalDateTime time, Lendable lendable) {
-        transactionLines.add (new TransactionLine (time, lendable));
-    }
-    
     public MultiClass<TransactionLine> getTransactionLines () {
         return transactionLines;
     }

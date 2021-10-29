@@ -10,12 +10,14 @@ import java.time.LocalDateTime;
  */
 public class TransactionLine {
     
-    private LocalDateTime time;
-    private Lendable lendable;
+    private final LocalDateTime time;
+    private final Lendable lendable;
+    private final TransactionType type;
     
-    public TransactionLine(LocalDateTime time, Lendable lendable) {
+    public TransactionLine(LocalDateTime time, Lendable lendable, TransactionType type) {
         this.time = time;
         this.lendable = lendable;
+        this.type = type;
     }
     
     public LocalDateTime getTime () {
@@ -24,6 +26,10 @@ public class TransactionLine {
     
     public Lendable getLendable () {
         return lendable;
+    }
+    
+    public TransactionType getType () {
+        return type;
     }
     
     public double getAmount () {
