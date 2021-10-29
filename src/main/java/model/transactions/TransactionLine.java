@@ -33,6 +33,6 @@ public class TransactionLine {
     }
     
     public double getAmount () {
-        return lendable.getPrice ();
+        return type == TransactionType.PICKUP ? lendable.getPrice () + lendable.getGuaranty () : lendable.getGuaranty ();
     }
 }
