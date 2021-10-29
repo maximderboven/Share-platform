@@ -6,6 +6,7 @@ package model.users;
  */
 public class Wallet {
 	
+	private final String ERR_AMOUNT_CANNOT_BE_NEGATIVE = "Sharepoints amount cannot be negative.";
 	private double sharepoints;
 	
 	Wallet () {
@@ -13,10 +14,14 @@ public class Wallet {
 	}
 	
 	void addSharepoints (double amount) {
+		if (amount < 0)
+			throw new IllegalArgumentException (ERR_AMOUNT_CANNOT_BE_NEGATIVE);
 		setSharepoints (sharepoints + amount);
 	}
 	
 	void removeSharepoints (double amount) {
+		if (amount < 0)
+			throw new IllegalArgumentException (ERR_AMOUNT_CANNOT_BE_NEGATIVE);
 		setSharepoints (sharepoints - amount);
 	}
 	
@@ -26,7 +31,7 @@ public class Wallet {
 	
 	private void setSharepoints (double amount) {
 		if (amount < 0)
-			throw new IllegalArgumentException ("Sharepoints amount cannot be negative.");
+			throw new InsufficientFundsException ("User does not have enough funds.");
 		sharepoints = amount;
 	}
 	
