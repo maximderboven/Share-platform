@@ -1,11 +1,13 @@
 package model.controllers;
 
+import model.Reservation;
 import model.services.ReservationService;
 import model.tools.Lendable;
 import model.users.User;
 import repositories.ReservationRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static utils.ThrowHelper.throwIfNull;
 
@@ -24,6 +26,10 @@ public class ReservationController {
 	
 	public void scheduleReservation (User owner, User borrower, Lendable lendable, LocalDate startDate, LocalDate endDate) {
 		ReservationService.scheduleReservation (repository, owner, borrower, lendable, startDate, endDate);
+	}
+	
+	public List<Reservation> getReservationsForOwnerAndBorrower (String owner, String borrower) {
+		return repository.filterReservation (r -> r.getOwner ().getFullName ().equals (owner) && r.getBorrower ().getFullName ().contains (borrower));
 	}
 	
 }
