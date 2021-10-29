@@ -1,6 +1,7 @@
 package model.transactions;
 
 import model.Lendable;
+import repositories.MultiClass;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,17 +15,17 @@ public class Transaction {
     private LocalDateTime time;
     private Lendable lendable;
     private double amount;
-    private final TransactionLines transactionLines;
+    private final MultiClass<TransactionLine> transactionLines;
 
     public Transaction() {
-        transactionLines = new TransactionLines ();
+        transactionLines = new MultiClass<> ();
     }
 
     private void addLine(LocalDateTime time, Lendable lendable) {
         transactionLines.add (new TransactionLine (time, lendable));
     }
     
-    public TransactionLines getTransactionLines () {
+    public MultiClass<TransactionLine> getTransactionLines () {
         return transactionLines;
     }
 }

@@ -6,7 +6,7 @@ import java.util.*;
  * Jonas Leijzen
  * 29/10/2021
  */
-public abstract class MultiClass<T> {
+public class MultiClass<T> {
 	
 	private Set<T> tSet = new HashSet<> ();
 	
