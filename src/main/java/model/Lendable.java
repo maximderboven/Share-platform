@@ -1,5 +1,7 @@
 package model;
 
+import repositories.MultiClass;
+
 import java.util.*;
 
 /**
@@ -8,18 +10,10 @@ import java.util.*;
  */
 public abstract class Lendable {
 	
-	private Set<Attachment> attachments = new HashSet<> ();
+	private MultiClass<Attachment> attachments = new MultiClass<> ();
 	
-	public boolean addAttachment (Attachment attachment) {
-		return attachments.add (attachment);
-	}
-	
-	public boolean removeAttachment (Attachment attachment) {
-		return attachments.remove (attachment);
-	}
-	
-	public List<Attachment> getAllAttachments () {
-		return new ArrayList<> (attachments);
+	public MultiClass<Attachment> getAttachments () {
+		return attachments;
 	}
 	
 	public abstract double getPrice ();
