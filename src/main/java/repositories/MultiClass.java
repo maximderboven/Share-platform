@@ -6,11 +6,19 @@ import java.util.*;
  * Jonas Leijzen
  * 29/10/2021
  */
-public interface MultiClass<T> {
+public abstract class MultiClass<T> {
 	
-	boolean add (T t);
+	private Set<T> tSet = new HashSet<> ();
 	
-	boolean remove (T t);
+	public boolean add (T t) {
+		return tSet.add (t);
+	}
 	
-	List<T> getAll ();
+	public boolean remove (T t) {
+		return tSet.remove (t);
+	}
+	
+	public List<T> getAll () {
+		return new ArrayList<> (tSet);
+	}
 }
