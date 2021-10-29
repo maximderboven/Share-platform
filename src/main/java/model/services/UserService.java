@@ -1,4 +1,7 @@
-package model.users;
+package model.services;
+
+import model.users.InsufficientFundsException;
+import model.users.User;
 
 /**
  * Jonas Leijzen
