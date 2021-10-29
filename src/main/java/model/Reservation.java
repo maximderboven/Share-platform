@@ -6,6 +6,7 @@ import model.transactions.Transaction;
 import model.users.User;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import static utils.ThrowHelper.throwIfInThePast;
 import static utils.ThrowHelper.throwIfNull;
@@ -106,4 +107,23 @@ public class Reservation {
 		return transaction;
 	}
 	
+	@Override
+	public boolean equals (Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Reservation)) return false;
+		Reservation that = (Reservation) o;
+		return pickedUp == that.pickedUp &&
+				returned == that.returned &&
+				Objects.equals (transaction, that.transaction) &&
+				Objects.equals (owner, that.owner) &&
+				Objects.equals (borrower, that.borrower) &&
+				Objects.equals (lendable, that.lendable) &&
+				Objects.equals (pickUpDate, that.pickUpDate) &&
+				Objects.equals (returnDate, that.returnDate);
+	}
+	
+	@Override
+	public int hashCode () {
+		return Objects.hash (transaction, owner, borrower, lendable, pickUpDate, returnDate, pickedUp, returned);
+	}
 }
