@@ -11,8 +11,14 @@ import java.util.List;
  * 27-10-21
  */
 public class Transaction {
-    
-    private final TransactionLines transactionLines = new TransactionLines ();
+    private LocalDateTime time;
+    private Lendable lendable;
+    private double amount;
+    private final TransactionLines transactionLines;
+
+    public Transaction() {
+        transactionLines = new TransactionLines ();
+    }
 
     private void addLine(LocalDateTime time, Lendable lendable) {
         transactionLines.add (new TransactionLine (time, lendable));
