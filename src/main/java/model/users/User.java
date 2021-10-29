@@ -7,11 +7,11 @@ package model.users;
 public class User {
 	
 	private Wallet wallet;
-	private String addres;
+	private String address;
 	
-	public User(String addres){
+	public User(String address){
 		wallet = new Wallet();
-		this.addres = addres;
+		this.address = address;
 	}
 	
 	public void addSharepoints (double amount) {
