@@ -6,11 +6,10 @@ package model.users;
  */
 public class User {
 	
-	private Wallet wallet;
+	private final Wallet wallet = new Wallet();
 	private String address;
 	
 	public User(String address){
-		wallet = new Wallet();
 		this.address = address;
 	}
 
