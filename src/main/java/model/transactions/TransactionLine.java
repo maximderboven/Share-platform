@@ -9,13 +9,24 @@ import java.time.LocalDateTime;
  * 27-10-21
  */
 public class TransactionLine {
-    private Lendable lendable;
-    private double amount;
+    
     private LocalDateTime time;
-
-    public TransactionLine(Lendable lendable, double amount, LocalDateTime time) {
-        this.lendable = lendable;
-        this.amount = amount;
+    private Lendable lendable;
+    
+    public TransactionLine(LocalDateTime time, Lendable lendable) {
         this.time = time;
+        this.lendable = lendable;
+    }
+    
+    public LocalDateTime getTime () {
+        return time;
+    }
+    
+    public Lendable getLendable () {
+        return lendable;
+    }
+    
+    public double getAmount () {
+        return lendable.getPrice ();
     }
 }
