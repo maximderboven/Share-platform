@@ -38,8 +38,14 @@ public class ToolGroup extends Lendable {
 		return name;
 	}
 	
+	@Override
 	public double getPrice () {
 		return tools.stream ().map(Lendable::getPrice).mapToDouble (value -> value).sum ();
+	}
+	
+	@Override
+	public double getGuaranty () {
+		return tools.stream ().map(Lendable::getGuaranty).mapToDouble (value -> value).sum ();
 	}
 	
 	@Override

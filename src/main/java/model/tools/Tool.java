@@ -12,12 +12,14 @@ public class Tool extends Lendable {
 	private String description;
 	private ToolType type;
 	private double price;
+	private double guaranty;
 	
-	public Tool (String name, String description, ToolType type, double price) {
+	public Tool (String name, String description, ToolType type, double price, double guaranty) {
 		setName (name);
 		setDescription (description);
 		setToolType (type);
 		setPrice (price);
+		setGuaranty (guaranty);
 	}
 	
 	public void setName (String name) {
@@ -42,6 +44,12 @@ public class Tool extends Lendable {
 		this.price = price;
 	}
 	
+	public void setGuaranty (double guaranty) {
+		if (guaranty < 0)
+			throw new IllegalArgumentException ("Guaranty cannot be negative.");
+		this.guaranty = guaranty;
+	}
+	
 	public String getName () {
 		return name;
 	}
@@ -57,6 +65,11 @@ public class Tool extends Lendable {
 	@Override
 	public double getPrice () {
 		return price;
+	}
+	
+	@Override
+	public double getGuaranty () {
+		return guaranty;
 	}
 	
 	@Override
