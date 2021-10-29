@@ -21,6 +21,6 @@ public abstract class Lendable {
 	
 	public abstract double getGuaranty ();
 	
-	public abstract List<Lendable> getAllTools ();
+	public abstract List<Tool> getAllTools ();
 	
 }

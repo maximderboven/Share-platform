@@ -73,7 +73,7 @@ public class Tool extends Lendable {
 	}
 	
 	@Override
-	public List<Lendable> getAllTools () {
-		return Arrays.asList (new Lendable[] {this});
+	public List<Tool> getAllTools () {
+		return List.of (this);
 	}
 }

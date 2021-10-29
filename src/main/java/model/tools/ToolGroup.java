@@ -1,6 +1,7 @@
 package model.tools;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Anouar Bannamar
@@ -9,11 +10,10 @@ import java.util.*;
 public class ToolGroup extends Lendable {
 	
 	private String name;
-	private final Set<Lendable> tools;
+	private final Set<Lendable> lendables = new HashSet<> ();
 	
 	public ToolGroup (String name) {
 		setName (name);
-		tools = new HashSet<> ();
 	}
 	
 	public void setName (String name) {
@@ -23,15 +23,15 @@ public class ToolGroup extends Lendable {
 	}
 	
 	public boolean add (Lendable tool) {
-		return tools.add (tool);
+		return lendables.add (tool);
 	}
 	
 	public boolean remove (Lendable tool) {
-		return tools.remove (tool);
+		return lendables.remove (tool);
 	}
 	
 	public int getSize () {
-		return tools.size ();
+		return lendables.size ();
 	}
 	
 	public String getName () {
@@ -40,16 +40,19 @@ public class ToolGroup extends Lendable {
 	
 	@Override
 	public double getPrice () {
-		return tools.stream ().map(Lendable::getPrice).mapToDouble (value -> value).sum ();
+		return lendables.stream ().map(Lendable::getPrice).mapToDouble (value -> value).sum ();
 	}
 	
 	@Override
 	public double getGuaranty () {
-		return tools.stream ().map(Lendable::getGuaranty).mapToDouble (value -> value).sum ();
+		return lendables.stream ().map(Lendable::getGuaranty).mapToDouble (value -> value).sum ();
 	}
 	
 	@Override
-	public List<Lendable> getAllTools () {
-		return new ArrayList<> (tools);
+	public List<Tool> getAllTools () {
+		List<Tool> tools = new ArrayList<> ();
+		for (Lendable l : lendables)
+			tools.addAll(l.getAllTools ());
+		return tools;
 	}
 }
