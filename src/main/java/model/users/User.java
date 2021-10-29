@@ -14,12 +14,16 @@ public class User {
 		this.addres = addres;
 	}
 	
-	void addSharepoints (double amount) {
+	public void addSharepoints (double amount) {
 		wallet.addSharepoints (amount);
 	}
 	
-	void removeSharepoints (double amount) {
+	public void removeSharepoints (double amount) {
 		wallet.removeSharepoints (amount);
+	}
+	
+	public double getSharepoints () {
+		return wallet.getSharepoints ();
 	}
 	
 }
