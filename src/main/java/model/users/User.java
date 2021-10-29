@@ -13,7 +13,7 @@ public class User {
 		wallet = new Wallet();
 		this.address = address;
 	}
-	
+
 	public void addSharepoints (double amount) {
 		wallet.addSharepoints (amount);
 	}
@@ -25,5 +25,4 @@ public class User {
 	public double getSharepoints () {
 		return wallet.getSharepoints ();
 	}
-	
 }

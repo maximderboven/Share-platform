@@ -34,5 +34,4 @@ public class Wallet {
 			throw new InsufficientFundsException ("User does not have enough funds.");
 		sharepoints = amount;
 	}
-	
 }
