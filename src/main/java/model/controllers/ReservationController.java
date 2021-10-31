@@ -28,8 +28,16 @@ public class ReservationController {
 		ReservationService.scheduleReservation (repository, owner, borrower, lendable, startDate, days);
 	}
 	
+	public void PickUpReservation (Reservation reservation) {
+		ReservationService.PickUpReservation (reservation);
+	}
+	
+	public void CancelReservation (Reservation reservation) {
+		ReservationService.CancelReservation (repository, reservation);
+	}
+	
 	public List<Reservation> getReservationsForOwnerAndBorrower (String owner, String borrower) {
-		return repository.filterReservations (r -> r.getOwner ().getFullName ().equals (owner) && r.getBorrower ().getFullName ().contains (borrower));
+		return ReservationService.getReservationsForOwnerAndBorrower (repository, owner, borrower);
 	}
 	
 }
