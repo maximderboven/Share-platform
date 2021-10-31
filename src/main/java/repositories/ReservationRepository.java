@@ -36,7 +36,7 @@ public class ReservationRepository extends Repository<Reservation> {
 		return start1.isBefore (end2) && start2.isBefore (end1);
 	}
 	
-	public List<Reservation> filterReservation (Predicate<Reservation> predicate) {
+	public List<Reservation> filterReservations (Predicate<Reservation> predicate) {
 		return getAll ().stream ().filter (predicate).collect (Collectors.toList ());
 	}
 	

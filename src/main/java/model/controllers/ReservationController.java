@@ -29,7 +29,7 @@ public class ReservationController {
 	}
 	
 	public List<Reservation> getReservationsForOwnerAndBorrower (String owner, String borrower) {
-		return repository.filterReservation (r -> r.getOwner ().getFullName ().equals (owner) && r.getBorrower ().getFullName ().contains (borrower));
+		return repository.filterReservations (r -> r.getOwner ().getFullName ().equals (owner) && r.getBorrower ().getFullName ().contains (borrower));
 	}
 	
 }
