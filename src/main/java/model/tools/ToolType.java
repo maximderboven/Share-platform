@@ -15,7 +15,7 @@ public enum ToolType {
 		this.sharepointGuarantyValue = sharepointGuarantyValue;
 	}
 	
-	private int sharepointGuarantyValue;
+	private final int sharepointGuarantyValue;
 	
 	public int getSharepointGuarantyValue () {
 		return sharepointGuarantyValue;
