@@ -1,5 +1,6 @@
 package model.users;
 
+import static utils.ThrowHelper.throwIfNull;
 import static utils.ThrowHelper.throwIfNullOrEmpty;
 
 /**
@@ -24,7 +25,7 @@ public class User extends Visitor {
 	}
 	
 	public void setLastName (String lastName) {
-		throwIfNullOrEmpty ("lastName", lastName);
+		throwIfNull ("lastName", lastName);
 		this.lastName = lastName;
 	}
 	
@@ -33,7 +34,7 @@ public class User extends Visitor {
 	}
 	
 	public void setAddress (String address) {
-		throwIfNullOrEmpty ("address", address);
+		throwIfNull ("address", address);
 		this.address = address;
 	}
 	
