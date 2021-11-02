@@ -1,6 +1,6 @@
 package model.tools;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * Anouar Bannamar
@@ -14,12 +14,12 @@ public class Tool extends Lendable {
 	private double price;
 	private double guaranty;
 	
-	public Tool (String name, String description, ToolType type, double price, double guaranty) {
+	public Tool (String name, String description, ToolType type, double price) {
 		setName (name);
 		setDescription (description);
 		setToolType (type);
 		setPrice (price);
-		setGuaranty (guaranty);
+		setGuaranty (type.getSharepointGuarantyValue ());
 	}
 	
 	public void setName (String name) {
