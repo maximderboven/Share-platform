@@ -24,13 +24,13 @@ public class Tool extends Lendable {
 	
 	public void setName (String name) {
 		if (name == null || name.length () == 0)
-			throw new IllegalArgumentException ("Name cannot be null or empty");
+			throw new IllegalArgumentException ("Name cannot be null or empty.");
 		this.name = name;
 	}
 	
 	public void setDescription (String description) {
-		if (description == null || description.length () == 0)
-			throw new IllegalArgumentException ("Description cannot be null or empty");
+		if (description == null)
+			throw new IllegalArgumentException ("Description cannot be null.");
 		this.description = description;
 	}
 	
