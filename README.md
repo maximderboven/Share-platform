@@ -1,4 +1,4 @@
-# Project SE (2021-2022)
+# Project SE (2021-2022) Share-IT
 
 ### Studenten (INF203)
 * Anouar Bannamar
