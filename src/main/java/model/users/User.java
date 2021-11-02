@@ -1,5 +1,8 @@
 package model.users;
 
+import model.tools.Lendable;
+import repositories.MultiClass;
+
 import static utils.ThrowHelper.throwIfNull;
 import static utils.ThrowHelper.throwIfNullOrEmpty;
 
@@ -12,6 +15,7 @@ public class User extends Visitor {
 	private final Wallet wallet = new Wallet ();
 	private String firstName, lastName;
 	private String address;
+	private final MultiClass<Lendable> lendables = new MultiClass<> ();
 	
 	public User(String firstName, String lastName, String address) {
 		setFirstName (firstName);
@@ -60,5 +64,9 @@ public class User extends Visitor {
 	
 	public double getSharepoints () {
 		return wallet.getSharepoints ();
+	}
+	
+	public MultiClass<Lendable> getLendables () {
+		return lendables;
 	}
 }
