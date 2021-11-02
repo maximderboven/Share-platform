@@ -24,8 +24,8 @@ public class ReservationController {
 		this.repository = repository;
 	}
 	
-	public void scheduleReservation (User owner, User borrower, Lendable lendable, LocalDate startDate, int days) {
-		ReservationService.scheduleReservation (repository, owner, borrower, lendable, startDate, days);
+	public Reservation scheduleReservation (User owner, User borrower, Lendable lendable, LocalDate startDate, int days) {
+		return ReservationService.scheduleReservation (repository, owner, borrower, lendable, startDate, days);
 	}
 	
 	public void PickUpReservation (Reservation reservation) {

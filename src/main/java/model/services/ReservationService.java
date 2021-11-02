@@ -18,7 +18,7 @@ import static utils.ThrowHelper.throwIfNegative;
  */
 public class ReservationService {
 	
-	public static void scheduleReservation (ReservationRepository repository, User owner, User borrower, Lendable lendable, LocalDate startDate, int days) {
+	public static Reservation scheduleReservation (ReservationRepository repository, User owner, User borrower, Lendable lendable, LocalDate startDate, int days) {
 		throwIfNegative ("days", days);
 		LocalDate endDate = startDate.plusDays (days);
 		Reservation reservation = new Reservation (owner, borrower, lendable, startDate, endDate);
@@ -27,6 +27,7 @@ public class ReservationService {
 		if (!repository.areAllToolsAreFree (reservation))
 			throw new ReservationOverlapException ("One or more tools have already been reserved for this time period.");
 		repository.add (reservation);
+		return reservation;
 	}
 	
 	public static void PickUpReservation (Reservation reservation) {
