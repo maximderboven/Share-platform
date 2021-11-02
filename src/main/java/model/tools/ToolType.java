@@ -6,9 +6,18 @@ package model.tools;
  */
 public enum ToolType {
 	
-	ELECTRIC,
-	KITCHEN,
-	SOUND_INSTALLATION,
-	LIGHT_INSTALLATION
+	ELECTRIC (40),
+	KITCHEN (40),
+	SOUND_INSTALLATION (400),
+	LIGHT_INSTALLATION (150);
 	
+	ToolType (int sharepointGuarantyValue) {
+		this.sharepointGuarantyValue = sharepointGuarantyValue;
+	}
+	
+	private int sharepointGuarantyValue;
+	
+	public int getSharepointGuarantyValue () {
+		return sharepointGuarantyValue;
+	}
 }
