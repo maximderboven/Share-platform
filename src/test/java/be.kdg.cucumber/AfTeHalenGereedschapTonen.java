@@ -4,6 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import model.tools.Tool;
+import model.tools.ToolType;
 import model.users.User;
 
 import java.time.LocalDate;
@@ -14,16 +16,38 @@ import java.time.format.DateTimeFormatter;
  * @version 1.0 2/11/2021 15:33
  */
 public class AfTeHalenGereedschapTonen {
-
+    
+    User eveline, diederik;
+    
+    public AfTeHalenGereedschapTonen () {
+        configureTestData ();
+    }
+    
+    public void configureTestData () {
+        
+        eveline = new User ("Eveline", "", "");
+        eveline.addSharepoints (1000);
+        diederik = new User ("Diederik", "", "");
+        diederik.addSharepoints (1000);
+        
+        eveline.getLendables ().add (new Tool ("Kettingzaag", "", ToolType.ELECTRIC, 10));
+        eveline.getLendables ().add (new Tool ("Kettingzaag2", "", ToolType.ELECTRIC, 10));
+        eveline.getLendables ().add (new Tool ("Klopboormachine", "", ToolType.ELECTRIC, 20));
+        eveline.getLendables ().add (new Tool ("Keukenrobot", "", ToolType.KITCHEN, 15));
+        
+        diederik.getLendables ().add (new Tool ("PA Seismic", "", ToolType.SOUND_INSTALLATION, 200));
+        diederik.getLendables ().add (new Tool ("Black Strobo Magic", "", ToolType.LIGHT_INSTALLATION, 50));
+        
+        
+    }
+    
     LocalDate today;
-    User huurder;
-    User verhuurder;
-
-    @Given("today is {string}")
-    public void todayIs(String waarde) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        today = LocalDate.parse(waarde, formatter);
-
+    
+    @Given ("today is {string}")
+    public void todayIs (String waarde) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern ("dd/MM/yyyy");
+        today = LocalDate.parse (waarde, formatter);
+        
     }
 
     @When("{string} aangeeft dat {string} zijn reservaties wil ophalen")
