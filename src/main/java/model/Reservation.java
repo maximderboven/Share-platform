@@ -23,12 +23,12 @@ public class Reservation {
 	private LocalDate pickUpDate, returnDate;
 	private boolean pickedUp, returned;
 	
-	public Reservation (User owner, User borrower, Lendable lendable, LocalDate pickUpDate, LocalDate returnDate) {
+	public Reservation (User owner, User borrower, Lendable lendable, LocalDate pickUpDate, int days) {
 		setOwner (owner);
 		setBorrower (borrower);
 		setLendable (lendable);
 		setPickUpDate (pickUpDate);
-		setReturnDate (returnDate);
+		setReturnDate (pickUpDate.plusDays (days));
 		transaction = new Transaction ();
 	}
 	
