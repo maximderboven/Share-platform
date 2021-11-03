@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import model.Reservation;
+import model.controllers.ReservationController;
 import model.tools.Lendable;
 import model.tools.Tool;
 import model.tools.ToolType;
@@ -25,6 +26,7 @@ public class AfTeHalenGereedschapTonen {
     Map<String, Lendable> lendableMap = new HashMap<> ();
     Map<String, User> userMap = new HashMap<> ();
     Map<String, Reservation> reservationMap = new HashMap<> ();
+    ReservationController reservationController;
     
     LocalDate today;
     
@@ -37,20 +39,19 @@ public class AfTeHalenGereedschapTonen {
 
     @When("{string} aangeeft dat {string} zijn reservaties wil ophalen")
     public void aangeeftDatZijnReservatiesWilOphalen(String huurder, String verhuurder) {
-    
+        reservationController.getReservationsForOwnerAndBorrower(verhuurder, huurder);
     }
     
     @Then ("wordt een lijst met {int} reservaties getoond")
     public void wordtEenLijstMetReservatiesGetoond (int arg0) {
-        // huh ?
+        reservationController.getReservationsForOwnerAndBorrower().size();
     }
     
     @And ("bevat de lijst {string}")
     public void bevatDeLijst (String arg0) {
         //assert(verhuurder.getReservaties().stream().anyMatch(item -> "foo".equals(item.getName()));
     }
-    
-    
+
     @Given ("Tools")
     public void tools (DataTable table) {
         for (Map<String, String> m : table.asMaps ()) {

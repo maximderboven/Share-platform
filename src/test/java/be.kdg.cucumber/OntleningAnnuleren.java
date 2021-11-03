@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import model.Reservation;
+import model.controllers.ReservationController;
 import model.users.User;
 
 /**
@@ -15,23 +16,23 @@ public class OntleningAnnuleren {
     User huurder;
     User verhuurder;
     Reservation reservatie;
+    ReservationController reservationController;
 
     @When("{string} aangeeft dat {string} {string} wil ophalen")
     public void aangeeftDatWilOphalen(String huurder, String verhuurder, String reservatie) {
-        //beter uit list van userRepo halen
-        this.huurder = new User(huurder);
-        this.verhuurder = new User(verhuurder);
-        reservatie = Reservation.getReservatie("reservatie");
+        this.huurder = new User(huurder, "blabla", "Groenplaats 50");
+        this.verhuurder = new User(verhuurder, "vdb", "Maanstraat 18");
+        reservationController.PickUpReservation(reservatie);
     }
 
     @And("{string} aangeeft dat {string} {string} wil annuleren")
     public void aangeeftDatWilAnnuleren(String huurder, String verhuurder, String reservatie) {
-        reservatie.Cancel();
+        reservationController.CancelReservation(reservatie);
     }
 
     @Then("Er wordt een afhalingtransactie aangemaakt")
     public void erWordtEenAfhalingtransactieAangemaakt() {
-        reservatie.getOwner().CreateTransaction();
+       reservationController.PickUpReservation();
     }
 
     @And("Er wordt een transactielijn gemaakt voor de onlening van {string} met een prijs van {int} SP")
