@@ -7,7 +7,7 @@ package model.tools;
 public enum ToolType {
 	
 	ELECTRIC (40),
-	KITCHEN (40),
+	KITCHEN (60),
 	SOUND_INSTALLATION (400),
 	LIGHT_INSTALLATION (150);
 	

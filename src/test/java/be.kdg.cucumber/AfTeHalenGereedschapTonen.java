@@ -34,7 +34,6 @@ public class AfTeHalenGereedschapTonen {
     public void todayIs (String waarde) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern ("dd/MM/yyyy");
         today = LocalDate.parse (waarde, formatter);
-        
     }
 
     @When("{string} aangeeft dat {string} zijn reservaties wil ophalen")
@@ -88,8 +87,6 @@ public class AfTeHalenGereedschapTonen {
         for (Map<String, String> m : table.asMaps ()) {
             String name = m.get ("name");
             Reservation r = new Reservation (userMap.get (m.get ("owner")), userMap.get (m.get ("borrower")), lendableMap.get ("lendable"), LocalDate.parse (m.get ("begindate")), Integer.parseInt (m.get ("dayduration")));
-            
-            
         }
     }
     
