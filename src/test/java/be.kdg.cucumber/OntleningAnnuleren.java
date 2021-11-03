@@ -20,19 +20,19 @@ public class OntleningAnnuleren {
 
     @When("{string} aangeeft dat {string} {string} wil ophalen")
     public void aangeeftDatWilOphalen(String huurder, String verhuurder, String reservatie) {
-        this.huurder = new User(huurder, "blabla", "Groenplaats 50");
-        this.verhuurder = new User(verhuurder, "vdb", "Maanstraat 18");
-        reservationController.PickUpReservation(reservatie);
+        this.huurder = new User (huurder, "blabla", "Groenplaats 50");
+        this.verhuurder = new User (verhuurder, "vdb", "Maanstraat 18");
+        reservationController.pickUpReservation (reservatie);
     }
 
     @And("{string} aangeeft dat {string} {string} wil annuleren")
     public void aangeeftDatWilAnnuleren(String huurder, String verhuurder, String reservatie) {
-        reservationController.CancelReservation(reservatie);
+        reservationController.cancelReservation (reservatie);
     }
 
     @Then("Er wordt een afhalingtransactie aangemaakt")
     public void erWordtEenAfhalingtransactieAangemaakt() {
-       reservationController.PickUpReservation();
+        reservationController.pickUpReservation ();
     }
 
     @And("Er wordt een transactielijn gemaakt voor de onlening van {string} met een prijs van {int} SP")

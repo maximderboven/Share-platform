@@ -28,12 +28,12 @@ public class ReservationController {
 		return ReservationService.scheduleReservation (repository, owner, borrower, lendable, startDate, days);
 	}
 	
-	public void PickUpReservation (Reservation reservation) {
-		ReservationService.PickUpReservation (reservation);
+	public void pickUpReservation (Reservation reservation) {
+		ReservationService.pickUpReservation (reservation);
 	}
 	
-	public void CancelReservation (Reservation reservation) {
-		ReservationService.CancelReservation (repository, reservation);
+	public void cancelReservation (Reservation reservation) {
+		ReservationService.cancelReservation (repository, reservation);
 	}
 	
 	public List<Reservation> getReservationsForOwnerAndBorrower (String owner, String borrower) {

@@ -20,8 +20,7 @@ public class ReservationService {
 	
 	public static Reservation scheduleReservation (ReservationRepository repository, User owner, User borrower, Lendable lendable, LocalDate startDate, int days) {
 		throwIfNegative ("days", days);
-		LocalDate endDate = startDate.plusDays (days);
-		Reservation reservation = new Reservation (owner, borrower, lendable, startDate, endDate);
+		Reservation reservation = new Reservation (owner, borrower, lendable, startDate, days);
 		if (repository.getAll ().contains (reservation))
 			throw new IllegalStateException ("Reservation already exists.");
 		if (!repository.areAllToolsAreFree (reservation))
@@ -30,11 +29,11 @@ public class ReservationService {
 		return reservation;
 	}
 	
-	public static void PickUpReservation (Reservation reservation) {
+	public static void pickUpReservation (Reservation reservation) {
 		reservation.pickUpTools ();
 	}
 	
-	public static void CancelReservation (ReservationRepository repository, Reservation reservation) {
+	public static void cancelReservation (ReservationRepository repository, Reservation reservation) {
 		if (LocalDate.now ().plusWeeks (1).isAfter (reservation.getPickUpDate ())) {
 			// Reservation got cancelled less than one week from pickup
 			double severancePayAmount = reservation.getLendable ().getPrice () * 0.1;
