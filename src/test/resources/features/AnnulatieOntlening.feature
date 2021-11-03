@@ -17,7 +17,7 @@ Feature: ontlening met annulatie door uitlener
       | Evelien  | 1000 |
       | Diederik | 1000 |
 
-    Given Reservation
+    Given Reservations
       | name  | owner    | borrower | lendable     | begindate  | dayduration |
       | Res10 | Diederik | Evelien  | PA Seismic   | 30-12-2012 | 2           |
       | Res1  | Evelien  | Diederik | Kettingzaag  | 15-12-2021 | 3           |
