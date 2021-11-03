@@ -15,7 +15,10 @@ import model.users.User;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Maxim Derboven
@@ -27,6 +30,7 @@ public class AfTeHalenGereedschapTonen {
     Map<String, User> userMap = new HashMap<> ();
     Map<String, Reservation> reservationMap = new HashMap<> ();
     ReservationController reservationController;
+    List<Reservation> reservations;
     
     LocalDate today;
     
@@ -35,22 +39,22 @@ public class AfTeHalenGereedschapTonen {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern ("dd/MM/yyyy");
         today = LocalDate.parse (waarde, formatter);
     }
-
-    @When("{string} aangeeft dat {string} zijn reservaties wil ophalen")
-    public void aangeeftDatZijnReservatiesWilOphalen(String huurder, String verhuurder) {
-        reservationController.getReservationsForOwnerAndBorrower(verhuurder, huurder);
+    
+    @When ("{string} aangeeft dat {string} zijn reservaties wil ophalen")
+    public void aangeeftDatZijnReservatiesWilOphalen (String huurder, String verhuurder) {
+        reservations = reservationController.getReservationsForOwnerAndBorrower (verhuurder, huurder);
     }
     
     @Then ("wordt een lijst met {int} reservaties getoond")
     public void wordtEenLijstMetReservatiesGetoond (int arg0) {
-        reservationController.getReservationsForOwnerAndBorrower().size();
+        assertTrue (reservations.size () == arg0);
     }
     
     @And ("bevat de lijst {string}")
     public void bevatDeLijst (String arg0) {
-        //assert(verhuurder.getReservaties().stream().anyMatch(item -> "foo".equals(item.getName()));
+        assertTrue (reservations.contains (reservationMap.get (arg0)));
     }
-
+    
     @Given ("Tools")
     public void tools (DataTable table) {
         for (Map<String, String> m : table.asMaps ()) {
@@ -82,13 +86,11 @@ public class AfTeHalenGereedschapTonen {
         }
     }
     
-    @Given ("Reservation")
-    public void reservation (DataTable table) {
+    @Given ("Reservations")
+    public void reservations (DataTable table) {
         for (Map<String, String> m : table.asMaps ()) {
             String name = m.get ("name");
             Reservation r = new Reservation (userMap.get (m.get ("owner")), userMap.get (m.get ("borrower")), lendableMap.get ("lendable"), LocalDate.parse (m.get ("begindate")), Integer.parseInt (m.get ("dayduration")));
-            
-            
         }
     }
     
