@@ -26,31 +26,6 @@ public class AfTeHalenGereedschapTonen {
     Map<String, Lendable> lendableMap = new HashMap<> ();
     Map<String, User> userMap = new HashMap<> ();
     Map<String, Reservation> reservationMap = new HashMap<> ();
-    ReservationController reservationController;
-    
-    LocalDate today;
-    
-    @Given ("today is {string}")
-    public void todayIs (String waarde) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern ("dd/MM/yyyy");
-        today = LocalDate.parse (waarde, formatter);
-        
-    }
-
-    @When("{string} aangeeft dat {string} zijn reservaties wil ophalen")
-    public void aangeeftDatZijnReservatiesWilOphalen(String huurder, String verhuurder) {
-        reservationController.getReservationsForOwnerAndBorrower(verhuurder, huurder);
-    }
-    
-    @Then ("wordt een lijst met {int} reservaties getoond")
-    public void wordtEenLijstMetReservatiesGetoond (int arg0) {
-        reservationController.getReservationsForOwnerAndBorrower().size();
-    }
-    
-    @And ("bevat de lijst {string}")
-    public void bevatDeLijst (String arg0) {
-        //assert(verhuurder.getReservaties().stream().anyMatch(item -> "foo".equals(item.getName()));
-    }
 
     @Given ("Tools")
     public void tools (DataTable table) {
@@ -88,10 +63,10 @@ public class AfTeHalenGereedschapTonen {
         for (Map<String, String> m : table.asMaps ()) {
             String name = m.get ("name");
             Reservation r = new Reservation (userMap.get (m.get ("owner")), userMap.get (m.get ("borrower")), lendableMap.get ("lendable"), LocalDate.parse (m.get ("begindate")), Integer.parseInt (m.get ("dayduration")));
-            
-            
         }
     }
+
+
     
     
 }
