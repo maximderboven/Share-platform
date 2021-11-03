@@ -73,4 +73,25 @@ public class AfTeHalenGereedschapTonen {
         }
         throw new IllegalArgumentException ("Couldn't find tooltype.");
     }
+    
+    @Given ("Users")
+    public void users (DataTable table) {
+        for (Map<String, String> m : table.asMaps ()) {
+            User user = new User (m.get ("name"), "", "");
+            user.addSharepoints (Double.parseDouble (m.get ("sp")));
+            userMap.put (m.get ("name"), user);
+        }
+    }
+    
+    @Given ("Reservation")
+    public void reservation (DataTable table) {
+        for (Map<String, String> m : table.asMaps ()) {
+            String name = m.get ("name");
+            Reservation r = new Reservation (userMap.get (m.get ("owner")), userMap.get (m.get ("borrower")), lendableMap.get ("lendable"), LocalDate.parse (m.get ("begindate")), Integer.parseInt (m.get ("dayduration")));
+            
+            
+        }
+    }
+    
+    
 }
