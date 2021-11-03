@@ -11,11 +11,12 @@ import model.tools.Lendable;
 import model.tools.Tool;
 import model.tools.ToolType;
 import model.users.User;
-import org.junit.Assert;
 
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Maxim Derboven
@@ -60,7 +61,7 @@ public class OntleningAnnuleren {
 
     @And("heeft {string} {int} SP")
     public void heeftSP(String naam, int aantal) {
-        Assert(userMap.get(naam).getSharepoints(),aantal);
+        assertEquals (userMap.get (naam).getSharepoints (), aantal);
     }
 
 
