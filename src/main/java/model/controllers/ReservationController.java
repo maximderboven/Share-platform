@@ -39,7 +39,5 @@ public class ReservationController {
 	public List<Reservation> getReservationsForOwnerAndBorrower (String owner, String borrower) {
 		return ReservationService.getReservationsForOwnerAndBorrower (repository, owner, borrower);
 	}
-
-	public int 
 	
 }
