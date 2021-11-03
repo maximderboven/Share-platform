@@ -87,6 +87,8 @@ public class AfTeHalenGereedschapTonen {
         for (Map<String, String> m : table.asMaps ()) {
             String name = m.get ("name");
             Reservation r = new Reservation (userMap.get (m.get ("owner")), userMap.get (m.get ("borrower")), lendableMap.get ("lendable"), LocalDate.parse (m.get ("begindate")), Integer.parseInt (m.get ("dayduration")));
+            
+            
         }
     }
     
