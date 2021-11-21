@@ -8,10 +8,12 @@ public class ReservatieTransactieLijn extends TransactieLijn {
 	
 	private ReservatieStatusType statusType;
 	private ReservatieTransactieType reservatieTransactieType;
+	private Reservatie reservatie;
 
-	public ReservatieTransactieLijn(ReservatieStatusType statusType) {
+	public ReservatieTransactieLijn(ReservatieStatusType statusType, ReservatieTransactieType reservatieTransactieType, Reservatie reservatie) {
 		setStatusType(statusType);
 		setReservatieTransactieType(reservatieTransactieType);
+		setReservatie(reservatie);
 	}
 
 	public void setStatusType(ReservatieStatusType statusType) {
@@ -26,5 +28,12 @@ public class ReservatieTransactieLijn extends TransactieLijn {
 			throw new IllegalArgumentException("reservatieTransactieType kan niet null zijn");
 		}
 		this.reservatieTransactieType = reservatieTransactieType;
+	}
+
+	public void setReservatie(Reservatie reservatie) {
+		if(reservatie == null){
+			throw new IllegalArgumentException("reservatie kan niet null zijn");
+		}
+		this.reservatie = reservatie;
 	}
 }
