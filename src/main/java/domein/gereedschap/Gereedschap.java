@@ -1,5 +1,7 @@
 package domein.gereedschap;
 
+import domein.gebruiker.Gebruiker;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.Set;
  */
 public class Gereedschap {
     private GereedschapsType gereedschapsType;
-    //    private Gebruiker aanbieder;
+    private Gebruiker aanbieder;
     private long daghuurprijs;
     private String beschrijving;
     private int aankoopprijs;
