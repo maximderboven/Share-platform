@@ -13,8 +13,8 @@ import java.util.List;
 public class Reservatie {
 	
 	private int id;
-	private Gereedschap gereedschap;
-	private List<Gebruiker> ontleners = new ArrayList<> ();
+	private Gebruiker ontlener;
+	private List<Gereedschap> gereedschap = new ArrayList<> ();
 	
 	public Reservatie () {
 	
@@ -24,7 +24,7 @@ public class Reservatie {
 		return id;
 	}
 	
-	public Gereedschap getGereedschap () {
+	public List<Gereedschap> getGereedschap () {
 		return gereedschap;
 	}
 }
