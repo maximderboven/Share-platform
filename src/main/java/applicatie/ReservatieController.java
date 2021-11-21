@@ -1,4 +1,4 @@
-package Applicatie;
+package applicatie;
 
 /**
  * Anouar Bannamar
