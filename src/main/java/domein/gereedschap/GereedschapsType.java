@@ -5,20 +5,20 @@ package domein.gereedschap;
  * 21/11/2021
  */
 public enum GereedschapsType {
-    ELEKTRISCH("Elektrisch gereedschap", 40L),
-    KEUKEN("Keuken", 60L),
-    GELUIDSINSTALLATIE("Geluidsinstallatie", 400L),
-    LICHTINSTALLATIE("Lichtinstallatie", 150L);
-
+    ELEKTRISCH ("Elektrisch gereedschap", 40),
+    KEUKEN ("Keuken", 60),
+    GELUIDSINSTALLATIE ("Geluidsinstallatie", 400),
+    LICHTINSTALLATIE ("Lichtinstallatie", 150);
+    
     private String naam;
     private long waarborg;
-
-    GereedschapsType (String naam, long waarborg){
+    
+    GereedschapsType (String naam, long waarborg) {
         this.naam = naam;
         this.waarborg = waarborg;
     }
-
-    public String getNaam() {
+    
+    public String getNaam () {
         return naam;
     }
 
