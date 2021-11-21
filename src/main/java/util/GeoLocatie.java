@@ -5,15 +5,15 @@ package util;
  * @version 1.0 21/11/2021 15:33
  */
 public class GeoLocatie {
-    double longitude;
-    double lattitude;
-
-    public GeoLocatie(double longitude, double lattitude) {
-        setLongitude(longitude);
-        setLattitude(lattitude);
+    private double longitude;
+    private double lattitude;
+    
+    public GeoLocatie (double longitude, double lattitude) {
+        setLongitude (longitude);
+        setLattitude (lattitude);
     }
-
-    public double getLongitude() {
+    
+    public double getLongitude () {
         return longitude;
     }
 

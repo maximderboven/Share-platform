@@ -7,15 +7,15 @@ import java.time.LocalDate;
  * @version 1.0 21/11/2021 15:32
  */
 public class Periode {
-    LocalDate van;
-    LocalDate tot;
-
-    public Periode(LocalDate van, LocalDate tot) {
-        setVan(van);
-        setTot(tot);
+    private LocalDate van;
+    private LocalDate tot;
+    
+    public Periode (LocalDate van, LocalDate tot) {
+        setVan (van);
+        setTot (tot);
     }
-
-    public LocalDate getVan() {
+    
+    public LocalDate getVan () {
         return van;
     }
 
