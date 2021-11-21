@@ -5,6 +5,5 @@ package domein.transactie;
  * 21/11/2021
  */
 public class HandelTransactieLijn extends TransactieLijn {
-
-
+	private float bedrag;
 }
