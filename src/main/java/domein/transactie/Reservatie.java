@@ -14,11 +14,11 @@ import java.util.List;
 public class Reservatie {
 	
 	private int id;
-	private Gereedschap gereedschap;
-	private List<Gebruiker> ontleners = new ArrayList<> ();
+	private Gebruiker ontlener;
+	private List<Gereedschap> gereedschap = new ArrayList<> ();
 	private Periode periode;
 	private List<ReservatieTransactieLijn> reservatieTransactieLijnen;
-	
+
 	public Reservatie () {
 	
 	}
@@ -26,8 +26,8 @@ public class Reservatie {
 	public int getId () {
 		return id;
 	}
-	
-	public Gereedschap getGereedschap () {
+
+	public List<Gereedschap> getGereedschap () {
 		return gereedschap;
 	}
 
@@ -46,6 +46,4 @@ public class Reservatie {
 	public boolean removeReservatieTransactieLijn(ReservatieTransactieLijn reservatieTransactieLijn){
 		return reservatieTransactieLijnen.remove(reservatieTransactieLijn);
 	}
-
-
 }
