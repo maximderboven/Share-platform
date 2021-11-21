@@ -25,7 +25,7 @@ public class Gebruiker {
 
     public void setLogin(String login) {
         if(login == null){
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("Login kan niet leeg zijn");
         }
         this.login = login;
     }
