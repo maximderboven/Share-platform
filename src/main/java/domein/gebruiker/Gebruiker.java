@@ -1,8 +1,7 @@
 package domein.gebruiker;
 
-import java.io.LineNumberInputStream;
-import java.util.ArrayList;
-import java.util.List;
+import util.GeoLocatie;
+
 
 /**
  * Anouar Bannamar
@@ -13,6 +12,45 @@ public class Gebruiker {
     private GeoLocatie locatie;
     private long sharepoints;
 
-    private Reservatie ontlener;
+    private List<Reservatie> reservaties;
 
+    public Gebruiker(String login, GeoLocatie locatie, long sharepoints) {
+        setLogin(login);
+        setLocatie(locatie);
+        setSharepoints(sharepoints);
+    }
+
+    public void setLogin(String login) {
+        if(login == null){
+            throw new IllegalArgumentException("");
+        }
+        this.login = login;
+    }
+
+    public void setLocatie(GeoLocatie locatie) {
+        if (locatie == null) {
+            throw new IllegalArgumentException("Locatie kan niet leeg zijn.");
+        }
+        this.locatie = locatie;
+    }
+
+    public void setSharepoints(long sharepoints) {
+        this.sharepoints = sharepoints;
+    }
+
+    public void setReservaties(List<Reservatie> reservaties) {
+        this.reservaties = reservaties;
+    }
+
+    public List<Reservatie> getReservaties() {
+        return reservaties;
+    }
+
+    public boolean add(Reservatie reservatie){
+        return reservaties.add(reservatie);
+    }
+
+    public boolean remove(Reservatie reservatie){
+        return reservaties.remove(reservatie);
+    }
 }
