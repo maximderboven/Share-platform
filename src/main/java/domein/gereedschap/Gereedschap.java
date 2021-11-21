@@ -19,8 +19,8 @@ public class Gereedschap {
     private int aankoopprijs;
     private int waarde;
     private final Set<Gereedschap> gereedschapSet;
-
-    public Gereedschap(long daghuurprijs, String beschrijving, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
+    
+    public Gereedschap (long daghuurprijs, String beschrijving, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
         this.daghuurprijs = daghuurprijs;
         this.beschrijving = beschrijving;
         this.aankoopprijs = aankoopprijs;
@@ -28,16 +28,20 @@ public class Gereedschap {
         this.gereedschapsType = gereedschapsType;
         gereedschapSet = new HashSet<> ();
     }
-
-    public void setGereedschapsType(GereedschapsType gereedschapsType) {
+    
+    public Gebruiker getAanbieder () {
+        return aanbieder;
+    }
+    
+    public void setGereedschapsType (GereedschapsType gereedschapsType) {
         this.gereedschapsType = gereedschapsType;
     }
-
-    public void setDaghuurprijs(long daghuurprijs) {
+    
+    public void setDaghuurprijs (long daghuurprijs) {
         this.daghuurprijs = daghuurprijs;
     }
-
-    public void setBeschrijving(String beschrijving) {
+    
+    public void setBeschrijving (String beschrijving) {
         this.beschrijving = beschrijving;
     }
     

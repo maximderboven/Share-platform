@@ -24,14 +24,18 @@ public class Periode {
             throw new IllegalArgumentException ("Startdate can not be in the past");
         this.van = van;
     }
-
-    public LocalDate getTot() {
+    
+    public LocalDate getTot () {
         return tot;
     }
-
-    public void setTot(LocalDate tot) {
-        if (tot == null || tot.isBefore(LocalDate.now()))
+    
+    public void setTot (LocalDate tot) {
+        if (tot == null || tot.isBefore (LocalDate.now ()))
             throw new IllegalArgumentException ("Enddate can not be in the past");
         this.tot = tot;
+    }
+    
+    public boolean isIn (LocalDate datum) {
+        return !datum.isBefore (van) && !datum.isAfter (tot);
     }
 }

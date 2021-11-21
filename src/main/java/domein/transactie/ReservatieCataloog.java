@@ -1,5 +1,6 @@
 package domein.transactie;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,6 +32,14 @@ public class ReservatieCataloog {
 	
 	public List<Reservatie> getAll () {
 		return new ArrayList<> (reservaties);
+	}
+	
+	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
+		return reservaties.stream ().filter (
+						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
+								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
+								&& r.isAfhaalbaar ())
+				.toArray (Reservatie[]::new);
 	}
 	
 }

@@ -19,25 +19,29 @@ public class Gebruiker {
 
     public Gebruiker(String login, GeoLocatie locatie, long sharepoints) {
         setLogin(login);
-        setLocatie(locatie);
-        setSharepoints(sharepoints);
+        setLocatie (locatie);
+        setSharepoints (sharepoints);
     }
-
-    public void setLogin(String login) {
-        if(login == null){
-            throw new IllegalArgumentException("Login kan niet leeg zijn");
+    
+    public void setLogin (String login) {
+        if (login == null) {
+            throw new IllegalArgumentException ("Login kan niet leeg zijn");
         }
         this.login = login;
     }
-
-    public void setLocatie(GeoLocatie locatie) {
+    
+    public String getLogin () {
+        return login;
+    }
+    
+    public void setLocatie (GeoLocatie locatie) {
         if (locatie == null) {
-            throw new IllegalArgumentException("Locatie kan niet leeg zijn.");
+            throw new IllegalArgumentException ("Locatie kan niet leeg zijn.");
         }
         this.locatie = locatie;
     }
-
-    public void setSharepoints(long sharepoints) {
+    
+    public void setSharepoints (long sharepoints) {
         this.sharepoints = sharepoints;
     }
 
