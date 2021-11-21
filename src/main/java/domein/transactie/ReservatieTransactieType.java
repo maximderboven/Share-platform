@@ -6,6 +6,6 @@ package domein.transactie;
  */
 public enum ReservatieTransactieType {
 	
-	HUUR, WAARBORG
+	HUUR, WAARBORG, ANNULATIE
 	
 }
