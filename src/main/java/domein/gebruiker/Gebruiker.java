@@ -1,6 +1,9 @@
 package domein.gebruiker;
 
+import domein.transactie.Reservatie;
 import util.GeoLocatie;
+
+import java.util.List;
 
 
 /**
