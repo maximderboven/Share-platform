@@ -27,9 +27,4 @@ public class ReservatieTransactieLijn implements TransactieLijn {
 		}
 		this.reservatieTransactieType = reservatieTransactieType;
 	}
-
-	@Override
-	public long sharepoints () {
-		return 0;
-	}
 }

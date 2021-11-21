@@ -1,6 +1,10 @@
 package domein.transactie;
 
+import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Jonas Leijzen
@@ -10,7 +14,7 @@ public class Reservatie {
 	
 	private int id;
 	private Gereedschap gereedschap;
-	
+	private List<Gebruiker> ontleners = new ArrayList<> ();
 	
 	public Reservatie () {
 	
@@ -18,5 +22,9 @@ public class Reservatie {
 	
 	public int getId () {
 		return id;
+	}
+	
+	public Gereedschap getGereedschap () {
+		return gereedschap;
 	}
 }

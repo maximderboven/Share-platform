@@ -1,7 +1,5 @@
 package domein.transactie;
 
-import com.sun.jdi.InvalidLineNumberException;
-
 /**
  * Jonas Leijzen
  * 21/11/2021
@@ -27,11 +25,6 @@ public class HandelTransactieLijn implements TransactieLijn {
             throw new IllegalArgumentException("HandelsTypeLijn kan niet null zijn");
         }
         this.handelsTypeLijn = handelsTypeLijn;
-    }
-
-    @Override
-    public long sharepoints() {
-        return 0;
     }
 
 
