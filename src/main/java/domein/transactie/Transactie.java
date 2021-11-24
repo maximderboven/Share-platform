@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class Transactie {
 	
-	private int id;
+	private final int id;
 	private Gebruiker ontvanger;
 	private Gebruiker betaler;
 	private Reservatie reservatie;

@@ -1,12 +1,12 @@
 package domein.transactie;
 
+import applicatie.TransactieService;
 import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
 import util.Periode;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -17,18 +17,24 @@ import java.util.Queue;
  */
 public class Reservatie {
 	
-	private int id;
-	private Gebruiker aanbieder;
-	private Gebruiker ontlener;
-	private List<Gereedschap> gereedschap = new ArrayList<> ();
-	private Periode periode;
-	private List<ReservatieTransactieLijn> reservatieTransactieLijnen;
-	private Queue<ReservatieStatus> reservatieStatusQueue;
+	private static int idCounter;
+	private final int id;
+	private final Gebruiker aanbieder;
+	private final Gebruiker ontlener;
+	private final Gereedschap gereedschap;
+	private final Periode periode;
+	private final List<ReservatieTransactieLijn> reservatieTransactieLijnen;
+	private final Queue<ReservatieStatus> reservatieStatusQueue;
 	private final Transactie transactie;
 	
-	public Reservatie () {
-		transactie =
-				TransactieCataloog.add (transactie);
+	public Reservatie (Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
+		id = ++idCounter;
+		this.aanbieder = aanbieder;
+		this.ontlener = ontlener;
+		this.gereedschap = gereedschap;
+		this.periode = periode;
+		reservatieTransactieLijnen = new LinkedList<> ();
+		transactie = TransactieService.createTransactie (aanbieder, ontlener, this);
 		reservatieStatusQueue = new LinkedList<> ();
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, LocalDateTime.now ()));
 	}
@@ -45,12 +51,8 @@ public class Reservatie {
 		return id;
 	}
 	
-	public List<Gereedschap> getGereedschap () {
+	public Gereedschap getGereedschap () {
 		return gereedschap;
-	}
-	
-	public void setReservatieTransactieLijnen (List<ReservatieTransactieLijn> reservatieTransactieLijnen) {
-		this.reservatieTransactieLijnen = reservatieTransactieLijnen;
 	}
 	
 	public List<ReservatieTransactieLijn> getReservatieTransactieLijnen() {
@@ -63,6 +65,10 @@ public class Reservatie {
 	
 	public boolean removeReservatieTransactieLijn (ReservatieTransactieLijn reservatieTransactieLijn) {
 		return reservatieTransactieLijnen.remove (reservatieTransactieLijn);
+	}
+	
+	public Transactie getTransactie () {
+		return transactie;
 	}
 	
 	public boolean isAfhaalbaar () {
