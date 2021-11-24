@@ -24,6 +24,14 @@ public class Reservatie {
 	
 	}
 	
+	public Gebruiker getAanbieder () {
+		return aanbieder;
+	}
+	
+	public Gebruiker getOntlener () {
+		return ontlener;
+	}
+	
 	public int getId () {
 		return id;
 	}
@@ -32,7 +40,7 @@ public class Reservatie {
 		return gereedschap;
 	}
 	
-	public void setReservatieTransactieLijnen(List<ReservatieTransactieLijn> reservatieTransactieLijnen) {
+	public void setReservatieTransactieLijnen (List<ReservatieTransactieLijn> reservatieTransactieLijnen) {
 		this.reservatieTransactieLijnen = reservatieTransactieLijnen;
 	}
 	
@@ -40,11 +48,15 @@ public class Reservatie {
 		return reservatieTransactieLijnen;
 	}
 	
-	public boolean addReservatieTransactieLijn(ReservatieTransactieLijn reservatieTransactieLijn){
-		return reservatieTransactieLijnen.add(reservatieTransactieLijn);
+	public boolean addReservatieTransactieLijn (ReservatieTransactieLijn reservatieTransactieLijn) {
+		return reservatieTransactieLijnen.add (reservatieTransactieLijn);
 	}
 	
-	public boolean removeReservatieTransactieLijn(ReservatieTransactieLijn reservatieTransactieLijn){
-		return reservatieTransactieLijnen.remove(reservatieTransactieLijn);
+	public boolean removeReservatieTransactieLijn (ReservatieTransactieLijn reservatieTransactieLijn) {
+		return reservatieTransactieLijnen.remove (reservatieTransactieLijn);
+	}
+	
+	public boolean isAfhaalbaar () {
+		// if ()
 	}
 }
