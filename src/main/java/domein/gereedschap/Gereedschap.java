@@ -21,11 +21,11 @@ public class Gereedschap {
     private final Set<Gereedschap> gereedschapSet;
     
     public Gereedschap (long daghuurprijs, String beschrijving, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
-        this.daghuurprijs = daghuurprijs;
-        this.beschrijving = beschrijving;
-        this.aankoopprijs = aankoopprijs;
-        this.waarde = waarde;
-        this.gereedschapsType = gereedschapsType;
+        setDaghuurprijs (daghuurprijs);
+        setBeschrijving (beschrijving);
+        setAankoopprijs (aankoopprijs);
+        setWaarde (waarde);
+        setGereedschapsType (gereedschapsType);
         gereedschapSet = new HashSet<> ();
     }
     
