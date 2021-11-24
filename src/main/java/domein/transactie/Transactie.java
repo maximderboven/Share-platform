@@ -17,8 +17,13 @@ public class Transactie {
 	private LocalDateTime tijdstip;
 	private TransactieLijn lijnen;
 	
-	public Transactie () {
-	
+	public Transactie (int id, Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip, TransactieLijn lijnen) {
+		this.id = id;
+		this.ontvanger = ontvanger;
+		this.betaler = betaler;
+		this.reservatie = reservatie;
+		this.tijdstip = tijdstip;
+		this.lijnen = lijnen;
 	}
 	
 	public int getId () {
