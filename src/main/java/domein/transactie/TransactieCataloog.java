@@ -1,36 +1,35 @@
 package domein.transactie;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Random;
 
 /**
  * Jonas Leijzen
  * 21/11/2021
  */
-public class TransactieCataloog {
+public class TransactieCataloog extends Cataloog<Transactie> {
 	
-	private Set<Transactie> transacties = new HashSet<> ();
+	private Random randomIDs = new Random ();
 	
 	public Transactie get (int id) {
-		for (Transactie t : transacties) {
+		for (Transactie t : getAll ()) {
 			if (t.getId () == id)
 				return t;
 		}
 		return null;
 	}
 	
-	public boolean add (Transactie transactie) {
-		return transacties.add (transactie);
+	public int getNewId () {
+		int id;
+		do {
+			id = randomIDs.nextInt ();
+			if (get (id) != null)
+				id = -1;
+		} while (id != -1);
+		return id;
 	}
 	
-	public boolean remove (Transactie transactie) {
-		return transacties.remove (transactie);
-	}
+	@Override
+	public void Seed () {
 	
-	public List<Transactie> getAll () {
-		return new ArrayList<> (transacties);
 	}
-	
 }
