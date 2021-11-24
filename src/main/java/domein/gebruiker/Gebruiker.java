@@ -44,20 +44,28 @@ public class Gebruiker {
     public void setSharepoints (long sharepoints) {
         this.sharepoints = sharepoints;
     }
-
-    public void setReservaties(List<Reservatie> reservaties) {
+    
+    public void setReservaties (List<Reservatie> reservaties) {
         this.reservaties = reservaties;
     }
-
-    public List<Reservatie> getReservaties() {
+    
+    public GeoLocatie getLocatie () {
+        return locatie;
+    }
+    
+    public long getSharepoints () {
+        return sharepoints;
+    }
+    
+    public List<Reservatie> getReservaties () {
         return reservaties;
     }
-
-    public boolean add(Reservatie reservatie){
-        return reservaties.add(reservatie);
+    
+    public boolean addReservatie (Reservatie reservatie) {
+        return reservaties.add (reservatie);
     }
-
-    public boolean remove(Reservatie reservatie){
-        return reservaties.remove(reservatie);
+    
+    public boolean removeReservatie (Reservatie reservatie) {
+        return reservaties.remove (reservatie);
     }
 }
