@@ -3,6 +3,8 @@ package domein.transactie;
 import domein.gebruiker.Gebruiker;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Jonas Leijzen
@@ -15,15 +17,15 @@ public class Transactie {
 	private Gebruiker betaler;
 	private Reservatie reservatie;
 	private LocalDateTime tijdstip;
-	private TransactieLijn lijnen;
+	private final Set<TransactieLijn> lijnen;
 	
-	public Transactie (int id, Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip, TransactieLijn lijnen) {
+	public Transactie (int id, Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip) {
 		this.id = id;
 		this.ontvanger = ontvanger;
 		this.betaler = betaler;
 		this.reservatie = reservatie;
 		this.tijdstip = tijdstip;
-		this.lijnen = lijnen;
+		lijnen = new HashSet<> ();
 	}
 	
 	public int getId () {
@@ -34,7 +36,7 @@ public class Transactie {
 		return tijdstip;
 	}
 	
-	public TransactieLijn getLijnen () {
+	public Set<TransactieLijn> getLijnen () {
 		return lijnen;
 	}
 }

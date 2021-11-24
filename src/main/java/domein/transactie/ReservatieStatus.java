@@ -11,15 +11,11 @@ public class ReservatieStatus {
 	private Transactie transactie;
 	private ReservatieStatusType type;
 	private LocalDateTime tijdstip;
-	private byte[] bevestigingsCode;
-	private boolean isBevestigd;
 	
-	public ReservatieStatus (Transactie transactie, ReservatieStatusType type, LocalDateTime tijdstip, byte[] bevestigingsCode) {
+	public ReservatieStatus (Transactie transactie, ReservatieStatusType type, LocalDateTime tijdstip) {
 		this.transactie = transactie;
 		this.type = type;
 		this.tijdstip = tijdstip;
-		this.bevestigingsCode = bevestigingsCode;
-		this.isBevestigd = false;
 	}
 	
 	public Transactie getTransactie () {
@@ -32,13 +28,5 @@ public class ReservatieStatus {
 	
 	public LocalDateTime getTijdstip () {
 		return tijdstip;
-	}
-	
-	public byte[] getBevestigingsCode () {
-		return bevestigingsCode;
-	}
-	
-	public boolean isBevestigd () {
-		return isBevestigd;
 	}
 }

@@ -4,8 +4,12 @@ import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
 import util.Periode;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Jonas Leijzen
@@ -19,9 +23,14 @@ public class Reservatie {
 	private List<Gereedschap> gereedschap = new ArrayList<> ();
 	private Periode periode;
 	private List<ReservatieTransactieLijn> reservatieTransactieLijnen;
+	private Queue<ReservatieStatus> reservatieStatusQueue;
+	private final Transactie transactie;
 	
 	public Reservatie () {
-	
+		transactie =
+				TransactieCataloog.add (transactie);
+		reservatieStatusQueue = new LinkedList<> ();
+		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, LocalDateTime.now ()));
 	}
 	
 	public Gebruiker getAanbieder () {
@@ -57,6 +66,8 @@ public class Reservatie {
 	}
 	
 	public boolean isAfhaalbaar () {
-		// if ()
+		if (!periode.isIn (LocalDate.now ()))
+			return false;
+		return reservatieStatusQueue.peek ().getType () == ReservatieStatusType.GERESERVEERD;
 	}
 }
