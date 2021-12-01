@@ -53,6 +53,10 @@ public class Gereedschap {
         this.waarde = waarde;
     }
     
+    public long getDaghuurprijs () {
+        return daghuurprijs;
+    }
+    
     public boolean addGereedschap (Gereedschap gereedschap) {
         return gereedschapSet.add (gereedschap);
     }
