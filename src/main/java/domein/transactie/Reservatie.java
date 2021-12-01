@@ -81,10 +81,10 @@ public class Reservatie {
 	public void annuleer (ReservatieAnnuleerder reservatieAnnuleerder) {
 		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
-		transactie.getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.ANNULATIE, this));
+		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.ANNULATIE, this));
 		// TODO eventuele weergave van sharepoints bij minder dan een week
 		if (periode.getVan ().minusDays (7).isBefore (LocalDate.now ())) {
-			transactie.getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.WAARBORG, this));
+			getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.WAARBORG, this));
 			GebruikerService.schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs ());
 		}
 	}
