@@ -42,6 +42,7 @@ public class Transactie {
 	
 	public long sharepoints () {
 		// TODO
+		return 0;
 	}
 	
 	
