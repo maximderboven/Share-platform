@@ -1,6 +1,7 @@
 package applicatie;
 
 import domein.transactie.Reservatie;
+import domein.transactie.ReservatieAnnuleerder;
 import domein.transactie.ReservatieCataloog;
 
 import java.time.LocalDate;
@@ -15,5 +16,9 @@ public class ReservatieService {
 	
 	public static Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return cataloog.geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, datum);
+	}
+	
+	public static boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder) {
+		return cataloog.geefAnnuleerbareReservatie (aanbiederLogin, ontlenerLogin).annuleer (annuleerder);
 	}
 }

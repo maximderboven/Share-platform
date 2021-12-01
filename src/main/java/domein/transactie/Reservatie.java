@@ -76,4 +76,14 @@ public class Reservatie {
 			return false;
 		return reservatieStatusQueue.peek ().getType () == ReservatieStatusType.GERESERVEERD;
 	}
+	
+	public boolean annuleer (ReservatieAnnuleerder reservatieAnnuleerder) {
+		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
+		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
+		return true; // TODO
+	}
+	
+	public boolean isAnnuleerbaar () {
+		return false; // TODO
+	}
 }

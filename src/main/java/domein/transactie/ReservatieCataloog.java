@@ -1,6 +1,7 @@
 package domein.transactie;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 /**
  * Jonas Leijzen
@@ -18,6 +19,7 @@ public class ReservatieCataloog extends Cataloog<Reservatie> {
 	
 	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return getAll ().stream ().filter (
+						//r -> aanbiederLogin.equals (r.getGereedschap ().getAanbieder ().getLogin ())
 						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
 								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
 								&& r.isAfhaalbaar ())
@@ -27,5 +29,15 @@ public class ReservatieCataloog extends Cataloog<Reservatie> {
 	@Override
 	public void Seed () {
 	
+	}
+	
+	public Reservatie geefAnnuleerbareReservatie (String aanbiederLogin, String ontlenerLogin) {
+		Optional<Reservatie> optional = getAll ().stream ().filter (
+						//r -> aanbiederLogin.equals (r.getGereedschap ().getAanbieder ().getLogin ())
+						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
+								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
+								&& r.isAnnuleerbaar ())
+				.findFirst ();
+		return optional.orElse (null);
 	}
 }
