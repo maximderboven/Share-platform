@@ -85,7 +85,7 @@ public class Reservatie {
 		// TODO eventuele weergave van sharepoints bij minder dan een week
 		if (periode.getVan ().minusDays (7).isBefore (LocalDate.now ())) {
 			getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.WAARBORG, this));
-			GebruikerService.schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs ());
+			GebruikerService.schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs () * periode.getDays ());
 		}
 	}
 	
