@@ -35,7 +35,6 @@ public class ReservatieCataloog extends Cataloog<Reservatie> {
 	
 	public Reservatie geefAnnuleerbareReservatie (String aanbiederLogin, String ontlenerLogin) {
 		Optional<Reservatie> optional = getAll ().stream ().filter (
-						//r -> aanbiederLogin.equals (r.getGereedschap ().getAanbieder ().getLogin ())
 						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
 								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
 								&& r.isAnnuleerbaar ())
