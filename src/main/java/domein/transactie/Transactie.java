@@ -31,14 +31,18 @@ public class Transactie {
 	public LocalDateTime getTijdstip() {
 		return tijdstip;
 	}
-
-	public Set<TransactieLijn> getLijnen() {
+	
+	public Set<TransactieLijn> getLijnen () {
 		return lijnen;
 	}
-
-	private void AddTransactionLines(float bedrag, HandelsTypeLijn handelsTypeLijn) {
-		lijnen.add(new HandelTransactieLijn(bedrag, handelsTypeLijn));
+	
+	private void AddTransactionLines (float bedrag, HandelsTypeLijn handelsTypeLijn) {
+		lijnen.add (new HandelTransactieLijn (bedrag, handelsTypeLijn));
 	}
-
-
+	
+	public long sharepoints () {
+		// TODO
+	}
+	
+	
 }
