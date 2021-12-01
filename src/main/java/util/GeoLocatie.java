@@ -18,8 +18,8 @@ public class GeoLocatie {
     }
 
     public void setLongitude(double longitude) {
-        if (longitude < 0)
-            throw new IllegalArgumentException ("longitude cannot be negative.");
+        if (longitude < -180 || longitude > 180)
+            throw new IllegalArgumentException ("longitude cannot go beyond (-180, 180).");
         this.longitude = longitude;
     }
 
@@ -28,8 +28,8 @@ public class GeoLocatie {
     }
 
     public void setLattitude(double lattitude) {
-        if (lattitude < 0)
-            throw new IllegalArgumentException ("lattitude cannot be negative.");
+        if (lattitude < -90 || lattitude > 90)
+            throw new IllegalArgumentException ("lattitude cannot go beyond (-90, 90).");
         this.lattitude = lattitude;
     }
 }
