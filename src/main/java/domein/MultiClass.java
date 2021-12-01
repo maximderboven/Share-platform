@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class MultiClass<T> {
 	
-	private Set<T> tSet = new HashSet<> ();
+	protected final Set<T> tSet = new HashSet<> ();
 	
 	public boolean add (T t) {
 		return tSet.add (t);
