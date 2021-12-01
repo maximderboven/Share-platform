@@ -10,7 +10,7 @@ public class HandelTransactieLijn extends TransactieLijn {
     
     public HandelTransactieLijn (float bedrag, HandelsLijnType handelsLijnType) {
         setBedrag (bedrag);
-        setHandelsTypeLijn (handelsLijnType);
+        setHandelsLijnType (handelsLijnType);
     }
     
     public void setBedrag (float bedrag) {
@@ -20,7 +20,7 @@ public class HandelTransactieLijn extends TransactieLijn {
         this.bedrag = bedrag;
     }
     
-    public void setHandelsTypeLijn (HandelsLijnType handelsLijnType) {
+    public void setHandelsLijnType (HandelsLijnType handelsLijnType) {
         if (handelsLijnType == null) {
             throw new IllegalArgumentException ("HandelsTypeLijn kan niet null zijn");
         }
