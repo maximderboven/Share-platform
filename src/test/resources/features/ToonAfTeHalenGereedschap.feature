@@ -17,11 +17,11 @@ Feature: Toon af te halen gereedschap
       | Diederik | 1000 |
 
     Given Reservations
-      | name  | aanbieder | ontlener | gereedschap  | van        | dagen |
-      | Res10 | Diederik  | Evelien  | PA Seismic   | 30-12-2012 | 2     |
-      | Res1  | Evelien   | Diederik | Kettingzaag  | 15-12-2021 | 3     |
-      | Res2  | Evelien   | Diederik | Kettingzaag2 | 15-12-2021 | 4     |
-      | Res3  | Evelien   | Diederik | Keukenrobot  | 17-12-2021 | 2     |
+      | naam  | aanbieder | ontlener | gereedschap  | van        | dagen |
+      | Res10 | Diederik  | Evelien  | PA Seismic   | 2021-12-30 | 2     |
+      | Res1  | Evelien   | Diederik | Kettingzaag  | 2021-12-15 | 3     |
+      | Res2  | Evelien   | Diederik | Kettingzaag2 | 2021-12-15 | 4     |
+      | Res3  | Evelien   | Diederik | Keukenrobot  | 2021-12-17 | 2     |
 
 
   Scenario: Toon af te halen gereedschap
