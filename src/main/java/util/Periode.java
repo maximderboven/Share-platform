@@ -1,5 +1,6 @@
 package util;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
 /**
@@ -15,12 +16,16 @@ public class Periode {
         setTot (tot);
     }
     
+    public int getDays () {
+        return (int) (Duration.between (van, tot).getSeconds () / 86400);
+    }
+    
     public LocalDate getVan () {
         return van;
     }
-
-    public void setVan(LocalDate van) {
-        if (van == null || van.isBefore(LocalDate.now()))
+    
+    public void setVan (LocalDate van) {
+        if (van == null || van.isBefore (LocalDate.now ()))
             throw new IllegalArgumentException ("Startdate can not be in the past");
         this.van = van;
     }
