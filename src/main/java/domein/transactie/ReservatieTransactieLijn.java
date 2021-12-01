@@ -6,34 +6,36 @@ package domein.transactie;
  */
 public class ReservatieTransactieLijn extends TransactieLijn {
 	
-	private ReservatieStatusType statusType;
-	private ReservatieTransactieType reservatieTransactieType;
-	private Reservatie reservatie;
-
-	public ReservatieTransactieLijn(ReservatieStatusType statusType, ReservatieTransactieType reservatieTransactieType, Reservatie reservatie) {
-		setStatusType(statusType);
-		setReservatieTransactieType(reservatieTransactieType);
-		setReservatie(reservatie);
-	}
-
-	public void setStatusType(ReservatieStatusType statusType) {
-		if(statusType == null){
-			throw new IllegalArgumentException("statusType kan niet null zijn");
+	public final ReservatieStatusType statusType;
+	public final ReservatieTransactieType reservatieTransactieType;
+	public final Reservatie reservatie;
+	
+	public ReservatieTransactieLijn (ReservatieStatusType statusType, ReservatieTransactieType reservatieTransactieType, Reservatie reservatie) {
+		if (statusType == null) {
+			throw new IllegalArgumentException ("statusType kan niet null zijn");
+		}
+		
+		if (reservatieTransactieType == null) {
+			throw new IllegalArgumentException ("reservatieTransactieType kan niet null zijn");
+		}
+		
+		if (reservatie == null) {
+			throw new IllegalArgumentException ("reservatie kan niet null zijn");
 		}
 		this.statusType = statusType;
-	}
-
-	public void setReservatieTransactieType(ReservatieTransactieType reservatieTransactieType) {
-		if(reservatieTransactieType == null){
-			throw new IllegalArgumentException("reservatieTransactieType kan niet null zijn");
-		}
 		this.reservatieTransactieType = reservatieTransactieType;
-	}
-
-	public void setReservatie(Reservatie reservatie) {
-		if(reservatie == null){
-			throw new IllegalArgumentException("reservatie kan niet null zijn");
-		}
 		this.reservatie = reservatie;
+	}
+	
+	public ReservatieStatusType getStatusType () {
+		return statusType;
+	}
+	
+	public ReservatieTransactieType getReservatieTransactieType () {
+		return reservatieTransactieType;
+	}
+	
+	public Reservatie getReservatie () {
+		return reservatie;
 	}
 }
