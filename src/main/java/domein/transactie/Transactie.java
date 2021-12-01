@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class Transactie {
 
-	private final int id;
+	public final int id;
 	private Gebruiker ontvanger;
 	private Gebruiker betaler;
 	private Reservatie reservatie;
@@ -27,11 +27,7 @@ public class Transactie {
 		this.tijdstip = tijdstip;
 		lijnen = new HashSet<>();
 	}
-
-	public int getId() {
-		return id;
-	}
-
+	
 	public LocalDateTime getTijdstip() {
 		return tijdstip;
 	}

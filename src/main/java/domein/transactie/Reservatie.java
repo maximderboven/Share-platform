@@ -18,7 +18,7 @@ import java.util.Queue;
 public class Reservatie {
 	
 	private static int idCounter;
-	private final int id;
+	public final int id;
 	private final Gebruiker aanbieder;
 	private final Gebruiker ontlener;
 	private final Gereedschap gereedschap;
@@ -77,13 +77,23 @@ public class Reservatie {
 		return reservatieStatusQueue.peek ().getType () == ReservatieStatusType.GERESERVEERD;
 	}
 	
-	public boolean annuleer (ReservatieAnnuleerder reservatieAnnuleerder) {
+	public void annuleer (ReservatieAnnuleerder reservatieAnnuleerder) {
 		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
-		return true; // TODO
+		// TODO eventuele weergave van sharepoints bij minder dan een week
+		if (periode.getVan ().minusDays (7).isBefore (LocalDate.now ())) {
+		
+		}
 	}
 	
 	public boolean isAnnuleerbaar () {
-		return false; // TODO
+		ReservatieStatusType statusType = reservatieStatusQueue.peek ().getType ();
+		switch (statusType) {
+			case NIEUW:
+			case GERESERVEERD:
+				return true;
+			default:
+				return false;
+		}
 	}
 }

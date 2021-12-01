@@ -1,5 +1,7 @@
 package domein.transactie;
 
+import domein.Cataloog;
+
 import java.time.LocalDate;
 import java.util.Optional;
 

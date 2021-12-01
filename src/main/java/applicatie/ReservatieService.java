@@ -19,6 +19,11 @@ public class ReservatieService {
 	}
 	
 	public static boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder) {
-		return cataloog.geefAnnuleerbareReservatie (aanbiederLogin, ontlenerLogin).annuleer (annuleerder);
+		try {
+			cataloog.geefAnnuleerbareReservatie (aanbiederLogin, ontlenerLogin).annuleer (annuleerder);
+			return true;
+		} catch (IllegalStateException e) {
+			return false;
+		}
 	}
 }

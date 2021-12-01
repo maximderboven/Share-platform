@@ -1,4 +1,4 @@
-package domein.transactie;
+package domein;
 
 import java.util.ArrayList;
 import java.util.HashSet;

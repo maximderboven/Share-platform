@@ -1,5 +1,7 @@
 package domein.transactie;
 
+import domein.Cataloog;
+
 import java.util.Random;
 
 /**
@@ -12,7 +14,7 @@ public class TransactieCataloog extends Cataloog<Transactie> {
 	
 	public Transactie get (int id) {
 		for (Transactie t : getAll ()) {
-			if (t.getId () == id)
+			if (t.id == id)
 				return t;
 		}
 		return null;

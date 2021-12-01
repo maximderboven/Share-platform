@@ -1,4 +1,4 @@
-package domein.transactie;
+package domein;
 
 /**
  * Jonas Leijzen
