@@ -35,7 +35,7 @@ public class Reservatie {
 		this.gereedschap = gereedschap;
 		this.periode = periode;
 		reservatieTransactieLijnen = new LinkedList<> ();
-		transactie = TransactieService.createTransactie (aanbieder, ontlener, this);
+		transactie = TransactieService.maakTransactie (aanbieder, ontlener, this);
 		reservatieStatusQueue = new LinkedList<> ();
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, LocalDateTime.now ()));
 	}

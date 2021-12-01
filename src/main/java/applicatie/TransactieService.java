@@ -15,7 +15,7 @@ public class TransactieService {
 	
 	private static TransactieCataloog cataloog = new TransactieCataloog ();
 	
-	public static Transactie createTransactie (Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie) {
+	public static Transactie maakTransactie (Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie) {
 		return new Transactie (cataloog.getNewId (), ontvanger, betaler, reservatie, LocalDateTime.now ());
 	}
 	
