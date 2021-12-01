@@ -12,17 +12,20 @@ import java.util.Set;
  * 21/11/2021
  */
 public class Gereedschap {
-    private GereedschapsType gereedschapsType;
+    private String naam;
+    private String beschrijving;
     private Gebruiker aanbieder;
     private long daghuurprijs;
-    private String beschrijving;
     private int aankoopprijs;
     private int waarde;
+    private GereedschapsType gereedschapsType;
     private final Set<Gereedschap> gereedschapSet;
     
-    public Gereedschap (long daghuurprijs, String beschrijving, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
-        setDaghuurprijs (daghuurprijs);
+    public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
+        setNaam (naam);
         setBeschrijving (beschrijving);
+        setDaghuurprijs (daghuurprijs);
+        setAanbieder (aanbieder);
         setAankoopprijs (aankoopprijs);
         setWaarde (waarde);
         setGereedschapsType (gereedschapsType);
@@ -33,28 +36,32 @@ public class Gereedschap {
         return aanbieder;
     }
     
-    public void setGereedschapsType (GereedschapsType gereedschapsType) {
+    private void setAanbieder (Gebruiker aanbieder) {
+        this.aanbieder = aanbieder;
+    }
+    
+    private void setNaam (String naam) {
+        this.naam = naam;
+    }
+    
+    private void setGereedschapsType (GereedschapsType gereedschapsType) {
         this.gereedschapsType = gereedschapsType;
     }
     
-    public void setDaghuurprijs (long daghuurprijs) {
+    private void setDaghuurprijs (long daghuurprijs) {
         this.daghuurprijs = daghuurprijs;
     }
     
-    public void setBeschrijving (String beschrijving) {
+    private void setBeschrijving (String beschrijving) {
         this.beschrijving = beschrijving;
     }
     
-    public void setAankoopprijs (int aankoopprijs) {
+    private void setAankoopprijs (int aankoopprijs) {
         this.aankoopprijs = aankoopprijs;
     }
     
-    public void setWaarde (int waarde) {
+    private void setWaarde (int waarde) {
         this.waarde = waarde;
-    }
-    
-    public long getDaghuurprijs () {
-        return daghuurprijs;
     }
     
     public boolean addGereedschap (Gereedschap gereedschap) {
@@ -63,6 +70,30 @@ public class Gereedschap {
     
     public boolean removeGereedschap (Gereedschap gereedschap) {
         return gereedschapSet.remove (gereedschap);
+    }
+    
+    public long getDaghuurprijs () {
+        return daghuurprijs;
+    }
+    
+    public GereedschapsType getGereedschapsType () {
+        return gereedschapsType;
+    }
+    
+    public String getBeschrijving () {
+        return beschrijving;
+    }
+    
+    public int getAankoopprijs () {
+        return aankoopprijs;
+    }
+    
+    public int getWaarde () {
+        return waarde;
+    }
+    
+    public Set<Gereedschap> getGereedschapSet () {
+        return gereedschapSet;
     }
     
     public List<Gereedschap> getAllGereedschap () {
