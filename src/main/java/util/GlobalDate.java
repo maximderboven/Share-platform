@@ -21,7 +21,7 @@ public class GlobalDate {
 		return overridenDate != null ? LocalDate.now () : null;
 	}
 	
-	public static LocalDateTime newDateTime () {
+	public static LocalDateTime nowDateTime () {
 		return overridenDateTime != null ? LocalDateTime.now () : null;
 	}
 	
