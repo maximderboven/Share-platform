@@ -6,24 +6,24 @@ package domein.transactie;
  */
 public class HandelTransactieLijn extends TransactieLijn {
     private float bedrag;
-    private HandelsTypeLijn handelsTypeLijn;
-
-    public HandelTransactieLijn(float bedrag, HandelsTypeLijn handelsTypeLijn) {
-        setBedrag(bedrag);
-        setHandelsTypeLijn(handelsTypeLijn);
+    private HandelsLijnType handelsLijnType;
+    
+    public HandelTransactieLijn (float bedrag, HandelsLijnType handelsLijnType) {
+        setBedrag (bedrag);
+        setHandelsTypeLijn (handelsLijnType);
     }
-
-    public void setBedrag(float bedrag) {
-        if (bedrag < 0){
-            throw new IllegalArgumentException("Bedrag kan niet onder de 0 zijn.");
+    
+    public void setBedrag (float bedrag) {
+        if (bedrag < 0) {
+            throw new IllegalArgumentException ("Bedrag kan niet onder de 0 zijn.");
         }
         this.bedrag = bedrag;
     }
-
-    public void setHandelsTypeLijn(HandelsTypeLijn handelsTypeLijn) {
-        if(handelsTypeLijn == null){
-            throw new IllegalArgumentException("HandelsTypeLijn kan niet null zijn");
+    
+    public void setHandelsTypeLijn (HandelsLijnType handelsLijnType) {
+        if (handelsLijnType == null) {
+            throw new IllegalArgumentException ("HandelsTypeLijn kan niet null zijn");
         }
-        this.handelsTypeLijn = handelsTypeLijn;
+        this.handelsLijnType = handelsLijnType;
     }
 }

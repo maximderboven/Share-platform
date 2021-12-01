@@ -28,7 +28,7 @@ public class Transactie {
 		lijnen = new HashSet<>();
 	}
 	
-	public LocalDateTime getTijdstip() {
+	public LocalDateTime getTijdstip () {
 		return tijdstip;
 	}
 	
@@ -36,8 +36,8 @@ public class Transactie {
 		return lijnen;
 	}
 	
-	private void AddTransactionLines (float bedrag, HandelsTypeLijn handelsTypeLijn) {
-		lijnen.add (new HandelTransactieLijn (bedrag, handelsTypeLijn));
+	private void addTransactionLine (float bedrag, HandelsLijnType handelsLijnType) {
+		lijnen.add (new HandelTransactieLijn (bedrag, handelsLijnType));
 	}
 	
 	public long sharepoints () {
