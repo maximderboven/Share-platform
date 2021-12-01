@@ -26,7 +26,7 @@ public class TransactieCataloog extends Cataloog<Transactie> {
 			id = randomIDs.nextInt ();
 			if (get (id) != null)
 				id = -1;
-		} while (id != -1);
+		} while (id == -1);
 		return id;
 	}
 	
