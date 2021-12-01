@@ -15,4 +15,5 @@ public abstract class TransactieLijn {
 	public void setSharepoints (long sharepoints) {
 		this.sharepoints = sharepoints;
 	}
+
 }
