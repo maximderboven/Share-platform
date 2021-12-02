@@ -18,9 +18,9 @@ public class ReservatieService {
 		return cataloog.geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
-	public static boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder) {
+	public static boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder, LocalDate datum) {
 		try {
-			cataloog.geefAnnuleerbareReservatie (aanbiederLogin, ontlenerLogin).annuleer (annuleerder);
+			cataloog.geefAnnuleerbareReservatie (aanbiederLogin, ontlenerLogin).annuleer (annuleerder, datum);
 			return true;
 		} catch (IllegalStateException e) {
 			return false;

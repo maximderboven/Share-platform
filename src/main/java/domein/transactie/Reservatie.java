@@ -72,17 +72,17 @@ public class Reservatie {
 		return transactie;
 	}
 	
-	public boolean isAfhaalbaar () {
-		if (!periode.isIn (LocalDate.now ()))
+	public boolean isAfhaalbaar (LocalDate datum) {
+		if (!periode.isIn (datum))
 			return false;
 		return reservatieStatusQueue.peek ().getType () == ReservatieStatusType.GERESERVEERD;
 	}
 	
-	public void annuleer (ReservatieAnnuleerder reservatieAnnuleerder) {
+	public void annuleer (ReservatieAnnuleerder reservatieAnnuleerder, LocalDate datum) {
 		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
 		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.ANNULATIE, this));
-		if (periode.getVan ().minusDays (7).isBefore (LocalDate.now ())) {
+		if (periode.getVan ().minusDays (7).isBefore (datum)) {
 			getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.WAARBORG, this));
 			GebruikerService.schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs () * periode.getDays ());
 		}

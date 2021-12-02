@@ -21,10 +21,9 @@ public class ReservatieCataloog extends Cataloog<Reservatie> {
 	
 	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return getAll ().stream ().filter (
-						//r -> aanbiederLogin.equals (r.getGereedschap ().getAanbieder ().getLogin ())
 						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
 								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
-								&& r.isAfhaalbaar ())
+								&& r.isAfhaalbaar (datum))
 				.toArray (Reservatie[]::new);
 	}
 	

@@ -11,12 +11,12 @@ import java.time.LocalDate;
  */
 public class ReservatieController {
 	
-	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin) {
-		return ReservatieService.geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, LocalDate.now ());
+	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
+		return ReservatieService.geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
-	public boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder) {
-		return ReservatieService.annuleerReservatie (aanbiederLogin, ontlenerLogin, annuleerder);
+	public boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder, LocalDate datum) {
+		return ReservatieService.annuleerReservatie (aanbiederLogin, ontlenerLogin, annuleerder, datum);
 	}
 	
 }
