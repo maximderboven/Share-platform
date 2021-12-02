@@ -15,15 +15,26 @@ public class ReservatieService {
 	private static ReservatieCataloog cataloog;
 	
 	public static Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
-		return cataloog.geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, datum);
+		return cataloog.geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
-	public static boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder, LocalDate datum) {
+	public static boolean haalReservatieAf (int reservatieId, LocalDate datum) {
 		try {
-			cataloog.geefAnnuleerbareReservatie (aanbiederLogin, ontlenerLogin).annuleer (annuleerder, datum);
+			cataloog.get (reservatieId).haalAf (datum);
 			return true;
-		} catch (IllegalStateException e) {
+		} catch (Exception ignored) {
 			return false;
 		}
 	}
+	
+	public static boolean annuleerReservatie (String aanbieder, String ontvanger, ReservatieAnnuleerder annuleerder, LocalDate datum) {
+		try {
+			cataloog.geefAnnuleerbareReservatie (aanbieder, ontvanger).annuleer (annuleerder, datum);
+			return true;
+		} catch (Exception ignored) {
+			return false;
+		}
+	}
+	
+	
 }

@@ -78,6 +78,12 @@ public class Reservatie {
 		return reservatieStatusQueue.peek ().getType () == ReservatieStatusType.GERESERVEERD;
 	}
 	
+	public void haalAf (LocalDate datum) {
+		ReservatieStatusType type = ReservatieStatusType.AFGEHAALD;
+		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
+		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.HUUR, this));
+	}
+	
 	public void annuleer (ReservatieAnnuleerder reservatieAnnuleerder, LocalDate datum) {
 		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));

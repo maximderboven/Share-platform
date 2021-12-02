@@ -15,8 +15,12 @@ public class ReservatieController {
 		return ReservatieService.geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
-	public boolean annuleerReservatie (String aanbiederLogin, String ontlenerLogin, ReservatieAnnuleerder annuleerder, LocalDate datum) {
-		return ReservatieService.annuleerReservatie (aanbiederLogin, ontlenerLogin, annuleerder, datum);
+	public boolean haalReservatieAf (int reservatieId, LocalDate datum) {
+		return ReservatieService.haalReservatieAf (reservatieId, datum);
+	}
+	
+	public boolean annuleerReservatie (String aanbieder, String ontlener, ReservatieAnnuleerder annuleerder, LocalDate datum) {
+		return ReservatieService.annuleerReservatie (aanbieder, ontlener, annuleerder, datum);
 	}
 	
 }

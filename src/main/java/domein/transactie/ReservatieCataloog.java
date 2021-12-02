@@ -19,17 +19,12 @@ public class ReservatieCataloog extends Cataloog<Reservatie> {
 		return null;
 	}
 	
-	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
+	public Reservatie[] geefAfhaalbareReservaties (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return getAll ().stream ().filter (
 						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
 								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
 								&& r.isAfhaalbaar (datum))
 				.toArray (Reservatie[]::new);
-	}
-	
-	@Override
-	public void Seed () {
-	
 	}
 	
 	public Reservatie geefAnnuleerbareReservatie (String aanbiederLogin, String ontlenerLogin) {
@@ -39,5 +34,10 @@ public class ReservatieCataloog extends Cataloog<Reservatie> {
 								&& r.isAnnuleerbaar ())
 				.findFirst ();
 		return optional.orElse (null);
+	}
+	
+	@Override
+	public void Seed () {
+	
 	}
 }
