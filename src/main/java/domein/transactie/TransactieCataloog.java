@@ -10,6 +10,20 @@ import java.util.Random;
  */
 public class TransactieCataloog extends Cataloog<Transactie> {
 	
+	private static TransactieCataloog instance;
+	
+	public static TransactieCataloog getInstance () {
+		return instance;
+	}
+	
+	private TransactieCataloog () {
+		synchronized (instance) {
+			if (instance != null)
+				return;
+			instance = this;
+		}
+	}
+	
 	private Random randomIDs = new Random ();
 	
 	public Transactie get (int id) {

@@ -27,9 +27,9 @@ public class ReservatieService {
 		}
 	}
 	
-	public static boolean annuleerReservatie (String aanbieder, String ontvanger, ReservatieAnnuleerder annuleerder, LocalDate datum) {
+	public static boolean annuleerReservatie (int reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
 		try {
-			cataloog.geefAnnuleerbareReservatie (aanbieder, ontvanger).annuleer (annuleerder, datum);
+			cataloog.geefReservatie (reservatieId).annuleer (annuleerder, datum);
 			return true;
 		} catch (Exception ignored) {
 			return false;

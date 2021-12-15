@@ -3,13 +3,26 @@ package domein.transactie;
 import domein.Cataloog;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 /**
  * Jonas Leijzen
  * 21/11/2021
  */
 public class ReservatieCataloog extends Cataloog<Reservatie> {
+	
+	private static ReservatieCataloog instance;
+	
+	public static ReservatieCataloog getInstance () {
+		return instance;
+	}
+	
+	private ReservatieCataloog () {
+		synchronized (instance) {
+			if (instance != null)
+				return;
+			instance = this;
+		}
+	}
 	
 	public Reservatie get (int id) {
 		for (Reservatie t : super.getAll ()) {
@@ -27,13 +40,8 @@ public class ReservatieCataloog extends Cataloog<Reservatie> {
 				.toArray (Reservatie[]::new);
 	}
 	
-	public Reservatie geefAnnuleerbareReservatie (String aanbiederLogin, String ontlenerLogin) {
-		Optional<Reservatie> optional = getAll ().stream ().filter (
-						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
-								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
-								&& r.isAnnuleerbaar ())
-				.findFirst ();
-		return optional.orElse (null);
+	public Reservatie geefReservatie (int reservatieId) {
+		return get (reservatieId);
 	}
 	
 	@Override

@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
  */
 public class TransactieService {
 	
-	private static TransactieCataloog cataloog = new TransactieCataloog ();
+	ITransactieCataloog
 	
 	public static Transactie maakTransactie (Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie) {
-		return new Transactie (cataloog.getNewId (), ontvanger, betaler, reservatie, LocalDateTime.now ());
+		return new Transactie (TransactieCataloog.getInstance ().getNewId (), ontvanger, betaler, reservatie, LocalDateTime.now ());
 	}
 	
 }

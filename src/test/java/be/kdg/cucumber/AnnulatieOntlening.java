@@ -5,6 +5,7 @@ import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
 import domein.gereedschap.GereedschapsType;
 import domein.transactie.Reservatie;
+import domein.transactie.ReservatieAnnuleerder;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -85,11 +86,14 @@ public class AnnulatieOntlening {
 	}
 	
 	@When ("{string} aangeeft dat {string} {string} wil ophalen")
-	public void aangeeftDatWilOphalen (String arg0, String arg1, String arg2) {
+	public void aangeeftDatWilOphalen (String arg0, String arg1, String reservatie) {
+		reservatieController.haalReservatieAf (reservatieMap.get (reservatie).id, datum);
 	}
 	
 	@And ("{string} aangeeft dat {string} {string} wil annuleren")
-	public void aangeeftDatWilAnnuleren (String arg0, String arg1, String arg2) {
+	public void aangeeftDatWilAnnuleren (String aanbieder, String annulerendeGebruiker, String reservatie) {
+		ReservatieAnnuleerder annuleerder = annulerendeGebruiker.equals (aanbieder) ? ReservatieAnnuleerder.AANBIEDER : ReservatieAnnuleerder.ONTLENER;
+		reservatieController.annuleerReservatie (reservatieMap.get (reservatie).id, annuleerder, datum);
 	}
 	
 	@Then ("Er wordt een afhalingtransactie aangemaakt")
