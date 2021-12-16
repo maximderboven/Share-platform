@@ -2,7 +2,6 @@ package applicatie;
 
 import domein.gebruiker.Gebruiker;
 import persistence.GebruikerCataloog;
-import persistence.InMemoryGebruikerCataloog;
 
 /**
  * Jonas Leijzen
@@ -10,9 +9,24 @@ import persistence.InMemoryGebruikerCataloog;
  */
 public class GebruikerService {
 	
-	private static GebruikerCataloog cataloog = new InMemoryGebruikerCataloog ();
+	private static GebruikerService instance;
+	private static GebruikerCataloog cataloog;
 	
-	public static void schrijfSharepointsOver (String betalerLogin, String ontvangerLogin, long amount) {
+	public static GebruikerService getInstance () {
+		return instance;
+	}
+	
+	public GebruikerService (GebruikerCataloog cataloog) {
+		synchronized (instance) {
+			if (instance != null)
+				return;
+			instance = this;
+		}
+		GebruikerService.cataloog = cataloog;
+	}
+	
+	
+	public void schrijfSharepointsOver (String betalerLogin, String ontvangerLogin, long amount) {
 		Gebruiker betaler = cataloog.getByLogin (betalerLogin);
 		Gebruiker ontvanger = cataloog.getByLogin (ontvangerLogin);
 		if (amount < 0)
