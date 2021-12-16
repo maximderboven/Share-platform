@@ -10,6 +10,7 @@ import persistence.ReservatieFactory;
 import util.Periode;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Maxim Derboven
@@ -60,7 +61,7 @@ public class ReservatieService {
 		}
 	}
 
-	public Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
-		return ReservatieFactory.getInstance().maakReservatie(aanbieder,ontlener,gereedschap,periode);
+	public Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode, LocalDateTime datum) {
+		return ReservatieFactory.getInstance().maakReservatie(aanbieder, ontlener, gereedschap, periode, datum);
 	}
 }

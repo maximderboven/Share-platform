@@ -28,7 +28,7 @@ public class GereedschapService {
     }
 
     public Gereedschap maakGereedschap(String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
-        return GereedschapFactory.maakGereedschap(naam, beschrijving, aanbieder, daghuurprijs, aankoopprijs, waarde, gereedschapsType);
+        return GereedschapFactory.getInstance ().maakGereedschap (naam, beschrijving, aanbieder, daghuurprijs, aankoopprijs, waarde, gereedschapsType);
     }
 
     public Gereedschap geefGereedschap(int id) {

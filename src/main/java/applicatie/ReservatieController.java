@@ -8,6 +8,7 @@ import domein.transactie.ReservatieAnnuleerder;
 import util.Periode;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Maxim Derboven
@@ -15,8 +16,8 @@ import java.time.LocalDate;
  */
 public class ReservatieController {
 
-	public Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
-		return ReservatieService.getInstance().maakReservatie(aanbieder,ontlener,gereedschap,periode);
+	public Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode, LocalDateTime datum) {
+		return ReservatieService.getInstance().maakReservatie(aanbieder, ontlener, gereedschap, periode, datum);
 	}
 
 	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
