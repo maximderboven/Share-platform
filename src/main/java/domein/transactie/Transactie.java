@@ -1,6 +1,7 @@
 package domein.transactie;
 
 import domein.gebruiker.Gebruiker;
+import persistence.CataloogObject;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -10,7 +11,7 @@ import java.util.Set;
  * Jonas Leijzen
  * 21/11/2021
  */
-public class Transactie {
+public class Transactie implements CataloogObject {
 
 	public final int id;
 	private Gebruiker ontvanger;
@@ -44,6 +45,10 @@ public class Transactie {
 		// TODO
 		return 0;
 	}
-	
-	
+
+
+	@Override
+	public int getId() {
+		return 0;
+	}
 }
