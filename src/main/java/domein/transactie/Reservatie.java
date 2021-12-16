@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 
 /**
@@ -49,6 +50,19 @@ public class Reservatie implements CataloogObject {
 		return ontlener;
 	}
 	
+	@Override
+	public boolean equals (Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Reservatie)) return false;
+		Reservatie that = (Reservatie) o;
+		return id == that.id;
+	}
+	
+	@Override
+	public int hashCode () {
+		return Objects.hash (id);
+	}
+	
 	public int getId () {
 		return id;
 	}
@@ -57,7 +71,7 @@ public class Reservatie implements CataloogObject {
 		return gereedschap;
 	}
 	
-	public List<ReservatieTransactieLijn> getReservatieTransactieLijnen() {
+	public List<ReservatieTransactieLijn> getReservatieTransactieLijnen () {
 		return reservatieTransactieLijnen;
 	}
 	
