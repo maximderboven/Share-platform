@@ -108,4 +108,19 @@ public class Gereedschap implements CataloogObject {
     public int getId() {
         return id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Gereedschap)) return false;
+
+        Gereedschap that = (Gereedschap) o;
+
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

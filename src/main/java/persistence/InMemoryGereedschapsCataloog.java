@@ -23,7 +23,6 @@ public class InMemoryGereedschapsCataloog implements GereedschapCataloog {
         return gereedschapSet.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
     }
 
-
     @Override
     public boolean remove (int id) {
         return gereedschapSet.removeIf (t -> t.id == id);
@@ -31,7 +30,7 @@ public class InMemoryGereedschapsCataloog implements GereedschapCataloog {
 
     @Override
     public List<Gereedschap> getAll() {
-        return new ArrayList<Gereedschap>(gereedschapSet);
+        return new ArrayList<>(gereedschapSet);
     }
 
     private static Random randomIDs = new Random();
