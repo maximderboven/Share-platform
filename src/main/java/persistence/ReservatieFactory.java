@@ -28,7 +28,7 @@ public class ReservatieFactory<T extends Cataloog<Reservatie>> {
 		return cataloog;
 	}
 
-	public static Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
+	public Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
 		return new Reservatie(cataloog.getNewId(), aanbieder,ontlener,gereedschap,periode);
 	}
 }
