@@ -12,16 +12,20 @@ import java.util.List;
  * 21-11-21
  */
 public class Gebruiker implements CataloogObject {
-	private String login;
-	private GeoLocatie locatie;
-	private long sharepoints;
-	
-	private List<Reservatie> reservaties;
-	
-	public Gebruiker (String login, GeoLocatie locatie, long sharepoints) {
-		setLogin (login);
-		setLocatie (locatie);
-		setSharepoints (sharepoints);
+    
+    public final int id;
+    
+    private String login;
+    private GeoLocatie locatie;
+    private long sharepoints;
+    
+    private List<Reservatie> reservaties;
+    
+    public Gebruiker (int id, String login, GeoLocatie locatie, long sharepoints) {
+        this.id = id;
+        setLogin (login);
+        setLocatie (locatie);
+        setSharepoints (sharepoints);
     }
     
     public void setLogin (String login) {
@@ -68,5 +72,10 @@ public class Gebruiker implements CataloogObject {
     
     public boolean removeReservatie (Reservatie reservatie) {
         return reservaties.remove (reservatie);
+    }
+    
+    @Override
+    public int getId () {
+        return id;
     }
 }
