@@ -2,10 +2,7 @@ package persistence;
 
 import domein.transactie.Transactie;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Arne Cools
@@ -33,7 +30,7 @@ public class InMemoryTransactieCataloog implements TransactieCataloog {
 
     @Override
     public List<Transactie> getAll() {
-        return null;
+        return new ArrayList<>(transactieSet);
     }
 
     private static Random randomIDs = new Random ();

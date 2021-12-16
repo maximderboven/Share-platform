@@ -46,6 +46,20 @@ public class Transactie implements CataloogObject {
 		return 0;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Transactie)) return false;
+
+		Transactie that = (Transactie) o;
+
+		return getId() == that.getId();
+	}
+
+	@Override
+	public int hashCode() {
+		return getId();
+	}
 
 	@Override
 	public int getId() {
