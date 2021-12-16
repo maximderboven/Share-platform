@@ -1,6 +1,10 @@
 package persistence;
 
+import domein.gebruiker.Gebruiker;
+import domein.transactie.Reservatie;
 import domein.transactie.Transactie;
+
+import java.time.LocalDateTime;
 
 /**
  * Arne Cools
@@ -26,5 +30,11 @@ public class TransactieFactory {
 
     public static TransactieCataloog getCataloog(){
         return cataloog;
+    }
+
+    public static Transactie maakTransactie(Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip){
+        int id = cataloog.getNewId();
+        Transactie transactie = new Transactie(id , ontvanger, betaler, reservatie, tijdstip);
+        return transactie;
     }
 }
