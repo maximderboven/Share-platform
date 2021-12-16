@@ -1,7 +1,7 @@
 package domein.transactie;
 
-import applicatie.GebruikerService;
-import applicatie.TransactieService;
+import business.GebruikerService;
+import business.TransactieService;
 import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
 import persistence.CataloogObject;

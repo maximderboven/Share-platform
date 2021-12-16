@@ -1,11 +1,13 @@
-package applicatie;
+package business;
 
+import domein.gebruiker.Gebruiker;
+import domein.gereedschap.Gereedschap;
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
-import persistence.Cataloog;
-import persistence.InMemoryReservatieCataloog;
+import persistence.GebruikerFactory;
 import persistence.ReservatieCataloog;
 import persistence.ReservatieFactory;
+import util.Periode;
 
 import java.time.LocalDate;
 
@@ -38,19 +40,27 @@ public class ReservatieService {
 	
 	public boolean haalReservatieAf (int reservatieId, LocalDate datum) {
 		try {
-			cataloog.geefReservatie(reservatieId).haalAf (datum);
+			geefReservatie(reservatieId).haalAf (datum);
 			return true;
 		} catch (Exception ignored) {
 			return false;
 		}
 	}
+
+	public Reservatie geefReservatie(int reservatieId) {
+		return cataloog.geefReservatie(reservatieId);
+	}
 	
 	public boolean annuleerReservatie (int reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
 		try {
-			cataloog.geefReservatie (reservatieId).annuleer (annuleerder, datum);
+			geefReservatie(reservatieId).annuleer (annuleerder, datum);
 			return true;
 		} catch (Exception ignored) {
 			return false;
 		}
+	}
+
+	public Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
+		return ReservatieFactory.getInstance().maakReservatie(aanbieder,ontlener,gereedschap,periode);
 	}
 }
