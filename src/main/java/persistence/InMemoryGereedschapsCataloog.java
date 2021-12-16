@@ -29,9 +29,6 @@ public class InMemoryGereedschapsCataloog implements GereedschapCataloog{
 
     @Override
     public List<Gereedschap> getAll() {
-        List<Gereedschap> myList = new ArrayList<Gereedschap>(gereedschapSet);
-        return myList;
+        return new ArrayList<Gereedschap>(gereedschapSet);
     }
-
-
 }

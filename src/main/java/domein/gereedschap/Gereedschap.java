@@ -14,6 +14,8 @@ import java.util.Set;
  */
 public class Gereedschap implements CataloogObject {
     private String naam;
+    public final int id;
+    private static int idTeller;
     private String beschrijving;
     private Gebruiker aanbieder;
     private long daghuurprijs;
@@ -23,6 +25,7 @@ public class Gereedschap implements CataloogObject {
     private final Set<Gereedschap> gereedschapSet;
     
     public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
+        id= idTeller++;
         setNaam (naam);
         setBeschrijving (beschrijving);
         setDaghuurprijs (daghuurprijs);
@@ -103,6 +106,6 @@ public class Gereedschap implements CataloogObject {
 
     @Override
     public int getId() {
-        return 0;
+        return id;
     }
 }
