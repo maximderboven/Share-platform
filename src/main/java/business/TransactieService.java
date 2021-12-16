@@ -1,4 +1,4 @@
-package applicatie;
+package business;
 
 import domein.gebruiker.Gebruiker;
 import domein.transactie.Reservatie;

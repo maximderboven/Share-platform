@@ -1,11 +1,8 @@
-package applicatie;
+package business;
 
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
-import persistence.Cataloog;
-import persistence.InMemoryReservatieCataloog;
 import persistence.ReservatieCataloog;
-import persistence.ReservatieFactory;
 
 import java.time.LocalDate;
 

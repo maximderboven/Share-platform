@@ -1,5 +1,6 @@
 package applicatie;
 
+import business.ReservatieService;
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
 

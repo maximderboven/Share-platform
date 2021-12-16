@@ -1,4 +1,4 @@
-package applicatie;
+package business;
 
 import persistence.GereedschapCataloog;
 
