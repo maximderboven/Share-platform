@@ -2,23 +2,41 @@ package applicatie;
 
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
+import persistence.Cataloog;
+import persistence.InMemoryReservatieCataloog;
 import persistence.ReservatieCataloog;
+import persistence.ReservatieFactory;
 
 import java.time.LocalDate;
 
 /**
- * Anouar Bannamar
+ * Maxim Derboven
  * 21-11-21
  */
 public class ReservatieService {
-	
+
+
+	private static ReservatieService instance;
 	private static ReservatieCataloog cataloog;
-	
-	public static Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
+
+	public static ReservatieService getInstance() {
+		return instance;
+	}
+
+	private ReservatieService(ReservatieCataloog cataloog) {
+		synchronized (instance) {
+			if (instance != null)
+				return;
+			instance = this;
+		}
+		ReservatieService.cataloog = cataloog;
+	}
+
+	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return cataloog.geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
-	public static boolean haalReservatieAf (int reservatieId, LocalDate datum) {
+	public boolean haalReservatieAf (int reservatieId, LocalDate datum) {
 		try {
 			cataloog.geefReservatie(reservatieId).haalAf (datum);
 			return true;
@@ -27,7 +45,7 @@ public class ReservatieService {
 		}
 	}
 	
-	public static boolean annuleerReservatie (int reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
+	public boolean annuleerReservatie (int reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
 		try {
 			cataloog.geefReservatie (reservatieId).annuleer (annuleerder, datum);
 			return true;
