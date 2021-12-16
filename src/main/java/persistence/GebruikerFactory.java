@@ -1,5 +1,8 @@
 package persistence;
 
+import domein.gebruiker.Gebruiker;
+import util.GeoLocatie;
+
 /**
  * Jonas Leijzen
  * 16/12/2021
@@ -24,5 +27,11 @@ public class GebruikerFactory {
 	
 	public static GebruikerCataloog getCataloog () {
 		return cataloog;
+	}
+	
+	public static Gebruiker maakGebruiker (String login, GeoLocatie locatie, long sharepoints) {
+		int id = cataloog.getNewId ();
+		Gebruiker gebruiker = new Gebruiker (id, login, locatie, sharepoints);
+		return gebruiker;
 	}
 }
