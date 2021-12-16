@@ -4,10 +4,7 @@ import domein.gebruiker.Gebruiker;
 import domein.transactie.Reservatie;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -51,5 +48,17 @@ public class InMemoryReservatieCataloog implements ReservatieCataloog {
 				return r;
 		}
 		return null;
+	}
+
+	private static Random randomIDs = new Random();
+	@Override
+	public int getNewId () {
+		int id;
+		do {
+			id = randomIDs.nextInt ();
+			if (get (id) != null)
+				id = -1;
+		} while (id != -1);
+		return id;
 	}
 }

@@ -29,8 +29,8 @@ public class Reservatie implements CataloogObject {
 	private final Queue<ReservatieStatus> reservatieStatusQueue;
 	private final Transactie transactie;
 	
-	public Reservatie (Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
-		id = ++idCounter;
+	public Reservatie (int id, Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
+		this.id = id;
 		this.aanbieder = aanbieder;
 		this.ontlener = ontlener;
 		this.gereedschap = gereedschap;

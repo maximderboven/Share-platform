@@ -1,6 +1,9 @@
 package persistence;
 
+import domein.gebruiker.Gebruiker;
+import domein.gereedschap.Gereedschap;
 import domein.transactie.Reservatie;
+import util.Periode;
 
 /**
  * @author Maxim Derboven
@@ -23,5 +26,9 @@ public class ReservatieFactory<T extends Cataloog<Reservatie>> {
 
 	public static ReservatieCataloog getCataloog() {
 		return cataloog;
+	}
+
+	public static Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
+		return new Reservatie(cataloog.getNewId(), aanbieder,ontlener,gereedschap,periode);
 	}
 }
