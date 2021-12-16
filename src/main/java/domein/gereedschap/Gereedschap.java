@@ -24,8 +24,8 @@ public class Gereedschap implements CataloogObject {
     private GereedschapsType gereedschapsType;
     private final Set<Gereedschap> gereedschapSet;
     
-    public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
-        id= idTeller++;
+    public Gereedschap (int id, String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
+        this.id = id;
         setNaam (naam);
         setBeschrijving (beschrijving);
         setDaghuurprijs (daghuurprijs);

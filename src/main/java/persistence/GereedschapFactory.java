@@ -1,6 +1,8 @@
 package persistence;
 
+import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
+import domein.gereedschap.GereedschapsType;
 
 /**
  * Anouar Bannamar
@@ -25,5 +27,11 @@ public class GereedschapFactory {
 
     public static GereedschapCataloog getCataloog(){
         return cataloog;
+    }
+
+    public static Gereedschap maakGereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType){
+        int id = cataloog.getNewId();
+        Gereedschap gereedschap =  new Gereedschap(id, naam, beschrijving, aanbieder, daghuurprijs, aankoopprijs, waarde, gereedschapsType);
+        return gereedschap;
     }
 }

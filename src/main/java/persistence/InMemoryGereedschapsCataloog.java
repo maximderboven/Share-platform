@@ -2,10 +2,7 @@ package persistence;
 
 import domein.gereedschap.Gereedschap;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Anouar Bannamar
@@ -29,5 +26,18 @@ public class InMemoryGereedschapsCataloog implements GereedschapCataloog {
     @Override
     public List<Gereedschap> getAll() {
         return new ArrayList<Gereedschap>(gereedschapSet);
+    }
+
+    private static Random randomIDs = new Random();
+
+    @Override
+    public int getNewId () {
+        int id;
+        do {
+            id = randomIDs.nextInt ();
+            if (get (id) != null)
+                id = -1;
+        } while (id != -1);
+        return id;
     }
 }
