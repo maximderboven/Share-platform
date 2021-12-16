@@ -2,9 +2,7 @@ package persistence;
 
 import domein.gebruiker.Gebruiker;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Jonas Leijzen
@@ -30,5 +28,26 @@ public class InMemoryGebruikerCataloog implements GebruikerCataloog {
 				id = -1;
 		} while (id != -1);
 		return id;
+	}
+	
+	@Override
+	public int add (Gebruiker gebruiker) {
+		gebruikerSet.add (gebruiker);
+		return gebruiker.id;
+	}
+	
+	@Override
+	public Gebruiker get (int id) {
+		return gebruikerSet.stream ().filter (t -> t.id == id).findFirst ().orElse (null);
+	}
+	
+	@Override
+	public boolean remove (int id) {
+		return gebruikerSet.removeIf (t -> t.id == id);
+	}
+	
+	@Override
+	public List<Gebruiker> getAll () {
+		return new ArrayList<> (gebruikerSet);
 	}
 }
