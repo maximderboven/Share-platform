@@ -7,4 +7,7 @@ import domein.transactie.Transactie;
  * 16/12/2021
  */
 public interface TransactieCataloog extends Cataloog<Transactie> {
+	
+	int getNewId ();
+	
 }

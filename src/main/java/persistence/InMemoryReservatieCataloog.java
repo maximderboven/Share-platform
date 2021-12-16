@@ -4,7 +4,10 @@ import domein.gebruiker.Gebruiker;
 import domein.transactie.Reservatie;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -22,8 +25,8 @@ public class InMemoryReservatieCataloog implements ReservatieCataloog {
 	}
 
 	@Override
-	public boolean remove(Reservatie reservatie) {
-		return reservatieSet.remove(reservatie);
+	public boolean remove(int id) {
+		return reservatieSet.removeIf(t -> t.id == id);
 	}
 
 	@Override

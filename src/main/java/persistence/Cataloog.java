@@ -8,9 +8,9 @@ import java.util.List;
  */
 public interface Cataloog<T extends CataloogObject> {
 	
-	int Add (T t);
+	int add (T t);
 	
-	boolean remove (T t);
+	boolean remove (int id);
 	
 	List<T> getAll ();
 	
