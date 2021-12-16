@@ -22,6 +22,11 @@ public class InMemoryTransactieCataloog implements TransactieCataloog {
     }
 
     @Override
+    public Transactie get(int id) {
+        return transactieSet.stream().filter(t -> id == t.getId()).findFirst().orElse(null);
+    }
+
+    @Override
     public boolean remove(int id) {
         return transactieSet.removeIf(t -> t.id == id);
     }
