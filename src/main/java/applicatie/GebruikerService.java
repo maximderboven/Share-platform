@@ -1,7 +1,7 @@
 package applicatie;
 
 import domein.gebruiker.Gebruiker;
-import domein.gebruiker.GebruikerCataloog;
+import persistence.GebruikerCataloog;
 
 /**
  * Jonas Leijzen
