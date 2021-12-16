@@ -1,6 +1,10 @@
 package business;
 
+import domein.gebruiker.Gebruiker;
+import domein.gereedschap.Gereedschap;
+import domein.gereedschap.GereedschapsType;
 import persistence.GereedschapCataloog;
+import persistence.GereedschapFactory;
 
 /**
  * Anouar Bannamar
@@ -21,5 +25,13 @@ public class GereedschapService {
             instance = this;
         }
         GereedschapService.gereedschapCataloog = gereedschapCataloog;
+    }
+
+    public Gereedschap maakGereedschap(String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
+        return GereedschapFactory.maakGereedschap(naam, beschrijving, aanbieder, daghuurprijs, aankoopprijs, waarde, gereedschapsType);
+    }
+
+    public Gereedschap geefGereedschap(int id) {
+        return gereedschapCataloog.get(id);
     }
 }
