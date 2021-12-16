@@ -21,7 +21,7 @@ public class InMemoryReservatieCataloog implements ReservatieCataloog {
 
 	@Override
 	public Reservatie get(int id) {
-		return null;
+		return reservatieSet.stream().filter(t -> t.id == id).findFirst().orElse(null);
 	}
 
 	@Override
