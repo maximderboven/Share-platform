@@ -29,7 +29,7 @@ public class GereedschapFactory {
         return cataloog;
     }
 
-    public static Gereedschap maakGereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType){
+    public Gereedschap maakGereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType){
         int id = cataloog.getNewId();
         Gereedschap gereedschap =  new Gereedschap(id, naam, beschrijving, aanbieder, daghuurprijs, aankoopprijs, waarde, gereedschapsType);
         return gereedschap;

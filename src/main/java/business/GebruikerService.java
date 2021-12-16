@@ -2,6 +2,8 @@ package business;
 
 import domein.gebruiker.Gebruiker;
 import persistence.GebruikerCataloog;
+import persistence.GebruikerFactory;
+import util.GeoLocatie;
 
 /**
  * Jonas Leijzen
@@ -25,6 +27,13 @@ public class GebruikerService {
 		GebruikerService.cataloog = cataloog;
 	}
 	
+	public Gebruiker maakGebruiker (String login, GeoLocatie locatie, long sharepoints) {
+		return GebruikerFactory.maakGebruiker (login, locatie, sharepoints);
+	}
+	
+	public Gebruiker geefGebruiker (int id) {
+		return cataloog.get (id);
+	}
 	
 	public void schrijfSharepointsOver (String betalerLogin, String ontvangerLogin, long amount) {
 		Gebruiker betaler = cataloog.getByLogin (betalerLogin);
