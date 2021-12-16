@@ -3,6 +3,8 @@ package applicatie;
 import domein.gebruiker.Gebruiker;
 import domein.transactie.Reservatie;
 import domein.transactie.Transactie;
+import persistence.CataloogFactory;
+import persistence.TransactieCataloog;
 
 import java.time.LocalDateTime;
 
