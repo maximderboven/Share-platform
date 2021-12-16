@@ -17,7 +17,13 @@ public class InMemoryGereedschapsCataloog implements GereedschapCataloog {
         gereedschapSet.add (gereedschap);
         return gereedschap.getId ();
     }
-    
+
+    @Override
+    public Gereedschap get(int id) {
+        return gereedschapSet.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+    }
+
+
     @Override
     public boolean remove (int id) {
         return gereedschapSet.removeIf (t -> t.id == id);
