@@ -1,8 +1,37 @@
 package persistence;
 
+import domein.transactie.Transactie;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Arne Cools
  * 16/12/2021
  */
-public class InMemoryTransactieCataloog implements TransactieCataloog{
+public class InMemoryTransactieCataloog implements TransactieCataloog {
+	
+	private Set<Transactie> transactieSet = new HashSet<> ();
+	
+	@Override
+	public int add (Transactie transactie) {
+		transactieSet.add (transactie);
+		return transactie.id;
+	}
+	
+	@Override
+	public boolean remove (int id) {
+		return transactieSet.removeIf (t -> t.id == id);
+	}
+	
+	@Override
+	public List<Transactie> getAll () {
+		return null;
+	}
+	
+	@Override
+	public int getNewId () {
+		return 0;
+	}
 }

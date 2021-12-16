@@ -3,8 +3,7 @@ package applicatie;
 import domein.gebruiker.Gebruiker;
 import domein.transactie.Reservatie;
 import domein.transactie.Transactie;
-import persistence.CataloogFactory;
-import persistence.TransactieCataloog;
+import persistence.TransactieFactory;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
 public class TransactieService {
 	
 	public static Transactie maakTransactie (Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie) {
-		return new Transactie (CataloogFactory.getInstance ().getNewId (), ontvanger, betaler, reservatie, LocalDateTime.now ());
+		return new Transactie (TransactieFactory.getCataloog ().getNewId (), ontvanger, betaler, reservatie, LocalDateTime.now ());
 	}
 	
 }
