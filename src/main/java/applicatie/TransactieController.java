@@ -1,5 +1,6 @@
 package applicatie;
 
+import business.TransactieService;
 import domein.gebruiker.Gebruiker;
 import domein.transactie.Reservatie;
 import domein.transactie.Transactie;
