@@ -1,6 +1,7 @@
 package domein.gebruiker;
 
 import domein.transactie.Reservatie;
+import persistence.CataloogObject;
 import util.GeoLocatie;
 
 import java.util.List;
@@ -10,17 +11,17 @@ import java.util.List;
  * Anouar Bannamar
  * 21-11-21
  */
-public class Gebruiker {
-    private String login;
-    private GeoLocatie locatie;
-    private long sharepoints;
-
-    private List<Reservatie> reservaties;
-
-    public Gebruiker(String login, GeoLocatie locatie, long sharepoints) {
-        setLogin(login);
-        setLocatie (locatie);
-        setSharepoints (sharepoints);
+public class Gebruiker implements CataloogObject {
+	private String login;
+	private GeoLocatie locatie;
+	private long sharepoints;
+	
+	private List<Reservatie> reservaties;
+	
+	public Gebruiker (String login, GeoLocatie locatie, long sharepoints) {
+		setLogin (login);
+		setLocatie (locatie);
+		setSharepoints (sharepoints);
     }
     
     public void setLogin (String login) {
