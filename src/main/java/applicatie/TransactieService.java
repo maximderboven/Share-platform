@@ -30,9 +30,12 @@ public class TransactieService {
         TransactieService.cataloog = cataloog;
     }
 
+    public Transactie maakTransactie(Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime datum) {
+        return TransactieFactory.getInstance().maakTransactie( ontvanger,  betaler,  reservatie, datum);
+    }
 
-    public Transactie maakTransactie(Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie) {
-        return new Transactie(TransactieFactory.getCataloog().getNewId(), ontvanger, betaler, reservatie, LocalDateTime.now());
+    public Transactie geefTransactie(int id){
+        return cataloog.get(id);
     }
 
 }

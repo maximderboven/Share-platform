@@ -30,16 +30,16 @@ public class Reservatie implements CataloogObject {
 	private final Queue<ReservatieStatus> reservatieStatusQueue;
 	private final Transactie transactie;
 	
-	public Reservatie (int id, Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode) {
+	public Reservatie (int id, Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode, LocalDateTime datum) {
 		this.id = id;
 		this.aanbieder = aanbieder;
 		this.ontlener = ontlener;
 		this.gereedschap = gereedschap;
 		this.periode = periode;
 		reservatieTransactieLijnen = new LinkedList<> ();
-		transactie = TransactieService.getInstance().maakTransactie (aanbieder, ontlener, this);
+		transactie = TransactieService.getInstance().maakTransactie (aanbieder, ontlener, this, datum);
 		reservatieStatusQueue = new LinkedList<> ();
-		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, LocalDateTime.now ()));
+		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, datum));
 	}
 	
 	public Gebruiker getAanbieder () {

@@ -32,7 +32,7 @@ public class TransactieFactory {
         return cataloog;
     }
 
-    public static Transactie maakTransactie(Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip){
+    public Transactie maakTransactie(Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip){
         int id = cataloog.getNewId();
         Transactie transactie = new Transactie(id , ontvanger, betaler, reservatie, tijdstip);
         return transactie;
