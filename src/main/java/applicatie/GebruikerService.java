@@ -9,7 +9,7 @@ import domein.gebruiker.GebruikerCataloog;
  */
 public class GebruikerService {
 	
-	private static GebruikerCataloog cataloog = new GebruikerCataloog ();
+	private static GebruikersCataloog cataloog = new GebruikerCataloog ();
 	
 	public static void schrijfSharepointsOver (String betalerLogin, String ontvangerLogin, long amount) {
 		Gebruiker betaler = cataloog.getByLogin (betalerLogin);

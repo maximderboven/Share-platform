@@ -4,6 +4,7 @@ import applicatie.GebruikerService;
 import applicatie.TransactieService;
 import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
+import persistence.CataloogObject;
 import util.Periode;
 
 import java.time.LocalDate;
@@ -16,7 +17,7 @@ import java.util.Queue;
  * Jonas Leijzen
  * 21/11/2021
  */
-public class Reservatie {
+public class Reservatie implements CataloogObject {
 	
 	private static int idCounter;
 	public final int id;

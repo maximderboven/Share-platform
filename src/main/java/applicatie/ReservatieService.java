@@ -2,7 +2,7 @@ package applicatie;
 
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
-import domein.transactie.ReservatieCataloog;
+import persistence.ReservatieCataloog;
 
 import java.time.LocalDate;
 
@@ -20,7 +20,7 @@ public class ReservatieService {
 	
 	public static boolean haalReservatieAf (int reservatieId, LocalDate datum) {
 		try {
-			cataloog.get (reservatieId).haalAf (datum);
+			cataloog.geefReservatie(reservatieId).haalAf (datum);
 			return true;
 		} catch (Exception ignored) {
 			return false;
@@ -35,6 +35,4 @@ public class ReservatieService {
 			return false;
 		}
 	}
-	
-	
 }
