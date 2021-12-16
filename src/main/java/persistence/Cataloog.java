@@ -14,6 +14,4 @@ public interface Cataloog<T extends CataloogObject> {
 	
 	List<T> getAll ();
 	
-	Cataloog<T> getInstance ();
-	
 }

@@ -9,7 +9,7 @@ import java.util.Set;
  * Jonas Leijzen
  * 16/12/2021
  */
-public class InMemoryGebruikersCataloog implements GebruikersCataloog {
+public class InMemoryGebruikerCataloog implements GebruikerCataloog {
 	
 	public Set<Gebruiker> gebruikerSet = new HashSet<> ();
 	

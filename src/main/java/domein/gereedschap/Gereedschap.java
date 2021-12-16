@@ -1,6 +1,7 @@
 package domein.gereedschap;
 
 import domein.gebruiker.Gebruiker;
+import persistence.CataloogObject;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +12,7 @@ import java.util.Set;
  * Arne Cools
  * 21/11/2021
  */
-public class Gereedschap {
+public class Gereedschap implements CataloogObject {
     private String naam;
     private String beschrijving;
     private Gebruiker aanbieder;
@@ -98,5 +99,10 @@ public class Gereedschap {
     
     public List<Gereedschap> getAllGereedschap () {
         return new ArrayList<> (gereedschapSet);
+    }
+
+    @Override
+    public int getId() {
+        return 0;
     }
 }

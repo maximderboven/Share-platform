@@ -1,7 +1,8 @@
 package applicatie;
 
 import domein.gebruiker.Gebruiker;
-import domein.gebruiker.GebruikerCataloog;
+import persistence.GebruikersCataloog;
+import persistence.InMemoryGebruikersCataloog;
 
 /**
  * Jonas Leijzen
@@ -9,7 +10,7 @@ import domein.gebruiker.GebruikerCataloog;
  */
 public class GebruikerService {
 	
-	private static GebruikersCataloog cataloog = new GebruikerCataloog ();
+	private static GebruikersCataloog cataloog = new InMemoryGebruikersCataloog();
 	
 	public static void schrijfSharepointsOver (String betalerLogin, String ontvangerLogin, long amount) {
 		Gebruiker betaler = cataloog.getByLogin (betalerLogin);
