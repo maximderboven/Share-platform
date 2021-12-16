@@ -37,7 +37,7 @@ public class Reservatie implements CataloogObject {
 		this.gereedschap = gereedschap;
 		this.periode = periode;
 		reservatieTransactieLijnen = new LinkedList<> ();
-		transactie = TransactieService.maakTransactie (aanbieder, ontlener, this);
+		transactie = TransactieService.getInstance().maakTransactie (aanbieder, ontlener, this);
 		reservatieStatusQueue = new LinkedList<> ();
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, LocalDateTime.now ()));
 	}
@@ -105,7 +105,7 @@ public class Reservatie implements CataloogObject {
 		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.ANNULATIE, this));
 		if (periode.getVan ().minusDays (7).isBefore (datum)) {
 			getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.WAARBORG, this));
-			GebruikerService.schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs () * periode.getDays ());
+			GebruikerService.getInstance().schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs () * periode.getDays ());
 		}
 	}
 	
