@@ -11,4 +11,5 @@ import java.time.LocalDate;
 public interface ReservatieCataloog extends Cataloog<Reservatie>, IdGenerator {
 	Reservatie[] geefAfhaalbareReservaties(String aanbiederLogin, String ontlenerLogin, LocalDate datum);
 	Reservatie geefReservatie(int reservatieId);
+
 }

@@ -18,7 +18,12 @@ public class InMemoryReservatieCataloog implements ReservatieCataloog {
 		reservatieSet.add (reservatie);
 		return reservatie.id;
 	}
-	
+
+	@Override
+	public Reservatie get(int id) {
+		return null;
+	}
+
 	@Override
 	public boolean remove (int id) {
 		return reservatieSet.removeIf (t -> t.id == id);
@@ -47,7 +52,12 @@ public class InMemoryReservatieCataloog implements ReservatieCataloog {
 		}
 		return null;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.id == obj.id;
+	}
+
 	private static Random randomIDs = new Random ();
 	
 	@Override
