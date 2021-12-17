@@ -15,7 +15,7 @@ public class GereedschapController {
         return GereedschapService.getInstance().maakGereedschap(naam, beschrijving, aanbieder, daghuurprijs, aankoopprijs, waarde, gereedschapsType);
     }
 
-    public Gereedschap geefGebruiker(int id){
+    public Gereedschap geefGebruiker(long id){
         return GereedschapService.getInstance().geefGereedschap(id);
     }
 }

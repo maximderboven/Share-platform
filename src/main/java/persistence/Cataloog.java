@@ -1,19 +1,19 @@
 package persistence;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Jonas Leijzen
  * 15/12/2021
  */
-public interface Cataloog<T extends CataloogObject> {
+public interface Cataloog<Key extends Number, Value> {
 	
-	int add (T t);
+	Key add (Value t);
 	
-	T get (int id);
+	Value get (Key id);
 	
-	boolean remove (int id);
+	boolean remove (Key id);
 	
-	List<T> getAll ();
+	Collection<Value> getAll ();
 	
 }

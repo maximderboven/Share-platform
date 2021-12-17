@@ -11,17 +11,15 @@ import java.util.Set;
  * Jonas Leijzen
  * 21/11/2021
  */
-public class Transactie implements CataloogObject {
-
-	public final int id;
+public class Transactie {
+	
 	private Gebruiker ontvanger;
 	private Gebruiker betaler;
 	private Reservatie reservatie;
 	private LocalDateTime tijdstip;
 	private final Set<TransactieLijn> lijnen;
 
-	public Transactie(int id, Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip) {
-		this.id = id;
+	public Transactie(Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip) {
 		this.ontvanger = ontvanger;
 		this.betaler = betaler;
 		this.reservatie = reservatie;
@@ -46,23 +44,4 @@ public class Transactie implements CataloogObject {
 		return 0;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof Transactie)) return false;
-
-		Transactie that = (Transactie) o;
-
-		return getId() == that.getId();
-	}
-
-	@Override
-	public int hashCode() {
-		return getId();
-	}
-
-	@Override
-	public int getId() {
-		return 0;
-	}
 }

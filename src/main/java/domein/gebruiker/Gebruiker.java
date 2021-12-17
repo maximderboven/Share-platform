@@ -1,7 +1,6 @@
 package domein.gebruiker;
 
 import domein.transactie.Reservatie;
-import persistence.CataloogObject;
 import util.GeoLocatie;
 
 import java.util.List;
@@ -11,9 +10,7 @@ import java.util.List;
  * Anouar Bannamar
  * 21-11-21
  */
-public class Gebruiker implements CataloogObject {
-    
-    public final int id;
+public class Gebruiker {
     
     private String login;
     private GeoLocatie locatie;
@@ -21,8 +18,7 @@ public class Gebruiker implements CataloogObject {
     
     private List<Reservatie> reservaties;
     
-    public Gebruiker (int id, String login, GeoLocatie locatie, long sharepoints) {
-        this.id = id;
+    public Gebruiker (String login, GeoLocatie locatie, long sharepoints) {
         setLogin (login);
         setLocatie (locatie);
         setSharepoints (sharepoints);
@@ -72,10 +68,5 @@ public class Gebruiker implements CataloogObject {
     
     public boolean removeReservatie (Reservatie reservatie) {
         return reservaties.remove (reservatie);
-    }
-    
-    @Override
-    public int getId () {
-        return id;
     }
 }

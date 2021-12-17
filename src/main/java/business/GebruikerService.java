@@ -28,10 +28,10 @@ public class GebruikerService {
 	}
 	
 	public Gebruiker maakGebruiker (String login, GeoLocatie locatie, long sharepoints) {
-		return GebruikerFactory.maakGebruiker (login, locatie, sharepoints);
+		return new Gebruiker (login, locatie, sharepoints);
 	}
 	
-	public Gebruiker geefGebruiker (int id) {
+	public Gebruiker geefGebruiker (Long id) {
 		return cataloog.get (id);
 	}
 	

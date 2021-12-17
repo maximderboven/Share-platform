@@ -11,6 +11,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import persistence.GereedschapFactory;
 import util.GeoLocatie;
 import util.Periode;
 
@@ -36,7 +37,7 @@ public class AnnulatieOntlening {
 			String name = m.get ("naam");
 			long sp = Long.parseLong (m.get ("sp"));
 			GereedschapsType type = convertType (m.get ("type"));
-			Gereedschap g = new Gereedschap (name, "", null, sp, 0, 0, type);
+			Gereedschap g = GereedschapFactory.getInstance ().maakGereedschap (name, "", null, sp, 0, 0, type, datum);
 			gereedschapMap.put (name, g);
 		}
 	}

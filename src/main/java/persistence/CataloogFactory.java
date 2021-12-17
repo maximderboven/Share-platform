@@ -4,8 +4,8 @@ package persistence;
  * Jonas Leijzen
  * 15/12/2021
  */
-public interface CataloogFactory {
+public interface CataloogFactory<T> {
 	
-	<T extends CataloogObject> Cataloog<T> getInstance ();
+	Cataloog<? extends Number, T> getInstance ();
 	
 }

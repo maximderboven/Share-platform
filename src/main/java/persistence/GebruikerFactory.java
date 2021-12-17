@@ -1,7 +1,7 @@
 package persistence;
 
 import domein.gebruiker.Gebruiker;
-import util.GeoLocatie;
+import domein.transactie.Reservatie;
 
 /**
  * Jonas Leijzen
@@ -10,7 +10,7 @@ import util.GeoLocatie;
 public class GebruikerFactory {
 	
 	private static GebruikerFactory instance;
-	private static GebruikerCataloog cataloog;
+	private Cataloog<? extends Number, Gebruiker> cataloog;
 	
 	public static GebruikerFactory getInstance () {
 		return instance;
@@ -25,13 +25,7 @@ public class GebruikerFactory {
 		cataloog = new InMemoryGebruikerCataloog ();
 	}
 	
-	public static GebruikerCataloog getCataloog () {
+	public Cataloog<? extends Number, Gebruiker> getCataloog () {
 		return cataloog;
-	}
-	
-	public static Gebruiker maakGebruiker (String login, GeoLocatie locatie, long sharepoints) {
-		int id = cataloog.getNewId ();
-		Gebruiker gebruiker = new Gebruiker (id, login, locatie, sharepoints);
-		return gebruiker;
 	}
 }

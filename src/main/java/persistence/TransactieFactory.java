@@ -12,29 +12,23 @@ import java.time.LocalDateTime;
  */
 public class TransactieFactory {
     private static TransactieFactory instance;
-    private static TransactieCataloog cataloog;
+    private Cataloog<? extends Number, Transactie> cataloog;
 
-    private TransactieFactory() {
+    public TransactieFactory(Cataloog<? extends Number, Transactie> cataloog) {
         synchronized (instance) {
             if (instance != null){
                 return;
             }
             instance = this;
         }
-        cataloog = new InMemoryTransactieCataloog();
+        this.cataloog = cataloog;
     }
 
     public static TransactieFactory getInstance() {
         return instance;
     }
 
-    public static TransactieCataloog getCataloog(){
+    public Cataloog<? extends Number, Transactie> getCataloog(){
         return cataloog;
-    }
-
-    public Transactie maakTransactie(Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip){
-        int id = cataloog.getNewId();
-        Transactie transactie = new Transactie(id , ontvanger, betaler, reservatie, tijdstip);
-        return transactie;
     }
 }

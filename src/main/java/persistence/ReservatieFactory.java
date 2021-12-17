@@ -11,28 +11,24 @@ import java.time.LocalDateTime;
  * @author Maxim Derboven
  * @version 1.0 16/12/2021 15:31
  */
-public class ReservatieFactory<T extends Cataloog<Reservatie>> {
+public class ReservatieFactory<T extends Cataloog<? extends Number, Reservatie>> {
 	private static ReservatieFactory instance;
-	private static ReservatieCataloog cataloog;
+	private Cataloog<? extends Number, Reservatie> cataloog;
 	
-	public static ReservatieFactory<Cataloog<Reservatie>> getInstance () {
+	public static ReservatieFactory<Cataloog<? extends Number, Reservatie>> getInstance () {
 		return instance;
 	}
 	
-	private ReservatieFactory () {
+	private ReservatieFactory (Cataloog<? extends Number, Reservatie> cataloog) {
 		synchronized (instance) {
 			if (instance != null)
 				return;
 			instance = this;
 		}
-		cataloog = new InMemoryReservatieCataloog ();
+		this.cataloog = cataloog;
 	}
 	
-	public static ReservatieCataloog getCataloog () {
+	public Cataloog<? extends Number, Reservatie> getCataloog () {
 		return cataloog;
-	}
-	
-	public Reservatie maakReservatie (Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode, LocalDateTime datum) {
-		return new Reservatie (cataloog.getNewId (), aanbieder, ontlener, gereedschap, periode, datum);
 	}
 }

@@ -10,28 +10,22 @@ import domein.gereedschap.GereedschapsType;
  */
 public class GereedschapFactory {
     private static GereedschapFactory instance;
-    private static GereedschapCataloog cataloog;
+    private Cataloog<? extends Number, Gereedschap> cataloog;
 
     public static GereedschapFactory getInstance() {
         return instance;
     }
 
-    public GereedschapFactory() {
+    public GereedschapFactory(Cataloog<? extends Number, Gereedschap> cataloog) {
         synchronized (instance){
             if(instance != null)
                 return;
             instance = this;
         }
-        cataloog = new InMemoryGereedschapsCataloog();
+        this.cataloog = cataloog;
     }
 
-    public static GereedschapCataloog getCataloog(){
+    public Cataloog<? extends Number, Gereedschap> getCataloog(){
         return cataloog;
-    }
-
-    public Gereedschap maakGereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType){
-        int id = cataloog.getNewId();
-        Gereedschap gereedschap =  new Gereedschap(id, naam, beschrijving, aanbieder, daghuurprijs, aankoopprijs, waarde, gereedschapsType);
-        return gereedschap;
     }
 }

@@ -14,7 +14,7 @@ public class GebruikerController {
 		return GebruikerService.getInstance ().maakGebruiker (login, locatie, sharepoints);
 	}
 	
-	public Gebruiker geefGebruiker (int id) {
+	public Gebruiker geefGebruiker (Long id) {
 		return GebruikerService.getInstance ().geefGebruiker (id);
 	}
 
