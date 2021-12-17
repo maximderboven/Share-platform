@@ -4,22 +4,22 @@ package persistence;
  * Jonas Leijzen
  * 16/12/2021
  */
-public class GebruikerFactory {
+public class GebruikerCataloogFactory {
 	
-	private static GebruikerFactory instance;
+	private static GebruikerCataloogFactory instance;
 	private GebruikerCataloog cataloog;
 	
-	public static GebruikerFactory getInstance () {
-		return instance;
-	}
-	
-	private GebruikerFactory (GebruikerCataloog cataloog) {
+	private GebruikerCataloogFactory (GebruikerCataloog cataloog) {
 		synchronized (instance) {
 			if (instance != null)
 				return;
 			instance = this;
 		}
 		this.cataloog = cataloog;
+	}
+	
+	public static GebruikerCataloogFactory getInstance () {
+		return instance;
 	}
 	
 	public GebruikerCataloog getCataloog () {

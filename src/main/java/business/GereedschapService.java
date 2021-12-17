@@ -1,7 +1,7 @@
 package business;
 
 import domein.gereedschap.Gereedschap;
-import persistence.GereedschapFactory;
+import persistence.GereedschapCataloogFactory;
 
 /**
  * Anouar Bannamar
@@ -24,6 +24,6 @@ public class GereedschapService {
     }
 
     public Gereedschap geefGereedschap(Long id) {
-	    return GereedschapFactory.getInstance ().getCataloog ().get (id);
+	    return GereedschapCataloogFactory.getInstance ().getCataloog ().get (id);
     }
 }

@@ -2,7 +2,7 @@ package business;
 
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
-import persistence.ReservatieFactory;
+import persistence.ReservatieCataloogFactory;
 
 import java.time.LocalDate;
 
@@ -28,7 +28,7 @@ public class ReservatieService {
 	}
 
 	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
-		return ReservatieFactory.getInstance ().getCataloog ().geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
+		return ReservatieCataloogFactory.getInstance ().getCataloog ().geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
 	public boolean haalReservatieAf (Long reservatieId, LocalDate datum) {
@@ -41,7 +41,7 @@ public class ReservatieService {
 	}
 	
 	public Reservatie geefReservatie (Long reservatieId) {
-		return ReservatieFactory.getInstance ().getCataloog ().get (reservatieId);
+		return ReservatieCataloogFactory.getInstance ().getCataloog ().get (reservatieId);
 	}
 	
 	public boolean annuleerReservatie (Long reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
