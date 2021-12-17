@@ -1,7 +1,8 @@
 package persistence;
 
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Jonas Leijzen
@@ -9,8 +10,8 @@ import java.util.stream.Stream;
  */
 public class InMemoryCataloog<Key extends Number, Value> implements Cataloog<Key, Value> {
 	
-	private Map<Key, Value> map = new HashMap ();
-	private KeyProvider<Key> keyProvider;
+	private final Map<Key, Value> map = new HashMap<> ();
+	private final KeyProvider<Key> keyProvider;
 	
 	public InMemoryCataloog (KeyProvider<Key> keyProvider) {
 		this.keyProvider = keyProvider;

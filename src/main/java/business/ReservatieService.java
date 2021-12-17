@@ -1,16 +1,10 @@
 package business;
 
-import domein.gebruiker.Gebruiker;
-import domein.gereedschap.Gereedschap;
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
-import persistence.GebruikerFactory;
-import persistence.ReservatieCataloog;
 import persistence.ReservatieFactory;
-import util.Periode;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Maxim Derboven
@@ -20,48 +14,42 @@ public class ReservatieService {
 
 
 	private static ReservatieService instance;
-	private static ReservatieCataloog cataloog;
 
 	public static ReservatieService getInstance() {
 		return instance;
 	}
 
-	private ReservatieService(ReservatieCataloog cataloog) {
+	private ReservatieService () {
 		synchronized (instance) {
 			if (instance != null)
 				return;
 			instance = this;
 		}
-		ReservatieService.cataloog = cataloog;
 	}
 
 	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
-		return cataloog.geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
+		return ReservatieFactory.getInstance ().getCataloog ().geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
-	public boolean haalReservatieAf (int reservatieId, LocalDate datum) {
+	public boolean haalReservatieAf (Long reservatieId, LocalDate datum) {
 		try {
-			geefReservatie(reservatieId).haalAf (datum);
+			geefReservatie (reservatieId).haalAf (datum);
 			return true;
 		} catch (Exception ignored) {
 			return false;
 		}
 	}
-
-	public Reservatie geefReservatie(int reservatieId) {
-		return cataloog.geefReservatie(reservatieId);
+	
+	public Reservatie geefReservatie (Long reservatieId) {
+		return ReservatieFactory.getInstance ().getCataloog ().get (reservatieId);
 	}
 	
-	public boolean annuleerReservatie (int reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
+	public boolean annuleerReservatie (Long reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
 		try {
-			geefReservatie(reservatieId).annuleer (annuleerder, datum);
+			geefReservatie (reservatieId).annuleer (annuleerder, datum);
 			return true;
 		} catch (Exception ignored) {
 			return false;
 		}
-	}
-
-	public Reservatie maakReservatie(Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode, LocalDateTime datum) {
-		return ReservatieFactory.getInstance().maakReservatie(aanbieder, ontlener, gereedschap, periode, datum);
 	}
 }

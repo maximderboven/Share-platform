@@ -1,7 +1,6 @@
 package domein.transactie;
 
 import domein.gebruiker.Gebruiker;
-import persistence.CataloogObject;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

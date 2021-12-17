@@ -4,8 +4,6 @@ import domein.gebruiker.Gebruiker;
 import domein.transactie.Reservatie;
 import domein.transactie.Transactie;
 import persistence.Cataloog;
-import persistence.TransactieCataloog;
-import persistence.TransactieFactory;
 
 import java.time.LocalDateTime;
 
@@ -20,9 +18,9 @@ public class TransactieService {
     public static TransactieService getInstance() {
         return instance;
     }
-
-    public TransactieService (Cataloog<Long, Transactie> cataloog){
-        synchronized (instance){
+    
+    public TransactieService (Cataloog<Long, Transactie> cataloog) {
+        synchronized (instance) {
             if (instance != null) {
                 return;
             }
@@ -30,9 +28,13 @@ public class TransactieService {
         }
         this.cataloog = cataloog;
     }
-
-    public Transactie geefTransactie(Long id){
-        return cataloog.get(id);
+    
+    public Transactie maakTransactie (Gebruiker ontvanger, Gebruiker betaler, Reservatie reservatie, LocalDateTime tijdstip) {
+        return new Transactie (ontvanger, betaler, reservatie, tijdstip);
     }
-
+    
+    public Transactie geefTransactie (Long id) {
+        return cataloog.get (id);
+    }
+    
 }

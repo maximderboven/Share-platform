@@ -1,8 +1,5 @@
 package persistence;
 
-import domein.gebruiker.Gebruiker;
-import domein.transactie.Reservatie;
-
 /**
  * Jonas Leijzen
  * 16/12/2021
@@ -10,22 +7,22 @@ import domein.transactie.Reservatie;
 public class GebruikerFactory {
 	
 	private static GebruikerFactory instance;
-	private Cataloog<? extends Number, Gebruiker> cataloog;
+	private GebruikerCataloog cataloog;
 	
 	public static GebruikerFactory getInstance () {
 		return instance;
 	}
 	
-	private GebruikerFactory () {
+	private GebruikerFactory (GebruikerCataloog cataloog) {
 		synchronized (instance) {
 			if (instance != null)
 				return;
 			instance = this;
 		}
-		cataloog = new InMemoryGebruikerCataloog ();
+		this.cataloog = cataloog;
 	}
 	
-	public Cataloog<? extends Number, Gebruiker> getCataloog () {
+	public GebruikerCataloog getCataloog () {
 		return cataloog;
 	}
 }

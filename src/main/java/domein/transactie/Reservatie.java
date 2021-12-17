@@ -4,24 +4,20 @@ import business.GebruikerService;
 import business.TransactieService;
 import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
-import persistence.CataloogObject;
 import util.Periode;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Queue;
 
 /**
  * Jonas Leijzen
  * 21/11/2021
  */
-public class Reservatie implements CataloogObject {
+public class Reservatie {
 	
-	private static int idCounter;
-	public final int id;
 	private final Gebruiker aanbieder;
 	private final Gebruiker ontlener;
 	private final Gereedschap gereedschap;
@@ -30,14 +26,13 @@ public class Reservatie implements CataloogObject {
 	private final Queue<ReservatieStatus> reservatieStatusQueue;
 	private final Transactie transactie;
 	
-	public Reservatie (int id, Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode, LocalDateTime datum) {
-		this.id = id;
+	public Reservatie (Gebruiker aanbieder, Gebruiker ontlener, Gereedschap gereedschap, Periode periode, LocalDateTime datum) {
 		this.aanbieder = aanbieder;
 		this.ontlener = ontlener;
 		this.gereedschap = gereedschap;
 		this.periode = periode;
 		reservatieTransactieLijnen = new LinkedList<> ();
-		transactie = TransactieService.getInstance().maakTransactie (aanbieder, ontlener, this, datum);
+		transactie = TransactieService.getInstance ().maakTransactie (aanbieder, ontlener, this, datum);
 		reservatieStatusQueue = new LinkedList<> ();
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, datum));
 	}
@@ -48,23 +43,6 @@ public class Reservatie implements CataloogObject {
 	
 	public Gebruiker getOntlener () {
 		return ontlener;
-	}
-	
-	@Override
-	public boolean equals (Object o) {
-		if (this == o) return true;
-		if (!(o instanceof Reservatie)) return false;
-		Reservatie that = (Reservatie) o;
-		return id == that.id;
-	}
-	
-	@Override
-	public int hashCode () {
-		return Objects.hash (id);
-	}
-	
-	public int getId () {
-		return id;
 	}
 	
 	public Gereedschap getGereedschap () {

@@ -3,13 +3,12 @@ package persistence;
 import domein.transactie.Reservatie;
 
 import java.time.LocalDate;
-import java.util.*;
 
 /**
  * @author Maxim Derboven
  * @version 1.0 16/12/2021 15:04
  */
-public class InMemoryReservatieCataloog<Key extends Number> extends InMemoryCataloog<Key, Reservatie> implements ReservatieCataloog<Key> {
+public class InMemoryReservatieCataloog extends InMemoryCataloog<Long, Reservatie> implements ReservatieCataloog {
 	
 	public InMemoryReservatieCataloog (KeyProvider<Long> keyProvider) {
 		super (keyProvider);
@@ -23,11 +22,6 @@ public class InMemoryReservatieCataloog<Key extends Number> extends InMemoryCata
 								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
 								&& r.isAfhaalbaar (datum))
 				.toArray (Reservatie[]::new);
-	}
-	
-	@Override
-	public Reservatie geefReservatie (Key reservatieId) {
-		return get (reservatieId);
 	}
 
 }

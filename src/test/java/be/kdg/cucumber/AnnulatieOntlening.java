@@ -11,11 +11,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import persistence.GereedschapFactory;
 import util.GeoLocatie;
 import util.Periode;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,13 +31,17 @@ public class AnnulatieOntlening {
 	ReservatieController reservatieController;
 	LocalDate datum;
 	
+	private LocalDateTime LocalDateToLocalDateTime (LocalDate localDate) {
+		return LocalDateTime.of (localDate.getYear (), localDate.getMonthValue (), localDate.getDayOfMonth (), 0, 0, 0);
+	}
+	
 	@Given ("Tools")
 	public void tools (DataTable table) {
 		for (Map<String, String> m : table.asMaps ()) {
 			String name = m.get ("naam");
 			long sp = Long.parseLong (m.get ("sp"));
 			GereedschapsType type = convertType (m.get ("type"));
-			Gereedschap g = GereedschapFactory.getInstance ().maakGereedschap (name, "", null, sp, 0, 0, type, datum);
+			Gereedschap g = new Gereedschap (name, "", null, sp, 0, 0, type);
 			gereedschapMap.put (name, g);
 		}
 	}
@@ -76,7 +80,7 @@ public class AnnulatieOntlening {
 			String gereedschapKey = m.get ("gereedschap");
 			LocalDate van = LocalDate.parse (m.get ("van"));
 			LocalDate tot = van.plusDays (Integer.parseInt (m.get ("dagen")));
-			Reservatie r = new Reservatie (gebruikerMap.get (aanbiederKey), gebruikerMap.get (ontlenerKey), gereedschapMap.get (gereedschapKey), new Periode (van, tot));
+			Reservatie r = new Reservatie (gebruikerMap.get (aanbiederKey), gebruikerMap.get (ontlenerKey), gereedschapMap.get (gereedschapKey), new Periode (van, tot), LocalDateToLocalDateTime (datum));
 			reservatieMap.put (name, r);
 		}
 	}
@@ -88,13 +92,13 @@ public class AnnulatieOntlening {
 	
 	@When ("{string} aangeeft dat {string} {string} wil ophalen")
 	public void aangeeftDatWilOphalen (String arg0, String arg1, String reservatie) {
-		reservatieController.haalReservatieAf (reservatieMap.get (reservatie).id, datum);
+	
 	}
 	
 	@And ("{string} aangeeft dat {string} {string} wil annuleren")
 	public void aangeeftDatWilAnnuleren (String aanbieder, String annulerendeGebruiker, String reservatie) {
 		ReservatieAnnuleerder annuleerder = annulerendeGebruiker.equals (aanbieder) ? ReservatieAnnuleerder.AANBIEDER : ReservatieAnnuleerder.ONTLENER;
-		reservatieController.annuleerReservatie (reservatieMap.get (reservatie).id, annuleerder, datum);
+		
 	}
 	
 	@Then ("Er wordt een afhalingtransactie aangemaakt")

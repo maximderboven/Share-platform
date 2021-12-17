@@ -2,19 +2,19 @@ package persistence;
 
 import domein.gebruiker.Gebruiker;
 
-import java.util.*;
-
 /**
  * Jonas Leijzen
  * 16/12/2021
  */
-public class InMemoryGebruikerCataloog extends InMemoryCataloog<Long, Gebruiker, RandomLongKeyProvider> implements GebruikerCataloog {
+public class InMemoryGebruikerCataloog extends InMemoryCataloog<Long, Gebruiker> implements GebruikerCataloog {
 	
-	public Set<Gebruiker> gebruikerSet = new HashSet<> ();
+	public InMemoryGebruikerCataloog (KeyProvider<Long> keyProvider) {
+		super (keyProvider);
+	}
 	
 	@Override
 	public Gebruiker getByLogin (String login) {
-		return gebruikerSet.stream ().filter (gebruiker -> gebruiker.getLogin ().equals (login)).findFirst ().orElse (null);
+		return getMap ().values ().stream ().filter (gebruiker -> gebruiker.getLogin ().equals (login)).findFirst ().orElse (null);
 	}
 	
 }

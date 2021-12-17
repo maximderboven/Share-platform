@@ -2,8 +2,6 @@ package business;
 
 import domein.gebruiker.Gebruiker;
 import persistence.GebruikerCataloog;
-import persistence.GebruikerFactory;
-import util.GeoLocatie;
 
 /**
  * Jonas Leijzen
@@ -25,10 +23,6 @@ public class GebruikerService {
 			instance = this;
 		}
 		GebruikerService.cataloog = cataloog;
-	}
-	
-	public Gebruiker maakGebruiker (String login, GeoLocatie locatie, long sharepoints) {
-		return new Gebruiker (login, locatie, sharepoints);
 	}
 	
 	public Gebruiker geefGebruiker (Long id) {

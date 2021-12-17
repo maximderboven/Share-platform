@@ -1,7 +1,6 @@
 package domein.gereedschap;
 
 import domein.gebruiker.Gebruiker;
-import persistence.CataloogObject;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,29 +11,28 @@ import java.util.Set;
  * Arne Cools
  * 21/11/2021
  */
-public class Gereedschap implements CataloogObject {
-    private String naam;
-    public final int id;
-    private static int idTeller;
-    private String beschrijving;
-    private Gebruiker aanbieder;
-    private long daghuurprijs;
-    private int aankoopprijs;
-    private int waarde;
-    private GereedschapsType gereedschapsType;
-    private final Set<Gereedschap> gereedschapSet;
-    
-    public Gereedschap (int id, String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
-        this.id = id;
-        setNaam (naam);
-        setBeschrijving (beschrijving);
-        setDaghuurprijs (daghuurprijs);
-        setAanbieder (aanbieder);
-        setAankoopprijs (aankoopprijs);
-        setWaarde (waarde);
-        setGereedschapsType (gereedschapsType);
-        gereedschapSet = new HashSet<> ();
-    }
+public class Gereedschap {
+	
+	private String naam;
+	private String beschrijving;
+	private Gebruiker aanbieder;
+	private long daghuurprijs;
+	private int aankoopprijs;
+	private int waarde;
+	private GereedschapsType gereedschapsType;
+	private final Set<Gereedschap> gereedschapSet;
+	
+	public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
+		
+		setNaam (naam);
+		setBeschrijving (beschrijving);
+		setDaghuurprijs (daghuurprijs);
+		setAanbieder (aanbieder);
+		setAankoopprijs (aankoopprijs);
+		setWaarde (waarde);
+		setGereedschapsType (gereedschapsType);
+		gereedschapSet = new HashSet<> ();
+	}
     
     public Gebruiker getAanbieder () {
         return aanbieder;
@@ -102,25 +100,5 @@ public class Gereedschap implements CataloogObject {
     
     public List<Gereedschap> getAllGereedschap () {
         return new ArrayList<> (gereedschapSet);
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Gereedschap)) return false;
-
-        Gereedschap that = (Gereedschap) o;
-
-        return id == that.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
     }
 }
