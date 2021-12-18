@@ -25,8 +25,6 @@ public class Periode {
     }
     
     public void setVan (LocalDate van) {
-        if (van == null || van.isBefore (LocalDate.now ()))
-            throw new IllegalArgumentException ("Startdate can not be in the past");
         this.van = van;
     }
     
@@ -35,8 +33,6 @@ public class Periode {
     }
     
     public void setTot (LocalDate tot) {
-        if (tot == null || tot.isBefore (LocalDate.now ()))
-            throw new IllegalArgumentException ("Enddate can not be in the past");
         this.tot = tot;
     }
     
