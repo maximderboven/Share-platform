@@ -9,9 +9,9 @@ import domein.gereedschap.Gereedschap;
 public class GereedschapCataloogFactory {
 	
 	private static GereedschapCataloogFactory instance;
-	private Cataloog<? super Number, Gereedschap> cataloog;
+	private Cataloog<Long, Gereedschap> cataloog;
 	
-	public GereedschapCataloogFactory (Cataloog<? super Number, Gereedschap> cataloog) {
+	public GereedschapCataloogFactory (Cataloog<Long, Gereedschap> cataloog) {
 		synchronized (instance) {
 			if (instance != null)
 				return;
@@ -24,7 +24,7 @@ public class GereedschapCataloogFactory {
 		return instance;
 	}
 	
-	public Cataloog<? super Number, Gereedschap> getCataloog () {
+	public Cataloog<Long, Gereedschap> getCataloog () {
 		return cataloog;
 	}
 }

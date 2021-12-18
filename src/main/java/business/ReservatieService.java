@@ -40,6 +40,10 @@ public class ReservatieService {
 		}
 	}
 	
+	public Long voegReservatieToe (Reservatie reservatie) {
+		return ReservatieCataloogFactory.getInstance ().getCataloog ().add (reservatie);
+	}
+	
 	public Reservatie geefReservatie (Long reservatieId) {
 		return ReservatieCataloogFactory.getInstance ().getCataloog ().get (reservatieId);
 	}

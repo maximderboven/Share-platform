@@ -18,12 +18,16 @@ public class GereedschapService {
 	public GereedschapService () {
 		synchronized (instance) {
 			if (instance != null)
-                return;
-            instance = this;
-        }
-    }
-
-    public Gereedschap geefGereedschap(Long id) {
-	    return GereedschapCataloogFactory.getInstance ().getCataloog ().get (id);
-    }
+				return;
+			instance = this;
+		}
+	}
+	
+	public Long voegGereedschapToe (Gereedschap gereedschap) {
+		return GereedschapCataloogFactory.getInstance ().getCataloog ().add (gereedschap);
+	}
+	
+	public Gereedschap geefGereedschap (Long id) {
+		return GereedschapCataloogFactory.getInstance ().getCataloog ().get (id);
+	}
 }

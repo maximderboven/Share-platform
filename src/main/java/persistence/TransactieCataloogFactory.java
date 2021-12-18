@@ -8,9 +8,9 @@ import domein.transactie.Transactie;
  */
 public class TransactieCataloogFactory {
 	private static TransactieCataloogFactory instance;
-	private Cataloog<? extends Number, Transactie> cataloog;
+	private Cataloog<Long, Transactie> cataloog;
 	
-	public TransactieCataloogFactory (Cataloog<? extends Number, Transactie> cataloog) {
+	public TransactieCataloogFactory (Cataloog<Long, Transactie> cataloog) {
 		synchronized (instance) {
 			if (instance != null) {
 				return;
@@ -23,8 +23,8 @@ public class TransactieCataloogFactory {
 	public static TransactieCataloogFactory getInstance () {
 		return instance;
 	}
-
-    public Cataloog<? extends Number, Transactie> getCataloog(){
-        return cataloog;
-    }
+	
+	public Cataloog<Long, Transactie> getCataloog () {
+		return cataloog;
+	}
 }

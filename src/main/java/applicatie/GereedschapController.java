@@ -8,8 +8,12 @@ import domein.gereedschap.Gereedschap;
  * 16-12-21
  */
 public class GereedschapController {
-
-    public Gereedschap geefGebruiker(long id){
-        return GereedschapService.getInstance().geefGereedschap(id);
+    
+    public Long voegGereedschapToe (Gereedschap gereedschap) {
+        return GereedschapService.getInstance ().voegGereedschapToe (gereedschap);
+    }
+    
+    public Gereedschap geefGereedschap (long id) {
+        return GereedschapService.getInstance ().geefGereedschap (id);
     }
 }

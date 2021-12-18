@@ -9,8 +9,12 @@ import domein.gebruiker.Gebruiker;
  */
 public class GebruikerController {
 	
+	public Long voegGebruikerToe (Gebruiker gebruiker) {
+		return GebruikerService.getInstance ().voegGebruikerToe (gebruiker);
+	}
+	
 	public Gebruiker geefGebruiker (Long id) {
 		return GebruikerService.getInstance ().geefGebruiker (id);
 	}
-
+	
 }

@@ -11,9 +11,17 @@ import java.time.LocalDate;
  * 21-11-21
  */
 public class ReservatieController {
-
+	
+	public Long voegReservatieToe (Reservatie reservatie) {
+		return ReservatieService.getInstance ().voegReservatieToe (reservatie);
+	}
+	
+	public Reservatie geefReservatie (Long id) {
+		return ReservatieService.getInstance ().geefReservatie (id);
+	}
+	
 	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
-		return ReservatieService.getInstance().geefAfhaalbareReservatie(aanbiederLogin, ontlenerLogin, datum);
+		return ReservatieService.getInstance ().geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
 	public boolean haalReservatieAf (Long reservatieId, LocalDate datum) {

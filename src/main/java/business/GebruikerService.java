@@ -1,7 +1,7 @@
 package business;
 
 import domein.gebruiker.Gebruiker;
-import persistence.GebruikerCataloog;
+import persistence.GebruikerCataloogFactory;
 
 /**
  * Jonas Leijzen
@@ -10,32 +10,34 @@ import persistence.GebruikerCataloog;
 public class GebruikerService {
 	
 	private static GebruikerService instance;
-	private static GebruikerCataloog cataloog;
 	
 	public static GebruikerService getInstance () {
 		return instance;
 	}
 	
-	public GebruikerService (GebruikerCataloog cataloog) {
+	public GebruikerService () {
 		synchronized (instance) {
 			if (instance != null)
 				return;
 			instance = this;
 		}
-		GebruikerService.cataloog = cataloog;
+	}
+	
+	public Long voegGebruikerToe (Gebruiker gebruiker) {
+		return GebruikerCataloogFactory.getInstance ().getCataloog ().add (gebruiker);
 	}
 	
 	public Gebruiker geefGebruiker (Long id) {
-		return cataloog.get (id);
+		return GebruikerCataloogFactory.getInstance ().getCataloog ().get (id);
 	}
 	
 	public void schrijfSharepointsOver (String betalerLogin, String ontvangerLogin, long amount) {
-		Gebruiker betaler = cataloog.getByLogin (betalerLogin);
-		Gebruiker ontvanger = cataloog.getByLogin (ontvangerLogin);
+		Gebruiker betaler = GebruikerCataloogFactory.getInstance ().getCataloog ().getByLogin (betalerLogin);
+		Gebruiker ontvanger = GebruikerCataloogFactory.getInstance ().getCataloog ().getByLogin (ontvangerLogin);
 		if (amount < 0)
 			throw new IllegalArgumentException ("Amount cannot be negative.");
 		betaler.setSharepoints (betaler.getSharepoints () - amount);
-		ontvanger.setSharepoints (betaler.getSharepoints () + amount);
+		ontvanger.setSharepoints (ontvanger.getSharepoints () + amount);
 	}
 	
 }
