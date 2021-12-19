@@ -1,112 +1,41 @@
 package be.kdg.cucumber;
 
+import applicatie.GebruikerController;
+import applicatie.GereedschapController;
 import applicatie.ReservatieController;
-import domein.gebruiker.Gebruiker;
-import domein.gereedschap.Gereedschap;
-import domein.gereedschap.GereedschapsType;
-import domein.transactie.Reservatie;
-import domein.transactie.ReservatieAnnuleerder;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import util.GeoLocatie;
-import util.Periode;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Jonas Leijzen
  * 1/12/2021
  */
+
 public class AnnulatieOntlening {
 	
-	Map<String, Gereedschap> gereedschapMap = new HashMap<> ();
-	Map<String, Gebruiker> gebruikerMap = new HashMap<> ();
-	Map<String, Reservatie> reservatieMap = new HashMap<> ();
-	ReservatieController reservatieController;
-	LocalDate datum;
-	
-	private LocalDateTime LocalDateToLocalDateTime (LocalDate localDate) {
-		return LocalDateTime.of (localDate.getYear (), localDate.getMonthValue (), localDate.getDayOfMonth (), 0, 0, 0);
-	}
-	
-	@Given ("Tools")
-	public void tools (DataTable table) {
-		for (Map<String, String> m : table.asMaps ()) {
-			String name = m.get ("naam");
-			long sp = Long.parseLong (m.get ("sp"));
-			GereedschapsType type = convertType (m.get ("type"));
-			Gereedschap g = new Gereedschap (name, "", null, sp, 0, 0, type);
-			gereedschapMap.put (name, g);
-		}
-	}
-	
-	private GereedschapsType convertType (String str) {
-		switch (str) {
-			case "Elektrisch":
-				return GereedschapsType.ELEKTRISCH;
-			case "Keuken":
-				return GereedschapsType.KEUKEN;
-			case "Geluid":
-				return GereedschapsType.GELUIDSINSTALLATIE;
-			case "Licht":
-				return GereedschapsType.LICHTINSTALLATIE;
-		}
-		throw new IllegalArgumentException ("Couldn't find tooltype.");
-	}
-	
-	
-	@Given ("Users")
-	public void users (DataTable table) {
-		for (Map<String, String> m : table.asMaps ()) {
-			String name = m.get ("naam");
-			long sp = Long.parseLong (m.get ("sp"));
-			Gebruiker g = new Gebruiker (name, new GeoLocatie (0, 0), sp);
-			gebruikerMap.put (name, g);
-		}
-	}
-	
-	@Given ("Reservations")
-	public void reservations (DataTable table) {
-		for (Map<String, String> m : table.asMaps ()) {
-			String name = m.get ("naam");
-			String aanbiederKey = m.get ("aanbieder");
-			String ontlenerKey = m.get ("ontlener");
-			String gereedschapKey = m.get ("gereedschap");
-			LocalDate van = LocalDate.parse (m.get ("van"));
-			LocalDate tot = van.plusDays (Integer.parseInt (m.get ("dagen")));
-			Reservatie r = new Reservatie (gebruikerMap.get (aanbiederKey), gebruikerMap.get (ontlenerKey), gereedschapMap.get (gereedschapKey), new Periode (van, tot), LocalDateToLocalDateTime (datum));
-			reservatieMap.put (name, r);
-		}
-	}
-	
-	@Given ("today is {string}")
-	public void todayIs (String datum) {
-		this.datum = LocalDate.parse (datum);
-	}
+	GebruikerController gebruikerController = new GebruikerController ();
+	GereedschapController gereedschapController = new GereedschapController ();
+	ReservatieController reservatieController = new ReservatieController ();
 	
 	@When ("{string} aangeeft dat {string} {string} wil ophalen")
-	public void aangeeftDatWilOphalen (String arg0, String arg1, String reservatie) {
-	
+	public void aangeeftDatWilOphalen (String arg0, String arg1, String arg2) {
 	}
 	
 	@And ("{string} aangeeft dat {string} {string} wil annuleren")
-	public void aangeeftDatWilAnnuleren (String aanbieder, String annulerendeGebruiker, String reservatie) {
-		ReservatieAnnuleerder annuleerder = annulerendeGebruiker.equals (aanbieder) ? ReservatieAnnuleerder.AANBIEDER : ReservatieAnnuleerder.ONTLENER;
-		
+	public void aangeeftDatWilAnnuleren (String arg0, String arg1, String arg2) {
+	}
+	
+	@And ("{string} bevestigd de afhaling")
+	public void bevestigdDeAfhaling (String arg0) {
 	}
 	
 	@Then ("Er wordt een afhalingtransactie aangemaakt")
 	public void erWordtEenAfhalingtransactieAangemaakt () {
 	}
 	
-	@And ("Er wordt een transactielijn gemaakt voor de onlening van {string} met een prijs van {int} SP")
-	public void erWordtEenTransactielijnGemaaktVoorDeOnleningVanMetEenPrijsVanSP (String arg0, int arg1) {
+	@And ("Er wordt een transactielijn gemaakt voor de ontlening van {string} met een prijs van {int} SP")
+	public void erWordtEenTransactielijnGemaaktVoorDeOntleningVanMetEenPrijsVanSP (String arg0, int arg1) {
 	}
 	
 	@And ("Er wordt een transactielijn gemaakt voor de waarborg van {string} met een prijs van {int} SP")

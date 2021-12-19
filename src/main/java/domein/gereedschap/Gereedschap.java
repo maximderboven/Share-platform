@@ -19,10 +19,10 @@ public class Gereedschap {
 	private long daghuurprijs;
 	private int aankoopprijs;
 	private int waarde;
-	private GereedschapsType gereedschapsType;
+	private String gereedschapsType;
 	private final Set<Gereedschap> gereedschapSet;
 	
-	public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, GereedschapsType gereedschapsType) {
+	public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, String gereedschapsType) {
 		
 		setNaam (naam);
 		setBeschrijving (beschrijving);
@@ -37,26 +37,26 @@ public class Gereedschap {
     public Gebruiker getAanbieder () {
         return aanbieder;
     }
-    
-    private void setAanbieder (Gebruiker aanbieder) {
-        this.aanbieder = aanbieder;
-    }
-    
-    private void setNaam (String naam) {
-        this.naam = naam;
-    }
-    
-    private void setGereedschapsType (GereedschapsType gereedschapsType) {
-        this.gereedschapsType = gereedschapsType;
-    }
-    
-    private void setDaghuurprijs (long daghuurprijs) {
-        this.daghuurprijs = daghuurprijs;
-    }
-    
-    private void setBeschrijving (String beschrijving) {
-        this.beschrijving = beschrijving;
-    }
+	
+	private void setAanbieder (Gebruiker aanbieder) {
+		this.aanbieder = aanbieder;
+	}
+	
+	private void setNaam (String naam) {
+		this.naam = naam;
+	}
+	
+	public String getGereedschapsType () {
+		return gereedschapsType;
+	}
+	
+	private void setDaghuurprijs (long daghuurprijs) {
+		this.daghuurprijs = daghuurprijs;
+	}
+	
+	private void setBeschrijving (String beschrijving) {
+		this.beschrijving = beschrijving;
+	}
     
     private void setAankoopprijs (int aankoopprijs) {
         this.aankoopprijs = aankoopprijs;
@@ -69,36 +69,42 @@ public class Gereedschap {
     public boolean addGereedschap (Gereedschap gereedschap) {
         return gereedschapSet.add (gereedschap);
     }
-    
-    public boolean removeGereedschap (Gereedschap gereedschap) {
-        return gereedschapSet.remove (gereedschap);
-    }
-    
-    public long getDaghuurprijs () {
-        return daghuurprijs;
-    }
-    
-    public GereedschapsType getGereedschapsType () {
-        return gereedschapsType;
-    }
-    
-    public String getBeschrijving () {
-        return beschrijving;
-    }
-    
-    public int getAankoopprijs () {
-        return aankoopprijs;
-    }
-    
-    public int getWaarde () {
-        return waarde;
-    }
-    
-    public Set<Gereedschap> getGereedschapSet () {
-        return gereedschapSet;
-    }
-    
-    public List<Gereedschap> getAllGereedschap () {
-        return new ArrayList<> (gereedschapSet);
-    }
+	
+	public boolean removeGereedschap (Gereedschap gereedschap) {
+		return gereedschapSet.remove (gereedschap);
+	}
+	
+	public long getDaghuurprijs () {
+		return daghuurprijs;
+	}
+	
+	private void setGereedschapsType (String gereedschapsType) {
+		if (gereedschapsType == null)
+			throw new NullPointerException ("Gereedschapstype cannot be null.");
+		this.gereedschapsType = gereedschapsType;
+	}
+	
+	public String getBeschrijving () {
+		return beschrijving;
+	}
+	
+	public int getAankoopprijs () {
+		return aankoopprijs;
+	}
+	
+	public int getWaarde () {
+		return waarde;
+	}
+	
+	public int getWaarbord () {
+		return GereedschapsTypen.getInstance ().getWaarborg (gereedschapsType);
+	}
+	
+	public Set<Gereedschap> getGereedschapSet () {
+		return gereedschapSet;
+	}
+	
+	public List<Gereedschap> getAllGereedschap () {
+		return new ArrayList<> (gereedschapSet);
+	}
 }

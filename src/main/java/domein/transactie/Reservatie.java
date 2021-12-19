@@ -35,6 +35,8 @@ public class Reservatie {
 		transactie = TransactieService.getInstance ().maakTransactie (aanbieder, ontlener, this, datum);
 		reservatieStatusQueue = new LinkedList<> ();
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, datum));
+		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.GERESERVEERD, datum));
+		reservatieStatusQueue.poll ();
 	}
 	
 	public Gebruiker getAanbieder () {
@@ -55,10 +57,6 @@ public class Reservatie {
 	
 	public boolean addReservatieTransactieLijn (ReservatieTransactieLijn reservatieTransactieLijn) {
 		return reservatieTransactieLijnen.add (reservatieTransactieLijn);
-	}
-	
-	public boolean removeReservatieTransactieLijn (ReservatieTransactieLijn reservatieTransactieLijn) {
-		return reservatieTransactieLijnen.remove (reservatieTransactieLijn);
 	}
 	
 	public Transactie getTransactie () {

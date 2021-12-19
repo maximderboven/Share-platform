@@ -9,12 +9,10 @@ public class GebruikerCataloogFactory {
 	private static GebruikerCataloogFactory instance;
 	private GebruikerCataloog cataloog;
 	
-	private GebruikerCataloogFactory (GebruikerCataloog cataloog) {
-		synchronized (instance) {
-			if (instance != null)
-				return;
-			instance = this;
-		}
+	public GebruikerCataloogFactory (GebruikerCataloog cataloog) {
+		if (instance != null)
+			return;
+		instance = this;
 		this.cataloog = cataloog;
 	}
 	

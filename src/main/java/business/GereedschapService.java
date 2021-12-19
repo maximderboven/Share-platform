@@ -16,11 +16,9 @@ public class GereedschapService {
 	}
 	
 	public GereedschapService () {
-		synchronized (instance) {
-			if (instance != null)
-				return;
-			instance = this;
-		}
+		if (instance != null)
+			return;
+		instance = this;
 	}
 	
 	public Long voegGereedschapToe (Gereedschap gereedschap) {

@@ -39,7 +39,12 @@ public class InMemoryCataloog<Key extends Number, Value> implements Cataloog<Key
 		return map.values ();
 	}
 	
-	public Key getNewId() {
+	@Override
+	public void clear () {
+		map.clear ();
+	}
+	
+	public Key getNewId () {
 		return keyProvider.getNewKey (map.keySet ());
 	}
 	

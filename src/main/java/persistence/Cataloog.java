@@ -16,4 +16,6 @@ public interface Cataloog<Key extends Number, Value> {
 	
 	Collection<Value> getAll ();
 	
+	void clear ();
+	
 }

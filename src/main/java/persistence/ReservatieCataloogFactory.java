@@ -8,12 +8,10 @@ public class ReservatieCataloogFactory {
 	private static ReservatieCataloogFactory instance;
 	private ReservatieCataloog cataloog;
 	
-	private ReservatieCataloogFactory (ReservatieCataloog cataloog) {
-		synchronized (instance) {
-			if (instance != null)
-				return;
-			instance = this;
-		}
+	public ReservatieCataloogFactory (ReservatieCataloog cataloog) {
+		if (instance != null)
+			return;
+		instance = this;
 		this.cataloog = cataloog;
 	}
 	

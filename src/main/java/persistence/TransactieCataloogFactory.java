@@ -11,12 +11,10 @@ public class TransactieCataloogFactory {
 	private Cataloog<Long, Transactie> cataloog;
 	
 	public TransactieCataloogFactory (Cataloog<Long, Transactie> cataloog) {
-		synchronized (instance) {
-			if (instance != null) {
-				return;
-			}
-			instance = this;
+		if (instance != null) {
+			return;
 		}
+		instance = this;
 		this.cataloog = cataloog;
 	}
 	

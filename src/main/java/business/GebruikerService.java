@@ -16,11 +16,9 @@ public class GebruikerService {
 	}
 	
 	public GebruikerService () {
-		synchronized (instance) {
-			if (instance != null)
-				return;
-			instance = this;
-		}
+		if (instance != null)
+			return;
+		instance = this;
 	}
 	
 	public Long voegGebruikerToe (Gebruiker gebruiker) {

@@ -11,22 +11,20 @@ import java.time.LocalDate;
  * 21-11-21
  */
 public class ReservatieService {
-
-
+	
+	
 	private static ReservatieService instance;
-
-	public static ReservatieService getInstance() {
+	
+	public ReservatieService () {
+		if (instance != null)
+			return;
+		instance = this;
+	}
+	
+	public static ReservatieService getInstance () {
 		return instance;
 	}
-
-	private ReservatieService () {
-		synchronized (instance) {
-			if (instance != null)
-				return;
-			instance = this;
-		}
-	}
-
+	
 	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return ReservatieCataloogFactory.getInstance ().getCataloog ().geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
 	}
