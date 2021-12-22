@@ -3,10 +3,6 @@ package be.kdg.cucumber;
 import applicatie.GebruikerController;
 import applicatie.GereedschapController;
 import applicatie.ReservatieController;
-import business.GebruikerService;
-import business.GereedschapService;
-import business.ReservatieService;
-import business.TransactieService;
 import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
 import domein.gereedschap.GereedschapsTypen;
@@ -44,10 +40,6 @@ public class StepData {
 	
 	@Before
 	public void setup () {
-		new GebruikerService ();
-		new GereedschapService ();
-		new ReservatieService ();
-		new TransactieService ();
 		
 		GebruikerCataloogFactory.getInstance ().setCataloog (new InMemoryGebruikerCataloog (new RandomLongKeyProvider ()));
 		GereedschapCataloogFactory.getInstance ().setCataloog (new InMemoryCataloog<> (new RandomLongKeyProvider ()));
@@ -59,7 +51,6 @@ public class StepData {
 		ReservatieCataloogFactory.getInstance ().getCataloog ().clear ();
 		TransactieCataloogFactory.getInstance ().getCataloog ().clear ();
 		
-		new GereedschapsTypen ();
 	}
 	
 	

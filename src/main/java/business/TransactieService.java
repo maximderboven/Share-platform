@@ -14,14 +14,13 @@ import java.time.LocalDateTime;
 public class TransactieService {
 	private static TransactieService instance;
 	
-	public TransactieService () {
-		if (instance != null) {
-			return;
-		}
-		instance = this;
+	private TransactieService () {
+	
 	}
 	
 	public static TransactieService getInstance () {
+		if (instance == null)
+			instance = new TransactieService ();
 		return instance;
 	}
 	
