@@ -47,15 +47,10 @@ public class ReservatieService {
 	}
 	
 	public boolean annuleerReservatie (Long reservatieId, ReservatieAnnuleerder annuleerder, LocalDate datum) {
-		try {
-			geefReservatie (reservatieId).annuleer (annuleerder, datum);
-			return true;
-		} catch (Exception ignored) {
-			return false;
-		}
+		return geefReservatie (reservatieId).annuleer (annuleerder, datum);
 	}
-
-    public Long getId(Reservatie reservatie) {
-		return ReservatieCataloogFactory.getInstance().getCataloog().getId(reservatie);
-    }
+	
+	public Long getId (Reservatie reservatie) {
+		return ReservatieCataloogFactory.getInstance ().getCataloog ().getId (reservatie);
+	}
 }

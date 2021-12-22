@@ -1,7 +1,8 @@
 package util;
 
-import java.time.Duration;
 import java.time.LocalDate;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
  * @author Maxim Derboven
@@ -17,7 +18,7 @@ public class Periode {
     }
     
     public int getDays () {
-        return (int) (Duration.between (van, tot).getSeconds () / 86400);
+        return (int) DAYS.between (van, tot);
     }
     
     public LocalDate getVan () {

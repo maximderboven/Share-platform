@@ -75,14 +75,20 @@ public class Reservatie {
 		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.HUUR, this));
 	}
 	
-	public void annuleer (ReservatieAnnuleerder reservatieAnnuleerder, LocalDate datum) {
+	public Boolean annuleer (ReservatieAnnuleerder reservatieAnnuleerder, LocalDate datum) {
+		
+		if (reservatieStatusQueue.peek ().getType () != ReservatieStatusType.GERESERVEERD)
+			return false;
+		
 		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
 		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.ANNULATIE, this));
 		if (periode.getVan ().minusDays (7).isBefore (datum)) {
 			getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.WAARBORG, this));
-			GebruikerService.getInstance().schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs () * periode.getDays ());
+			GebruikerService.getInstance ().schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs () * periode.getDays ());
 		}
+		
+		return true;
 	}
 	
 	public boolean isAnnuleerbaar () {
