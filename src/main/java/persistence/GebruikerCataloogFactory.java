@@ -7,19 +7,16 @@ package persistence;
 public class GebruikerCataloogFactory {
 	
 	private static GebruikerCataloogFactory instance;
-	private GebruikerCataloog cataloog;
+	private final GebruikerCataloog cataloog;
 	
 	private GebruikerCataloogFactory () {
+		cataloog = new InMemoryGebruikerCataloog (new RandomLongKeyProvider ());
 	}
 	
 	public static GebruikerCataloogFactory getInstance () {
 		if (instance == null)
 			instance = new GebruikerCataloogFactory ();
 		return instance;
-	}
-	
-	public void setCataloog (GebruikerCataloog cataloog) {
-		this.cataloog = cataloog;
 	}
 	
 	public GebruikerCataloog getCataloog () {

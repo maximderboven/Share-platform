@@ -8,9 +8,10 @@ import domein.transactie.Transactie;
  */
 public class TransactieCataloogFactory {
 	private static TransactieCataloogFactory instance;
-	private Cataloog<Long, Transactie> cataloog;
+	private final Cataloog<Long, Transactie> cataloog;
 	
 	private TransactieCataloogFactory () {
+		cataloog = new InMemoryCataloog<> (new RandomLongKeyProvider ());
 	}
 	
 	public static TransactieCataloogFactory getInstance () {
@@ -18,10 +19,6 @@ public class TransactieCataloogFactory {
 			instance = new TransactieCataloogFactory ();
 		}
 		return instance;
-	}
-	
-	public void setCataloog (Cataloog<Long, Transactie> cataloog) {
-		this.cataloog = cataloog;
 	}
 	
 	public Cataloog<Long, Transactie> getCataloog () {

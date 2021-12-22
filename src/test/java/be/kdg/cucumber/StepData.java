@@ -10,7 +10,10 @@ import domein.transactie.Reservatie;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
-import persistence.*;
+import persistence.GebruikerCataloogFactory;
+import persistence.GereedschapCataloogFactory;
+import persistence.ReservatieCataloogFactory;
+import persistence.TransactieCataloogFactory;
 import util.GeoLocatie;
 import util.Periode;
 
@@ -40,11 +43,6 @@ public class StepData {
 	
 	@Before
 	public void setup () {
-		
-		GebruikerCataloogFactory.getInstance ().setCataloog (new InMemoryGebruikerCataloog (new RandomLongKeyProvider ()));
-		GereedschapCataloogFactory.getInstance ().setCataloog (new InMemoryCataloog<> (new RandomLongKeyProvider ()));
-		ReservatieCataloogFactory.getInstance ().setCataloog (new InMemoryReservatieCataloog (new RandomLongKeyProvider ()));
-		TransactieCataloogFactory.getInstance ().setCataloog (new InMemoryCataloog<> (new RandomLongKeyProvider ()));
 		
 		GebruikerCataloogFactory.getInstance ().getCataloog ().clear ();
 		GereedschapCataloogFactory.getInstance ().getCataloog ().clear ();

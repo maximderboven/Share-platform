@@ -9,20 +9,16 @@ import domein.gereedschap.Gereedschap;
 public class GereedschapCataloogFactory {
 	
 	private static GereedschapCataloogFactory instance;
-	private Cataloog<Long, Gereedschap> cataloog;
+	private final Cataloog<Long, Gereedschap> cataloog;
 	
 	private GereedschapCataloogFactory () {
-	
+		cataloog = new InMemoryCataloog<> (new RandomLongKeyProvider ());
 	}
 	
 	public static GereedschapCataloogFactory getInstance () {
 		if (instance == null)
 			instance = new GereedschapCataloogFactory ();
 		return instance;
-	}
-	
-	public void setCataloog (Cataloog<Long, Gereedschap> cataloog) {
-		this.cataloog = cataloog;
 	}
 	
 	public Cataloog<Long, Gereedschap> getCataloog () {
