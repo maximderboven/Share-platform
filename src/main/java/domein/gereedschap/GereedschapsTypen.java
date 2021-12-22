@@ -13,13 +13,13 @@ public class GereedschapsTypen {
 	
 	private Map<String, Integer> types = new HashMap<> ();
 	
-	public GereedschapsTypen () {
-		if (instance != null)
-			return;
-		instance = this;
+	private GereedschapsTypen () {
+	
 	}
 	
 	public static GereedschapsTypen getInstance () {
+		if (instance == null)
+			instance = new GereedschapsTypen ();
 		return instance;
 	}
 	

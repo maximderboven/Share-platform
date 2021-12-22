@@ -11,14 +11,14 @@ public class GebruikerService {
 	
 	private static GebruikerService instance;
 	
-	public static GebruikerService getInstance () {
-		return instance;
+	private GebruikerService () {
+	
 	}
 	
-	public GebruikerService () {
-		if (instance != null)
-			return;
-		instance = this;
+	public static GebruikerService getInstance () {
+		if (instance == null)
+			instance = new GebruikerService ();
+		return instance;
 	}
 	
 	public Long voegGebruikerToe (Gebruiker gebruiker) {

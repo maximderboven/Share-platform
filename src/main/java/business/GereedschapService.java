@@ -11,14 +11,13 @@ public class GereedschapService {
 	
 	private static GereedschapService instance;
 	
-	public static GereedschapService getInstance () {
-		return instance;
+	private GereedschapService () {
 	}
 	
-	public GereedschapService () {
-		if (instance != null)
-			return;
-		instance = this;
+	public static GereedschapService getInstance () {
+		if (instance == null)
+			instance = new GereedschapService ();
+		return instance;
 	}
 	
 	public Long voegGereedschapToe (Gereedschap gereedschap) {

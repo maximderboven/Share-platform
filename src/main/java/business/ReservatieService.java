@@ -15,13 +15,13 @@ public class ReservatieService {
 	
 	private static ReservatieService instance;
 	
-	public ReservatieService () {
-		if (instance != null)
-			return;
-		instance = this;
+	private ReservatieService () {
+	
 	}
 	
 	public static ReservatieService getInstance () {
+		if (instance == null)
+			instance = new ReservatieService ();
 		return instance;
 	}
 	
