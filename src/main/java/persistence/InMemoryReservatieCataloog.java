@@ -3,6 +3,8 @@ package persistence;
 import domein.transactie.Reservatie;
 
 import java.time.LocalDate;
+import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * @author Maxim Derboven
@@ -22,6 +24,11 @@ public class InMemoryReservatieCataloog extends InMemoryCataloog<Long, Reservati
 								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
 								&& r.isAfhaalbaar (datum))
 				.toArray (Reservatie[]::new);
+	}
+
+	@Override
+	public Long getId(Reservatie reservatie) {
+		return getMap().entrySet().stream().filter(entry -> reservatie.equals(entry.getValue())).map(Map.Entry::getKey).findFirst().orElse(0L);
 	}
 
 }
