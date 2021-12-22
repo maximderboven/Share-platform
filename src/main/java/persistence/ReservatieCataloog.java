@@ -10,7 +10,7 @@ import java.time.LocalDate;
  */
 public interface ReservatieCataloog extends Cataloog<Long, Reservatie> {
 	
-	Reservatie[] geefAfhaalbareReservaties (String aanbiederLogin, String ontlenerLogin, LocalDate datum);
+	Long[] geefAfhaalbareReservaties (String aanbiederLogin, String ontlenerLogin, LocalDate datum);
 	
 	Long getId (Reservatie reservatie);
 

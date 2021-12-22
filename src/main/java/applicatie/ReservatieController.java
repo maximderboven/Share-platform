@@ -20,7 +20,7 @@ public class ReservatieController {
 		return ReservatieService.getInstance ().geefReservatie (id);
 	}
 	
-	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
+	public Long[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return ReservatieService.getInstance ().geefAfhaalbareReservatie (aanbiederLogin, ontlenerLogin, datum);
 	}
 	

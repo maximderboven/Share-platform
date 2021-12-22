@@ -24,7 +24,11 @@ public class ToonAfTeHalenGereedschap {
 	
 	@When ("{string} aangeeft dat {string} zijn reservaties wil ophalen")
 	public void aangeeftDatZijnReservatiesWilOphalen (String aanbieder, String ontlener) {
-		reservaties = reservatieController.geefAfhaalbareReservatie (aanbieder, ontlener, StepData.datum);
+		Long[] ids = reservatieController.geefAfhaalbareReservatie (aanbieder, ontlener, StepData.datum);
+		reservaties = new Reservatie[ids.length];
+		for (int i = 0; i < ids.length; i++) {
+			reservaties[i] = reservatieController.geefReservatie (ids[i]);
+		}
 	}
 	
 	@Then ("wordt een lijst met {int} reservaties getoond")

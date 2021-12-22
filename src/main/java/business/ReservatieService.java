@@ -25,7 +25,7 @@ public class ReservatieService {
 		return instance;
 	}
 	
-	public Reservatie[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
+	public Long[] geefAfhaalbareReservatie (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
 		return ReservatieCataloogFactory.getInstance ().getCataloog ().geefAfhaalbareReservaties (aanbiederLogin, ontlenerLogin, datum);
 	}
 	
