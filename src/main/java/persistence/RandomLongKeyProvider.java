@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class RandomLongKeyProvider implements KeyProvider<Long> {
 	
-	private static Random randomIDs = new Random ();
+	private static final Random randomIDs = new Random ();
 	
 	@Override
 	public Long getNewKey (Collection<Long> existingKeys) {
