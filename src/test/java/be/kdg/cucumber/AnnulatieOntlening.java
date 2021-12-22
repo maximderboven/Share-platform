@@ -19,8 +19,11 @@ public class AnnulatieOntlening {
 	ReservatieController reservatieController = new ReservatieController ();
 	
 	@When ("{string} aangeeft dat {string} {string} wil ophalen")
-	public void aangeeftDatWilOphalen (String arg0, String arg1, String arg2) {
+	public void aangeeftDatWilOphalen (String aanbieder, String ontlener, String reservatie) {
+		Long[] reservatieIds = reservatieController.geefAfhaalbareReservatie (aanbieder, ontlener, StepData.datum);
+		
 	}
+	
 	
 	@And ("{string} aangeeft dat {string} {string} wil annuleren")
 	public void aangeeftDatWilAnnuleren (String arg0, String arg1, String arg2) {

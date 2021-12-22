@@ -4,7 +4,6 @@ import domein.transactie.Reservatie;
 
 import java.time.LocalDate;
 import java.util.Map;
-import java.util.stream.Stream;
 
 /**
  * @author Maxim Derboven
@@ -17,13 +16,13 @@ public class InMemoryReservatieCataloog extends InMemoryCataloog<Long, Reservati
 	}
 	
 	@Override
-	public Reservatie[] geefAfhaalbareReservaties (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
-		return getAll ().stream ().filter (
+	public Long[] geefAfhaalbareReservaties (String aanbiederLogin, String ontlenerLogin, LocalDate datum) {
+		return getMap ().entrySet ().stream ().filter (
 						//r -> aanbiederLogin.equals (r.getGereedschap ().getAanbieder ().getLogin ())
-						r -> aanbiederLogin.equals (r.getAanbieder ().getLogin ())
-								&& ontlenerLogin.equals (r.getOntlener ().getLogin ())
-								&& r.isAfhaalbaar (datum))
-				.toArray (Reservatie[]::new);
+						es -> aanbiederLogin.equals (es.getValue ().getAanbieder ().getLogin ())
+								&& ontlenerLogin.equals (es.getValue ().getOntlener ().getLogin ())
+								&& es.getValue ().isAfhaalbaar (datum)).map (Map.Entry::getKey)
+				.toArray (Long[]::new);
 	}
 
 	@Override
