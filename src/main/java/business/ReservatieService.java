@@ -54,4 +54,8 @@ public class ReservatieService {
 			return false;
 		}
 	}
+
+    public Long getId(Reservatie reservatie) {
+		return ReservatieCataloogFactory.getInstance().getCataloog().getId(reservatie);
+    }
 }

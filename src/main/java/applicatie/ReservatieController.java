@@ -32,6 +32,10 @@ public class ReservatieController {
 		return ReservatieService.getInstance ().annuleerReservatie (reservatieId, annuleerder, datum);
 	}
 
+	public Long getId (Reservatie reservatie){
+		return ReservatieService.getInstance().getId(reservatie);
+	}
+
 
 	
 }
