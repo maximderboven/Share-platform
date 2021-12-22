@@ -8,15 +8,17 @@ public class ReservatieCataloogFactory {
 	private static ReservatieCataloogFactory instance;
 	private ReservatieCataloog cataloog;
 	
-	public ReservatieCataloogFactory (ReservatieCataloog cataloog) {
-		if (instance != null)
-			return;
-		instance = this;
-		this.cataloog = cataloog;
+	private ReservatieCataloogFactory () {
 	}
 	
 	public static ReservatieCataloogFactory getInstance () {
+		if (instance == null)
+			instance = new ReservatieCataloogFactory ();
 		return instance;
+	}
+	
+	public void setCataloog (ReservatieCataloog cataloog) {
+		this.cataloog = cataloog;
 	}
 	
 	public ReservatieCataloog getCataloog () {

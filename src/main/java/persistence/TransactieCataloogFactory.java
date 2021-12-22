@@ -10,16 +10,18 @@ public class TransactieCataloogFactory {
 	private static TransactieCataloogFactory instance;
 	private Cataloog<Long, Transactie> cataloog;
 	
-	public TransactieCataloogFactory (Cataloog<Long, Transactie> cataloog) {
-		if (instance != null) {
-			return;
-		}
-		instance = this;
-		this.cataloog = cataloog;
+	private TransactieCataloogFactory () {
 	}
 	
 	public static TransactieCataloogFactory getInstance () {
+		if (instance == null) {
+			instance = new TransactieCataloogFactory ();
+		}
 		return instance;
+	}
+	
+	public void setCataloog (Cataloog<Long, Transactie> cataloog) {
+		this.cataloog = cataloog;
 	}
 	
 	public Cataloog<Long, Transactie> getCataloog () {

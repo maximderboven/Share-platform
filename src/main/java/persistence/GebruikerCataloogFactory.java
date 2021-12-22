@@ -9,15 +9,17 @@ public class GebruikerCataloogFactory {
 	private static GebruikerCataloogFactory instance;
 	private GebruikerCataloog cataloog;
 	
-	public GebruikerCataloogFactory (GebruikerCataloog cataloog) {
-		if (instance != null)
-			return;
-		instance = this;
-		this.cataloog = cataloog;
+	private GebruikerCataloogFactory () {
 	}
 	
 	public static GebruikerCataloogFactory getInstance () {
+		if (instance == null)
+			instance = new GebruikerCataloogFactory ();
 		return instance;
+	}
+	
+	public void setCataloog (GebruikerCataloog cataloog) {
+		this.cataloog = cataloog;
 	}
 	
 	public GebruikerCataloog getCataloog () {

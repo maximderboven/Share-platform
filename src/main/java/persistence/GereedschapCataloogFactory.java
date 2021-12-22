@@ -11,15 +11,18 @@ public class GereedschapCataloogFactory {
 	private static GereedschapCataloogFactory instance;
 	private Cataloog<Long, Gereedschap> cataloog;
 	
-	public GereedschapCataloogFactory (Cataloog<Long, Gereedschap> cataloog) {
-		if (instance != null)
-			return;
-		instance = this;
-		this.cataloog = cataloog;
+	private GereedschapCataloogFactory () {
+	
 	}
 	
 	public static GereedschapCataloogFactory getInstance () {
+		if (instance == null)
+			instance = new GereedschapCataloogFactory ();
 		return instance;
+	}
+	
+	public void setCataloog (Cataloog<Long, Gereedschap> cataloog) {
+		this.cataloog = cataloog;
 	}
 	
 	public Cataloog<Long, Gereedschap> getCataloog () {

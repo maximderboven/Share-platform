@@ -49,10 +49,10 @@ public class StepData {
 		new ReservatieService ();
 		new TransactieService ();
 		
-		new GebruikerCataloogFactory (new InMemoryGebruikerCataloog (new RandomLongKeyProvider ()));
-		new GereedschapCataloogFactory (new InMemoryCataloog<> (new RandomLongKeyProvider ()));
-		new ReservatieCataloogFactory (new InMemoryReservatieCataloog (new RandomLongKeyProvider ()));
-		new TransactieCataloogFactory (new InMemoryCataloog<> (new RandomLongKeyProvider ()));
+		GebruikerCataloogFactory.getInstance ().setCataloog (new InMemoryGebruikerCataloog (new RandomLongKeyProvider ()));
+		GereedschapCataloogFactory.getInstance ().setCataloog (new InMemoryCataloog<> (new RandomLongKeyProvider ()));
+		ReservatieCataloogFactory.getInstance ().setCataloog (new InMemoryReservatieCataloog (new RandomLongKeyProvider ()));
+		TransactieCataloogFactory.getInstance ().setCataloog (new InMemoryCataloog<> (new RandomLongKeyProvider ()));
 		
 		GebruikerCataloogFactory.getInstance ().getCataloog ().clear ();
 		GereedschapCataloogFactory.getInstance ().getCataloog ().clear ();
