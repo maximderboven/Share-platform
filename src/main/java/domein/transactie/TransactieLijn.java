@@ -9,7 +9,7 @@ public abstract class TransactieLijn {
 	private long sharepoints;
 	
 	public TransactieLijn (long sharepoints) {
-	
+		this.sharepoints = sharepoints;
 	}
 	
 	public long getSharepoints () {

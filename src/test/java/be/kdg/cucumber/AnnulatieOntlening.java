@@ -4,11 +4,13 @@ import applicatie.GebruikerController;
 import applicatie.GereedschapController;
 import applicatie.ReservatieController;
 import business.ReservatieService;
-import domein.transactie.Reservatie;
-import domein.transactie.ReservatieAnnuleerder;
+import domein.transactie.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -71,7 +73,10 @@ public class AnnulatieOntlening {
 	
 	@And ("Er wordt een transactielijn gemaakt voor de ontlening van {string} met een prijs van {int} SP")
 	public void erWordtEenTransactielijnGemaaktVoorDeOntleningVanMetEenPrijsVanSP (String reservatie, int sp) {
-		ReservatieService.getInstance ().geefReservatie (ophaalReservatieID).getTransactie ().getLijnen ();
+		Set<TransactieLijn> lijnen = ReservatieService.getInstance ().geefReservatie (ophaalReservatieID).getTransactie ().getLijnen ();
+		Optional<TransactieLijn> lijn = lijnen.stream ().filter (l -> l instanceof ReservatieTransactieLijn && ((ReservatieTransactieLijn) l).reservatieTransactieType == ReservatieTransactieType.HUUR).findFirst ();
+		assertTrue (lijn.isPresent (), "Geen geldige lijn gevonden.");
+		assertEquals (sp, lijn.get ().getSharepoints ());
 	}
 	
 	@And ("Er wordt een transactielijn gemaakt voor de waarborg van {string} met een prijs van {int} SP")
@@ -80,6 +85,10 @@ public class AnnulatieOntlening {
 	
 	@And ("Er wordt een transactielijn gemaakt voor annulatie van {string} met een prijs van {int} SP")
 	public void erWordtEenTransactielijnGemaaktVoorAnnulatieVanMetEenPrijsVanSP (String reservatie, int sp) {
+		Set<TransactieLijn> lijnen = ReservatieService.getInstance ().geefReservatie (annuleerReservatieID).getTransactie ().getLijnen ();
+		Optional<TransactieLijn> lijn = lijnen.stream ().filter (l -> l instanceof ReservatieTransactieLijn && ((ReservatieTransactieLijn) l).reservatieTransactieType == ReservatieTransactieType.ANNULATIE).findFirst ();
+		assertTrue (lijn.isPresent (), "Geen geldige lijn gevonden.");
+		assertEquals (sp, lijn.get ().getSharepoints ());
 	}
 	
 	@And ("heeft {string} {int} SP")

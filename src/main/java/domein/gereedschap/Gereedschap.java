@@ -23,8 +23,8 @@ public class Gereedschap {
 	private final Set<Gereedschap> gereedschapSet;
 	private GereedschapsPrijsBerekener prijsBerekener;
 	
-	public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, String gereedschapsType) {
-		
+	public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, String gereedschapsType, GereedschapsPrijsBerekener gereedschapsPrijsBerekener) {
+		this.prijsBerekener = gereedschapsPrijsBerekener;
 		setNaam (naam);
 		setBeschrijving (beschrijving);
 		setDaghuurprijs (daghuurprijs);
@@ -109,7 +109,7 @@ public class Gereedschap {
 		return new ArrayList<> (gereedschapSet);
 	}
 	
-	public long getHuurPrijs () {
-		return 0;
+	public long getHuurPrijs (int dagen) {
+		return prijsBerekener.berekenPrijs (this, dagen);
 	}
 }

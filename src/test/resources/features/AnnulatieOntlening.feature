@@ -34,7 +34,7 @@ Feature: ontlening met annulatie door uitlener
 
     Given JoinedTools
       | name    | tools                                 | type            | aanbieder |
-      | ZaagKit | Kettingzaag:Zaagbroek:Veiligheidshelm | Tuingereedschap | Eveline   |
+      | Zaagkit | Kettingzaag:Zaagbroek:Veiligheidshelm | Tuingereedschap | Eveline   |
 
     Given Reservations
       | naam  | aanbieder | ontlener | gereedschap  | van        | dagen |

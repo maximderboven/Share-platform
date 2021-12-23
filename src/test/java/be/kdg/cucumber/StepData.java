@@ -6,6 +6,7 @@ import applicatie.ReservatieController;
 import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
 import domein.gereedschap.GereedschapsTypen;
+import domein.gereedschap.SommatieGereedschapsPrijsBerekener;
 import domein.transactie.Reservatie;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
@@ -83,7 +84,7 @@ public class StepData {
 			String name = m.get ("name");
 			long sp = Long.parseLong (m.get ("sp"));
 			Gebruiker aanbieder = gebruikerMap.get (m.get ("aanbieder"));
-			Gereedschap g = new Gereedschap (name, "", aanbieder, sp, 0, 0, m.get ("type"));
+			Gereedschap g = new Gereedschap (name, "", aanbieder, sp, 0, 0, m.get ("type"), new SommatieGereedschapsPrijsBerekener ());
 			gereedschapMap.put (name, g);
 			gereedschapController.voegGereedschapToe (g);
 		}
@@ -95,7 +96,7 @@ public class StepData {
 			String name = m.get ("name");
 			String[] tools = m.get ("tools").split (":");
 			Gebruiker aanbieder = gebruikerMap.get (m.get ("aanbieder"));
-			Gereedschap g = new Gereedschap (name, "", aanbieder, 0, 0, 0, m.get ("type"));
+			Gereedschap g = new Gereedschap (name, "", aanbieder, 0, 0, 0, m.get ("type"), new SommatieGereedschapsPrijsBerekener ());
 			Arrays.stream (tools).forEach (t -> g.addGereedschap (gereedschapMap.get (t)));
 			gereedschapMap.put (name, g);
 			gereedschapController.voegGereedschapToe (g);
