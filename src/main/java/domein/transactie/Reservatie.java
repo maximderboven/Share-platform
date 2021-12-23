@@ -10,7 +10,6 @@ import util.Periode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Jonas Leijzen
@@ -22,7 +21,6 @@ public final class Reservatie {
 	private final Gebruiker ontlener;
 	private final Gereedschap gereedschap;
 	private final Periode periode;
-	private final List<ReservatieTransactieLijn> reservatieTransactieLijnen;
 	private final LinkedList<ReservatieStatus> reservatieStatusQueue;
 	private final Transactie transactie;
 	
@@ -31,7 +29,6 @@ public final class Reservatie {
 		this.ontlener = ontlener;
 		this.gereedschap = gereedschap;
 		this.periode = periode;
-		reservatieTransactieLijnen = new LinkedList<> ();
 		transactie = TransactieService.getInstance ().maakTransactie (aanbieder, ontlener, this, datum);
 		TransactieCataloogFactory.getInstance ().getCataloog ().add (transactie);
 		reservatieStatusQueue = new LinkedList<> ();
@@ -49,14 +46,6 @@ public final class Reservatie {
 	
 	public Gereedschap getGereedschap () {
 		return gereedschap;
-	}
-	
-	public List<ReservatieTransactieLijn> getReservatieTransactieLijnen () {
-		return reservatieTransactieLijnen;
-	}
-	
-	public boolean addReservatieTransactieLijn (ReservatieTransactieLijn reservatieTransactieLijn) {
-		return reservatieTransactieLijnen.add (reservatieTransactieLijn);
 	}
 	
 	public Transactie getTransactie () {
