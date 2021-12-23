@@ -6,6 +6,6 @@ package persistence;
  */
 public interface CataloogFactory<T> {
 	
-	Cataloog<? extends Number, T> getInstance ();
+	Cataloog<? extends Number, T> getCataloog ();
 	
 }

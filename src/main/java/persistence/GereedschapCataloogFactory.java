@@ -6,7 +6,7 @@ import domein.gereedschap.Gereedschap;
  * Anouar Bannamar
  * 16-12-21
  */
-public class GereedschapCataloogFactory {
+public class GereedschapCataloogFactory implements CataloogFactory<Gereedschap> {
 	
 	private static GereedschapCataloogFactory instance;
 	private final Cataloog<Long, Gereedschap> cataloog;
