@@ -16,7 +16,7 @@ import java.util.List;
  * Jonas Leijzen
  * 21/11/2021
  */
-public class Reservatie {
+public final class Reservatie {
 	
 	private final Gebruiker aanbieder;
 	private final Gebruiker ontlener;
