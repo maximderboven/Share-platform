@@ -14,7 +14,7 @@ public class GereedschapService {
 	private GereedschapService () {
 	}
 	
-	public static GereedschapService getInstance () {
+	public static synchronized GereedschapService getInstance () {
 		if (instance == null)
 			instance = new GereedschapService ();
 		return instance;

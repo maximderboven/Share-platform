@@ -14,7 +14,7 @@ public class ReservatieCataloogFactory implements CataloogFactory<Reservatie> {
 		cataloog = new InMemoryReservatieCataloog (new RandomLongKeyProvider ());
 	}
 	
-	public static ReservatieCataloogFactory getInstance () {
+	public static synchronized ReservatieCataloogFactory getInstance () {
 		if (instance == null)
 			instance = new ReservatieCataloogFactory ();
 		

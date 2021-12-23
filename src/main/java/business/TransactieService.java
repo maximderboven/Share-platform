@@ -18,7 +18,7 @@ public class TransactieService {
 	
 	}
 	
-	public static TransactieService getInstance () {
+	public static synchronized TransactieService getInstance () {
 		if (instance == null)
 			instance = new TransactieService ();
 		return instance;

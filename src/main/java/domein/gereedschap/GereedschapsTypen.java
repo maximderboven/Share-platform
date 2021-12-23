@@ -17,7 +17,7 @@ public class GereedschapsTypen {
 	
 	}
 	
-	public static GereedschapsTypen getInstance () {
+	public static synchronized GereedschapsTypen getInstance () {
 		if (instance == null)
 			instance = new GereedschapsTypen ();
 		return instance;

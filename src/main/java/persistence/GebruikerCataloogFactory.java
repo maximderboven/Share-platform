@@ -15,7 +15,7 @@ public class GebruikerCataloogFactory implements CataloogFactory<Gebruiker> {
 		cataloog = new InMemoryGebruikerCataloog (new RandomLongKeyProvider ());
 	}
 	
-	public static GebruikerCataloogFactory getInstance () {
+	public static synchronized GebruikerCataloogFactory getInstance () {
 		if (instance == null)
 			instance = new GebruikerCataloogFactory ();
 		return instance;

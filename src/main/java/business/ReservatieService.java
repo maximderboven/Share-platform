@@ -19,7 +19,7 @@ public class ReservatieService {
 	
 	}
 	
-	public static ReservatieService getInstance () {
+	public static synchronized ReservatieService getInstance () {
 		if (instance == null)
 			instance = new ReservatieService ();
 		return instance;

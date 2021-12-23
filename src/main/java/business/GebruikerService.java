@@ -15,7 +15,7 @@ public class GebruikerService {
 	
 	}
 	
-	public static GebruikerService getInstance () {
+	public static synchronized GebruikerService getInstance () {
 		if (instance == null)
 			instance = new GebruikerService ();
 		return instance;

@@ -14,7 +14,7 @@ public class TransactieCataloogFactory implements CataloogFactory<Transactie> {
 		cataloog = new InMemoryCataloog<> (new RandomLongKeyProvider ());
 	}
 	
-	public static TransactieCataloogFactory getInstance () {
+	public static synchronized TransactieCataloogFactory getInstance () {
 		if (instance == null) {
 			instance = new TransactieCataloogFactory ();
 		}

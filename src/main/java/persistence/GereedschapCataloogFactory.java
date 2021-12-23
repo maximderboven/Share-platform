@@ -15,7 +15,7 @@ public class GereedschapCataloogFactory implements CataloogFactory<Gereedschap> 
 		cataloog = new InMemoryCataloog<> (new RandomLongKeyProvider ());
 	}
 	
-	public static GereedschapCataloogFactory getInstance () {
+	public static synchronized GereedschapCataloogFactory getInstance () {
 		if (instance == null)
 			instance = new GereedschapCataloogFactory ();
 		return instance;

@@ -68,7 +68,7 @@ public final class Reservatie {
 		GebruikerService.getInstance ().schrijfSharepointsOver (ontlener.getLogin (), aanbieder.getLogin (), waarborg);
 	}
 	
-	public Boolean annuleer (ReservatieAnnuleerder reservatieAnnuleerder, LocalDate datum) {
+	public boolean annuleer (ReservatieAnnuleerder reservatieAnnuleerder, LocalDate datum) {
 		
 		if (!isAnnuleerbaar ())
 			return false;
