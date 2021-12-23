@@ -90,11 +90,11 @@ public class Gereedschap {
 	}
 	
 	public int getAankoopprijs () {
-		return aankoopprijs;
+		return aankoopprijs + (int) gereedschapSet.stream ().mapToDouble (Gereedschap::getAankoopprijs).sum ();
 	}
 	
 	public int getWaarde () {
-		return waarde;
+		return waarde + (int) gereedschapSet.stream ().mapToDouble (Gereedschap::getWaarde).sum ();
 	}
 	
 	public int getWaarbord () {
