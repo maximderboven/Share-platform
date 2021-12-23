@@ -1,9 +1,6 @@
 package domein.gebruiker;
 
-import domein.transactie.Reservatie;
 import util.GeoLocatie;
-
-import java.util.List;
 
 
 /**
@@ -15,8 +12,6 @@ public class Gebruiker {
     private String login;
     private GeoLocatie locatie;
     private long sharepoints;
-    
-    private List<Reservatie> reservaties;
     
     public Gebruiker (String login, GeoLocatie locatie, long sharepoints) {
         setLogin (login);
@@ -46,10 +41,6 @@ public class Gebruiker {
         this.sharepoints = sharepoints;
     }
     
-    public void setReservaties (List<Reservatie> reservaties) {
-        this.reservaties = reservaties;
-    }
-    
     public GeoLocatie getLocatie () {
         return locatie;
     }
@@ -58,15 +49,4 @@ public class Gebruiker {
         return sharepoints;
     }
     
-    public List<Reservatie> getReservaties () {
-        return reservaties;
-    }
-    
-    public boolean addReservatie (Reservatie reservatie) {
-        return reservaties.add (reservatie);
-    }
-    
-    public boolean removeReservatie (Reservatie reservatie) {
-        return reservaties.remove (reservatie);
-    }
 }
