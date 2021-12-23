@@ -8,18 +8,12 @@ import java.time.LocalDateTime;
  */
 public class ReservatieStatus {
 	
-	private Transactie transactie;
 	private ReservatieStatusType type;
 	private LocalDateTime tijdstip;
 	
-	public ReservatieStatus (Transactie transactie, ReservatieStatusType type, LocalDateTime tijdstip) {
-		this.transactie = transactie;
+	public ReservatieStatus (ReservatieStatusType type, LocalDateTime tijdstip) {
 		this.type = type;
 		this.tijdstip = tijdstip;
-	}
-	
-	public Transactie getTransactie () {
-		return transactie;
 	}
 	
 	public ReservatieStatusType getType () {

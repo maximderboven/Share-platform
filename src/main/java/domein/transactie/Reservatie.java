@@ -32,8 +32,8 @@ public final class Reservatie {
 		transactie = TransactieService.getInstance ().maakTransactie (aanbieder, ontlener, this, datum);
 		TransactieCataloogFactory.getInstance ().getCataloog ().add (transactie);
 		reservatieStatusQueue = new LinkedList<> ();
-		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, datum));
-		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.GERESERVEERD, datum));
+		reservatieStatusQueue.add (new ReservatieStatus (ReservatieStatusType.NIEUW, datum));
+		reservatieStatusQueue.add (new ReservatieStatus (ReservatieStatusType.GERESERVEERD, datum));
 	}
 	
 	public Gebruiker getAanbieder () {
@@ -60,7 +60,7 @@ public final class Reservatie {
 	
 	public void haalAf (LocalDate datum) {
 		ReservatieStatusType type = ReservatieStatusType.AFGEHAALD;
-		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
+		reservatieStatusQueue.add (new ReservatieStatus (type, LocalDateTime.now ()));
 		long huurprijs = gereedschap.getHuurPrijs (periode.getDays ());
 		long waarborg = gereedschap.getWaarbord ();
 		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (huurprijs, type, ReservatieTransactieType.HUUR, this));
@@ -74,7 +74,7 @@ public final class Reservatie {
 			return false;
 		
 		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
-		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
+		reservatieStatusQueue.add (new ReservatieStatus (type, LocalDateTime.now ()));
 		long huurprijs = gereedschap.getHuurPrijs (periode.getDays ());
 		long terugbetaalPrijs = gereedschap.getHuurPrijs (periode.getDays ()) / 10;
 		long lijnprijs = terugbetaalPrijs * (type == ReservatieStatusType.ANNULATIE_AANBIEDER ? -1 : 1);
