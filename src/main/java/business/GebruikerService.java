@@ -29,6 +29,10 @@ public class GebruikerService {
 		return GebruikerCataloogFactory.getInstance ().getCataloog ().get (id);
 	}
 	
+	public Gebruiker getByLogin (String login) {
+		return GebruikerCataloogFactory.getInstance ().getCataloog ().getByLogin (login);
+	}
+	
 	public void schrijfSharepointsOver (String betalerLogin, String ontvangerLogin, long amount) {
 		Gebruiker betaler = GebruikerCataloogFactory.getInstance ().getCataloog ().getByLogin (betalerLogin);
 		Gebruiker ontvanger = GebruikerCataloogFactory.getInstance ().getCataloog ().getByLogin (ontvangerLogin);

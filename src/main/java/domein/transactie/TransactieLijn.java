@@ -8,6 +8,10 @@ public abstract class TransactieLijn {
 	
 	private long sharepoints;
 	
+	public TransactieLijn (long sharepoints) {
+	
+	}
+	
 	public long getSharepoints () {
 		return sharepoints;
 	}

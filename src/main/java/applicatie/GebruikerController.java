@@ -17,4 +17,8 @@ public class GebruikerController {
 		return GebruikerService.getInstance ().geefGebruiker (id);
 	}
 	
+	public Gebruiker getByLogin (String login) {
+		return GebruikerService.getInstance ().getByLogin (login);
+	}
+	
 }

@@ -34,6 +34,7 @@ public class ReservatieService {
 			geefReservatie (reservatieId).haalAf (datum);
 			return true;
 		} catch (Exception ignored) {
+			ignored.printStackTrace ();
 			return false;
 		}
 	}

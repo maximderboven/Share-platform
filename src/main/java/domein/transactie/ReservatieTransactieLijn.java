@@ -10,7 +10,8 @@ public class ReservatieTransactieLijn extends TransactieLijn {
 	public final ReservatieTransactieType reservatieTransactieType;
 	public final Reservatie reservatie;
 	
-	public ReservatieTransactieLijn (ReservatieStatusType statusType, ReservatieTransactieType reservatieTransactieType, Reservatie reservatie) {
+	public ReservatieTransactieLijn (long sharepoints, ReservatieStatusType statusType, ReservatieTransactieType reservatieTransactieType, Reservatie reservatie) {
+		super (sharepoints);
 		if (statusType == null) {
 			throw new IllegalArgumentException ("statusType kan niet null zijn");
 		}

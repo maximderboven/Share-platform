@@ -3,13 +3,14 @@ package be.kdg.cucumber;
 import applicatie.GebruikerController;
 import applicatie.GereedschapController;
 import applicatie.ReservatieController;
+import business.ReservatieService;
 import domein.transactie.Reservatie;
 import domein.transactie.ReservatieAnnuleerder;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Jonas Leijzen
@@ -65,23 +66,24 @@ public class AnnulatieOntlening {
 	
 	@Then ("Er wordt een afhalingtransactie aangemaakt")
 	public void erWordtEenAfhalingtransactieAangemaakt () {
-	
+		assertNotNull (ReservatieService.getInstance ().geefReservatie (ophaalReservatieID).getTransactie ());
 	}
 	
 	@And ("Er wordt een transactielijn gemaakt voor de ontlening van {string} met een prijs van {int} SP")
-	public void erWordtEenTransactielijnGemaaktVoorDeOntleningVanMetEenPrijsVanSP (String arg0, int arg1) {
+	public void erWordtEenTransactielijnGemaaktVoorDeOntleningVanMetEenPrijsVanSP (String reservatie, int sp) {
+		ReservatieService.getInstance ().geefReservatie (ophaalReservatieID).getTransactie ().getLijnen ();
 	}
 	
 	@And ("Er wordt een transactielijn gemaakt voor de waarborg van {string} met een prijs van {int} SP")
-	public void erWordtEenTransactielijnGemaaktVoorDeWaarborgVanMetEenPrijsVanSP (String arg0, int arg1) {
+	public void erWordtEenTransactielijnGemaaktVoorDeWaarborgVanMetEenPrijsVanSP (String reservatie, int sp) {
 	}
 	
 	@And ("Er wordt een transactielijn gemaakt voor annulatie van {string} met een prijs van {int} SP")
-	public void erWordtEenTransactielijnGemaaktVoorAnnulatieVanMetEenPrijsVanSP (String arg0, int arg1) {
+	public void erWordtEenTransactielijnGemaaktVoorAnnulatieVanMetEenPrijsVanSP (String reservatie, int sp) {
 	}
 	
 	@And ("heeft {string} {int} SP")
-	public void heeftSP (String arg0, int arg1) {
-	
+	public void heeftSP (String login, int sp) {
+		assertEquals (sp, gebruikerController.getByLogin (login).getSharepoints ());
 	}
 }

@@ -34,13 +34,16 @@ public class Transactie {
 		return lijnen;
 	}
 	
-	private void addTransactionLine (float bedrag, HandelsLijnType handelsLijnType) {
-		lijnen.add (new HandelTransactieLijn (bedrag, handelsLijnType));
+	private void addTransactionLine (TransactieLijn lijn) {
+		lijnen.add (lijn);
 	}
 	
 	public long sharepoints () {
-		// TODO
-		return 0;
+		long total = 0;
+		for (TransactieLijn lijn : lijnen) {
+			total += lijn.getSharepoints ();
+		}
+		return total;
 	}
 
 }

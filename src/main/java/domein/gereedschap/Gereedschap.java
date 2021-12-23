@@ -21,6 +21,7 @@ public class Gereedschap {
 	private int waarde;
 	private String gereedschapsType;
 	private final Set<Gereedschap> gereedschapSet;
+	private GereedschapsPrijsBerekener prijsBerekener;
 	
 	public Gereedschap (String naam, String beschrijving, Gebruiker aanbieder, long daghuurprijs, int aankoopprijs, int waarde, String gereedschapsType) {
 		
@@ -100,11 +101,15 @@ public class Gereedschap {
 		return GereedschapsTypen.getInstance ().getWaarborg (gereedschapsType);
 	}
 	
-	public Set<Gereedschap> getGereedschapSet () {
+	Set<Gereedschap> getGereedschapSet () {
 		return gereedschapSet;
 	}
 	
 	public List<Gereedschap> getAllGereedschap () {
 		return new ArrayList<> (gereedschapSet);
+	}
+	
+	public long getHuurPrijs () {
+		return 0;
 	}
 }

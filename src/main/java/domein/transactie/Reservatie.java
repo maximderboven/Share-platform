@@ -4,6 +4,7 @@ import business.GebruikerService;
 import business.TransactieService;
 import domein.gebruiker.Gebruiker;
 import domein.gereedschap.Gereedschap;
+import persistence.TransactieCataloogFactory;
 import util.Periode;
 
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class Reservatie {
 		this.periode = periode;
 		reservatieTransactieLijnen = new LinkedList<> ();
 		transactie = TransactieService.getInstance ().maakTransactie (aanbieder, ontlener, this, datum);
+		TransactieCataloogFactory.getInstance ().getCataloog ().add (transactie);
 		reservatieStatusQueue = new LinkedList<> ();
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.NIEUW, datum));
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, ReservatieStatusType.GERESERVEERD, datum));
@@ -72,19 +74,20 @@ public class Reservatie {
 	public void haalAf (LocalDate datum) {
 		ReservatieStatusType type = ReservatieStatusType.AFGEHAALD;
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
-		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.HUUR, this));
+		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (gereedschap.getHuurPrijs (), type, ReservatieTransactieType.HUUR, this));
 	}
 	
 	public Boolean annuleer (ReservatieAnnuleerder reservatieAnnuleerder, LocalDate datum) {
 		
-		if (reservatieStatusQueue.peek ().getType () != ReservatieStatusType.GERESERVEERD)
+		if (!isAnnuleerbaar ())
 			return false;
 		
 		ReservatieStatusType type = reservatieAnnuleerder == ReservatieAnnuleerder.AANBIEDER ? ReservatieStatusType.ANNULATIE_AANBIEDER : ReservatieStatusType.ANNULATIE_ONTLENER;
 		reservatieStatusQueue.add (new ReservatieStatus (transactie, type, LocalDateTime.now ()));
-		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.ANNULATIE, this));
+		reservatieStatusQueue.poll ();
+		getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (gereedschap.getHuurPrijs (), type, ReservatieTransactieType.ANNULATIE, this));
 		if (periode.getVan ().minusDays (7).isBefore (datum)) {
-			getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (type, ReservatieTransactieType.WAARBORG, this));
+			getTransactie ().getLijnen ().add (new ReservatieTransactieLijn (gereedschap.getHuurPrijs () / 10, type, ReservatieTransactieType.WAARBORG, this));
 			GebruikerService.getInstance ().schrijfSharepointsOver (aanbieder.getLogin (), ontlener.getLogin (), gereedschap.getDaghuurprijs () * periode.getDays ());
 		}
 		

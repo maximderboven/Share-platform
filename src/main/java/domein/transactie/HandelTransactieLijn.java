@@ -9,7 +9,8 @@ public class HandelTransactieLijn extends TransactieLijn {
     private HandelsLijnType handelsLijnType;
     
     public HandelTransactieLijn (float bedrag, HandelsLijnType handelsLijnType) {
-        setBedrag (bedrag);
+        super ((long) bedrag);
+	    setBedrag (bedrag);
         setHandelsLijnType (handelsLijnType);
     }
     

@@ -33,11 +33,11 @@ Feature: Toon af te halen gereedschap
 
     Given JoinedTools
       | name    | tools                                 | type            | aanbieder |
-      | ZaagKit | Kettingzaag:Zaagbroek:Veiligheidshelm | Tuingereedschap | Eveline   |
+      | Zaagkit | Kettingzaag:Zaagbroek:Veiligheidshelm | Tuingereedschap | Eveline   |
 
     Given Reservations
       | naam  | aanbieder | ontlener | gereedschap  | van        | dagen |
-      | Res10 | Albert    | Evelien  | PA Seismic   | 2012-12-30 | 2     |
+      | Res10 | Albert    | Evelien  | PA Seismic   | 2019-12-30 | 2     |
       | Res1  | Eveline   | Diederik | Zaagkit      | 2019-12-15 | 3     |
       | Res2  | Eveline   | Diederik | Kettingzaag2 | 2019-12-15 | 4     |
       | Res3  | Eveline   | Diederik | Keukenrobot  | 2019-12-17 | 2     |
